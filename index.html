@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reference guide for Citrix XenServer SDK">
+  
+  
+  <title>Citrix XenServer SDK</title>
+  
+
+  <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/highlight.css">
+  <link rel="stylesheet" href="./css/override.css" type="text/css" />
+  <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" />
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "None";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-1.10.2.min.js"></script>
+  <script src="./js/bootstrap-3.0.3.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script>
+  <script src="./js/base.js"></script>
+  <script src="./js/custom.js"></script>
+  <script src="./js/nav.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document" data-spy="scroll" data-target=".bs-sidebar">
+
+	<div class="header-top">
+		<div class="header-top-left">
+			<a href="http://citrix.github.io" class="logo-position"><img height="60" src="https://thumbnail-ec2.sharefile.com/thumbnail.aspx?encparams=ypL2J0l-In6gqXJ7yeyKP8A1rqwKMH-C8-nfkJcHJNIN7Y0yZiJsYOcUe-uc0YeZzWLQSFSd1FnuMHPa30XSSINHuGOA8nvvnBT5WmjGlKvd5mxJ4IfT7iTVyHELwhWQiNCznPCiIFyhkA78uKX77PlU2iyhM4YdRM1NKabBe-4wXuiFJsbtAxyJ2UukO_E2ZSf1W3l75Dw8G0zflVkT-EFqyx1zSGId0qzLjm6nzJ8dA9zo-1AJzUisdzmGMzHOq_LMsOWyaalvmcWvCkl-q10GBSbfekfTIFW9LpZNYjkLNSnK8rcwNjWVr_jYayrGjIj2e5dDIMiDj3NRvW51AvHRjxYH9xRRRtY$" target="_blank" class="logo-citrix"><span style="color:#fff;font-size: 20px;position: relative;top:4px;left: 5px">SDK Reference</span></a>
+		</div>
+		<div class="header-top-right">
+			<ul>
+			<!--	<li class="list-inline home"><a href=".">HOME</a></li>
+				<li class="list-inline support"><a href="http://support.citrix.com">SUPPORT</a></li>-->
+				<form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+            <li class="list-inline support"><input name="q" id="txtName" type="text" placeholder="Search SDKs"
+            class="searchdocs">
+<a class="fa fa-search errspan"></a></li>
+</form>
+				<!--<li class="list-inline"><a href="http://citrix.com/download">DOWNLOADS</a></li>-->
+			</ul>
+
+		</div>
+	</div>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+			<div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#citrix-xenserver-70-software-development-kit">Citrix XenServer 7.0 Software Development Kit</a></li>
+        
+    
+        <li class="main "><a href="#introduction">Introduction</a></li>
+        
+    
+        <li class="main "><a href="#getting-started">Getting Started</a></li>
+        
+            <li><a href="#system-requirements-and-preparation">System Requirements and Preparation</a></li>
+        
+            <li><a href="#downloading">Downloading</a></li>
+        
+            <li><a href="#content-map">Content Map</a></li>
+        
+    
+        <li class="main "><a href="#overview-of-the-xenserver-api">Overview of the XenServer API</a></li>
+        
+            <li><a href="#getting-started-with-the-api">Getting Started with the API</a></li>
+        
+            <li><a href="#object-model-overview">Object Model Overview</a></li>
+        
+            <li><a href="#working-with-vifs-and-vbds">Working with VIFs and VBDs</a></li>
+        
+            <li><a href="#exporting-and-importing-vms">Exporting and Importing VMs</a></li>
+        
+            <li><a href="#xml-rpc-notes">XML-RPC notes</a></li>
+        
+            <li><a href="#where-to-look-next">Where to look next</a></li>
+        
+    
+        <li class="main "><a href="#using-the-api">Using the API</a></li>
+        
+            <li><a href="#anatomy-of-a-typical-application">Anatomy of a typical application</a></li>
+        
+            <li><a href="#language-bindings">Language bindings</a></li>
+        
+            <li><a href="#complete-application-examples">Complete application examples</a></li>
+        
+    
+        <li class="main "><a href="#using-http-to-interact-with-xenserver">Using HTTP to interact with XenServer</a></li>
+        
+            <li><a href="#vm-import-and-export">VM Import and Export</a></li>
+        
+            <li><a href="#getting-xenserver-performance-statistics">Getting XenServer Performance Statistics</a></li>
+        
+    
+        <li class="main "><a href="#chapter-6-xenserver-api-extensions">Chapter 6. XenServer API extensions</a></li>
+        
+            <li><a href="#61-vm-console-forwarding">6.1. VM console forwarding</a></li>
+        
+            <li><a href="#62-paravirtual-linux-installation">6.2. Paravirtual Linux installation</a></li>
+        
+            <li><a href="#63-adding-xenstore-entries-to-vms">6.3. Adding Xenstore entries to VMs</a></li>
+        
+            <li><a href="#64-security-enhancements">6.4. Security enhancements</a></li>
+        
+            <li><a href="#65-advanced-settings-for-network-interfaces">6.5. Advanced settings for network interfaces</a></li>
+        
+            <li><a href="#66-internationalization-for-sr-names">6.6. Internationalization for SR names</a></li>
+        
+            <li><a href="#67-hiding-objects-from-xencenter">6.7. Hiding objects from XenCenter</a></li>
+        
+    
+        <li class="main "><a href="#chapter-7-xencenter-api-extensions">Chapter 7. XenCenter API Extensions</a></li>
+        
+            <li><a href="#71-pool">7.1. Pool</a></li>
+        
+            <li><a href="#72-host">7.2. Host</a></li>
+        
+            <li><a href="#73-vm">7.3. VM</a></li>
+        
+            <li><a href="#74-sr">7.4.  SR</a></li>
+        
+            <li><a href="#75-vdi">7.5. VDI</a></li>
+        
+            <li><a href="#76-vbd">7.6. VBD</a></li>
+        
+            <li><a href="#77-network">7.7. Network</a></li>
+        
+            <li><a href="#78-vm_guest_metrics">7.8. VM_guest_metrics</a></li>
+        
+            <li><a href="#79-task">7.9. Task</a></li>
+        
+    
+    </ul>
+</div>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+         <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Index</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+          <div role="main">
+            <div class="section">
+             
+                <h1 id="citrix-xenserver-70-software-development-kit"><a class="toclink" href="#citrix-xenserver-70-software-development-kit">Citrix XenServer 7.0 Software Development Kit</a></h1>
+<h1 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h1>
+<p>Welcome to the developer's guide for XenServer. Here you will find the information you need in order to understand and use the Software Development Kit (SDK) that XenServer provides. This information will provide you with some of the architectural background and thinking that underpins the APIs, the tools that have been provided, and how to quickly get off the ground.</p>
+<h1 id="getting-started"><a class="toclink" href="#getting-started">Getting Started</a></h1>
+<p>XenServer includes a XML-RPC based API providing programmatic access to the extensive set of XenServer management features and tools. The XenServer API can be called from a remote system as well as local to the XenServer host. Although it is possible to write applications which use the XenServer Management API directly through raw XML-RPC calls, the task of developing third-party applications is greatly simplified through the use of a language binding which exposes the individual API calls as first-class functions in the target language. The XenServer SDK provides language bindings and example code for the C, C#, Java, Python and PowerShell programming languages.</p>
+<h2 id="system-requirements-and-preparation"><a class="toclink" href="#system-requirements-and-preparation">System Requirements and Preparation</a></h2>
+<p>The first step towards working with the SDK is to install XenServer. A free version, Citrix XenServer, is available for download at http://www.citrix.com/downloads/xenserver/. Please refer to the XenServer Installation Guide for detailed instructions on how to set up your development host. When the installation is complete, please note the host IP address and the host password.</p>
+<h2 id="downloading"><a class="toclink" href="#downloading">Downloading</a></h2>
+<p>The SDK is packaged as a ZIP file and is available as a free download from http://www.citrix.com/downloads/xenserver/ .</p>
+<h2 id="content-map"><a class="toclink" href="#content-map">Content Map</a></h2>
+<p>The extracted contents of the SDK ZIP file are in the XenServer-SDK directory. The following is an overview of its structure. Where necessary, subdirectories have their own individual README files. It should be noted that the examples provided are not the same across all the language bindings, so, if you intend to use one binding, it is advisable to also browse the sample code available in the others.</p>
+<ul>
+<li>XenServer-SDK. <ul>
+<li>libxenserver. The XenServer SDK for C.<ul>
+<li>bin. libxenserver binaries.</li>
+<li>src. libxenserver source code and examples and a Makefile to build them.</li>
+</ul>
+</li>
+<li>XenServer.NET. The XenServer SDK for C#.NET.<ul>
+<li>bin. XenServer.NET binaries.</li>
+<li>samples. XenServer.NET examples.</li>
+<li>src. XenServer.NET source code.</li>
+</ul>
+</li>
+<li>XenServerJava. The XenServer SDK for Java<ul>
+<li>bin. Java binaries.</li>
+<li>javadoc. Java documentation.</li>
+<li>samples. Java examples.</li>
+<li>src. Java source code and a Makefile to build the code and the examples.</li>
+</ul>
+</li>
+<li>XenServerPowerShell. The XenServer SDK for PowerShell.<ul>
+<li>XenServerPSModule.  The XenServer PowerShell module.</li>
+<li>samples. PowerShell example scripts.</li>
+<li>src. XenServer PowerShell source code.</li>
+</ul>
+</li>
+<li>XenServerPython. This directory contains the XenServer Python module XenAPI.py. The library provision.py is used by the examples.<ul>
+<li>samples. XenServer API examples using Python.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="overview-of-the-xenserver-api"><a class="toclink" href="#overview-of-the-xenserver-api">Overview of the XenServer API</a></h1>
+<p>This chapter introduces the XenServer API (subsequently referred to as the "API") and its associated object model. The API has the following key features:</p>
+<ul>
+<li>
+<p>Management of all aspects of the XenServer Host. The API allows you to manage VMs, storage, networking, host configuration and pools. Performance and status metrics can also be queried from the API.</p>
+</li>
+<li>
+<p>Persistent Object Model. The results of all side-effecting operations (e.g. object creation, deletion and parameter modifications) are persisted in a server-side database that is managed by the XenServer installation.</p>
+</li>
+<li>
+<p>An event mechanism. Through the API, clients can register to be notified when persistent (server-side) objects are modified. This enables applications to keep track of datamodel modifications performed by concurrently executing clients.</p>
+</li>
+<li>
+<p>Synchronous and asynchronous invocation. All API calls can be invoked synchronously (that is, block until completion); any API call that may be long-running can also be invoked asynchronously. Asynchronous calls return immediately with a reference to a task object. This task object can be queried (through the API) for progress and status information. When an asynchronously invoked operation completes, the result (or error code) is available from the task object.</p>
+</li>
+<li>
+<p>Remotable and Cross-Platform. The client issuing the API calls does not have to be resident on the host being managed; nor does it have to be connected to the host over ssh in order to execute the API. API calls make use of the XML-RPC protocol to transmit requests and responses over the network.</p>
+</li>
+<li>
+<p>Secure and Authenticated Access. The XML-RPC API server executing on the host accepts secure socket connections. This allows a client to execute the APIs over the https protocol. Further, all the API calls execute in the context of a login session generated through username and password validation at the server. This provides secure and authenticated access to the XenServer installation.</p>
+</li>
+</ul>
+<h2 id="getting-started-with-the-api"><a class="toclink" href="#getting-started-with-the-api">Getting Started with the API</a></h2>
+<p>We will start our tour of the API by describing the calls required to create a new VM on a XenServer installation, and take it through a start/suspend/resume/stop cycle. This is done without reference to code in any specific language; at this stage we just describe the informal sequence of RPC invocations that accomplish our "install and start" task.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>We recommend strongly against using the VM.create call, which may be removed or changed in  a future version of the API. Read on to learn other ways to make a new VM.</p>
+</div>
+<h3 id="authentication-acquiring-a-session-reference"><a class="toclink" href="#authentication-acquiring-a-session-reference">Authentication: acquiring a session reference</a></h3>
+<p>The first step is to call Session.login_with_password(<code>&lt;username&gt;</code>, <code>&lt;password&gt;</code>, <code>&lt;client_API_version&gt;</code>, <code>&lt;originator&gt;</code>). The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the username and password are authenticated correctly, the result of this call is a session reference. Subsequent API calls take the session reference as a parameter. In this way we ensure that only API users who are suitably authorized can perform operations on a XenServer installation. You can continue to use the same session for any number of API calls. When you have finished the session, Citrix recommends that you call <code>Session.logout(session)</code> to clean up: see later.</p>
+<h3 id="acquiring-a-list-of-templates-to-base-a-new-vm-installation-on"><a class="toclink" href="#acquiring-a-list-of-templates-to-base-a-new-vm-installation-on">Acquiring a list of templates to base a new VM installation on</a></h3>
+<p>The next step is to query the list of "templates" on the host. Templates are specially-marked VM objects that specify suitable default parameters for a variety of supported guest types. (If you want to see a quick enumeration of the templates on a XenServer installation for yourself then you can execute the xe template-list CLI command.) To get a list of templates from the API, we need to find the VM objects on the server that have their is_a_template field set to true. One way to do this by calling VM.get_all_records(session) where the session parameter is the reference we acquired from our Session.login_with_password call earlier. This call queries the server, returning a snapshot (taken at the time of the call) containing all the VM object references and their field values.</p>
+<p>(Remember that at this stage we are not concerned about the particular mechanisms by which the returned object references and field values can be manipulated in any particular client language: that detail is dealt with by our language-specific API bindings and described concretely in the following chapter. For now it suffices just to assume the existence of an abstract mechanism for reading and manipulating objects and field values returned by API calls.)</p>
+<p>Now that we have a snapshot of all the VM objects' field values in the memory of our client application we can simply iterate through them and find the ones that have their "is_a_template" set to true. At this stage let's assume that our example application further iterates through the template objects and remembers the reference corresponding to the one that has its "name_label" set to "Debian Etch 4.0" (one of the default Linux templates supplied with XenServer).</p>
+<h3 id="installing-the-vm-based-on-a-template"><a class="toclink" href="#installing-the-vm-based-on-a-template">Installing the VM based on a template</a></h3>
+<p>Continuing through our example, we must now install a new VM based on the template we selected. The installation process requires 2 API calls:</p>
+<ul>
+<li>
+<p>First we must now invoke the API call VM.clone(session, t_ref, "my first VM"). This tells the server to clone the VM object referenced by t_ref in order to make a new VM object. The return value of this call is the VM reference corresponding to the newly-created VM. Let's call this new_vm_ref.</p>
+</li>
+<li>
+<p>At this stage the object referred to by new_vm_ref is still a template (just like the VM object referred to by t_ref, from which it was cloned). To make new_vm_ref into a VM object we need to call VM.provision(session, new_vm_ref). When this call returns the new_vm_ref object will have had its is_a_template field set to false, indicating that new_vm_ref now refers to a regular VM ready for starting.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>The provision operation may take a few minutes, as it is as during this call that the   template's disk images are created. In the case of the Debian template, the newly created   disks are also at this stage populated with a Debian root filesystem.</p>
+</div>
+<h3 id="taking-the-vm-through-a-startsuspendresumestop-cycle"><a class="toclink" href="#taking-the-vm-through-a-startsuspendresumestop-cycle">Taking the VM through a start/suspend/resume/stop cycle</a></h3>
+<p>Now we have an object reference representing our newly-installed VM, it is trivial to take it through a few lifecycle operations:</p>
+<ul>
+<li>
+<p>To start our VM we can just call VM.start(session, new_vm_ref)</p>
+</li>
+<li>
+<p>After it's running, we can suspend it by calling VM.suspend(session, new_vm_ref),</p>
+</li>
+<li>
+<p>and then resume it by calling VM.resume(session, new_vm_ref).</p>
+</li>
+<li>
+<p>We can call VM.shutdown(session, new_vm_ref) to shutdown the VM cleanly.</p>
+</li>
+</ul>
+<h3 id="logging-out"><a class="toclink" href="#logging-out">Logging out</a></h3>
+<p>Once an application is finished interacting with a XenServer Host it is good practice to call Session.logout(session). This invalidates the session reference (so it cannot be used in subsequent API calls) and simultaneously deallocates server-side memory used to store the session object.</p>
+<p>Although inactive sessions will eventually timeout, the server has a hardcoded limit of 500 concurrent sessions for each username or originator. Once this limit has been reached fresh logins will evict the session objects that have been used least recently, causing their associated session references to become invalid. For successful interoperability with other applications, concurrently accessing the server, the best policy is:</p>
+<ul>
+<li>
+<p>Choose a string that identifies your application and its version.</p>
+</li>
+<li>
+<p>Create a single session at start-of-day, using that identifying string for the originator parameter to Session.login_with_password.</p>
+</li>
+<li>
+<p>Use this session throughout the application (note that sessions can be used across multiple separate client-server network connections) and then explicitly logout when possible.</p>
+</li>
+</ul>
+<p>If a poorly written client leaks sessions or otherwise exceeds the limit, then as long as the client uses an appropriate originator argument, it will be easily identifiable from the XenServer logs and XenServer will destroy the longest-idle sessions of the rogue client only; this may cause problems for that client but not for other clients. If the misbehaving client did not specify an originator, it would be harder to identify and would cause the premature destruction of sessions of any clients that also did not specify an originator</p>
+<h3 id="install-and-start-example-summary"><a class="toclink" href="#install-and-start-example-summary">Install and start example: summary</a></h3>
+<p>We have seen how the API can be used to install a VM from a XenServer template and perform a number of lifecycle operations on it. You will note that the number of calls we had to make in order to affect these operations was small:</p>
+<ul>
+<li>
+<p>One call to acquire a session: Session.login_with_password()</p>
+</li>
+<li>
+<p>One call to query the VM (and template) objects present on the XenServer installation: VM.get_all_records(). Recall that we used the information returned from this call to select a suitable template to install from.</p>
+</li>
+<li>
+<p>Two calls to install a VM from our chosen template: VM.clone(), followed by VM.provision().</p>
+</li>
+<li>
+<p>One call to start the resultant VM: VM.start() (and similarly other single calls to suspend, resume and shutdown accordingly)</p>
+</li>
+<li>
+<p>And then one call to logout Session.logout()</p>
+</li>
+</ul>
+<p>The take-home message here is that, although the API as a whole is complex and fully featured, common tasks (such as creating and performing lifecycle operations on VMs) are very straightforward to perform, requiring only a small number of simple API calls. Keep this in mind while you study the next section which may, on first reading, appear a little daunting!</p>
+<h2 id="object-model-overview"><a class="toclink" href="#object-model-overview">Object Model Overview</a></h2>
+<p>This section gives a high-level overview of the object model of the API. A more detailed description of the parameters and methods of each class outlined here can be found in the XenServer API Reference document.</p>
+<p>We start by giving a brief outline of some of the core classes that make up the API. (Don't worry if these definitions seem somewhat abstract in their initial presentation; the textual description in subsequent sections, and the code-sample walk through in the next Chapter will help make these concepts concrete.)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM</td>
+<td>A VM object represents a particular virtual machine instance on a XenServer Host or Resource Pool. Example methods include start, suspend, pool_migrate; example parameters include power_state, memory_static_max, and name_label. (In the previous section we saw how the VM class is used to represent both templates and regular VMs)</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>A host object represents a physical host in a XenServer pool. Example methods include reboot and shutdown. Example parameters include software_version, hostname, and [IP] address.</td>
+</tr>
+<tr>
+<td>VDI</td>
+<td>A VDI object represents a Virtual Disk Image. Virtual Disk Images can be attached to VMs, in which case a block device appears inside the VM through which the bits encapsulated by the Virtual Disk Image can be read and written. Example methods of the VDI class include "resize" and "clone". Example fields include "virtual_size" and "sharable". (When we called VM.provision on the VM template in our previous example, some VDI objects were automatically created to represent the newly created disks, and attached to the VM object.)</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>An SR (Storage Repository) aggregates a collection of VDIs and encapsulates the properties of physical storage on which the VDIs' bits reside. Example parameters include type (which determines the storage-specific driver a XenServer installation uses to read/write the SR's VDIs) and physical_utilisation; example methods include scan(which invokes the storage-specific driver to acquire a list of the VDIs contained with the SR and the properties of these VDIs) and create (which initializes a block of physical storage so it is ready to store VDIs).</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>A network object represents a layer-2 network that exists in the environment in which the XenServer Host instance lives. Since XenServer does not manage networks directly this is a lightweight class that serves merely to model physical and virtual network topology. VM and Host objects that are attached to a particular Network object (by virtue of VIF and PIF instances -- see below) can send network packets to each other.</td>
+</tr>
+</tbody>
+</table>
+<p>At this point, readers who are finding this enumeration of classes rather terse may wish to skip to the code walk-throughs of the next chapter: there are plenty of useful applications that can be written using only a subset of the classes already described! For those who wish to continue this description of classes in the abstract, read on.</p>
+<p>On top of the classes listed above, there are 4 more that act as connectors, specifying relationships between VMs and Hosts, and Storage and Networks. The first 2 of these classes that we will consider, VBD and VIF, determine how VMs are attached to virtual disks and network objects respectively:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VBD</td>
+<td>A VBD (Virtual Block Device) object represents an attachment between a VM and a VDI. When a VM is booted its VBD objects are queried to determine which disk images (VDIs) should be attached. Example methods of the VBD class include "plug" (which hot plugs a disk device into a running VM, making the specified VDI accessible therein) and "unplug" (which hot unplugs a disk device from a running guest); example fields include "device" (which determines the device name inside the guest under which the specified VDI will be made accessible).</td>
+</tr>
+<tr>
+<td>VIF</td>
+<td>A VIF (Virtual network InterFace) object represents an attachment between a VM and a Network object. When a VM is booted its VIF objects are queried to determine which network devices should be created. Example methods of the VIF class include "plug" (which hot plugs a network device into a running VM) and "unplug" (which hot unplugs a network device from a running guest).</td>
+</tr>
+</tbody>
+</table>
+<p>The second set of "connector classes" that we will consider determine how Hosts are attached to Networks and Storage.
+|||
+|-|-|
+| PIF  | A PIF (Physical InterFace) object represents an attachment between a Host and a Network object. If a host is connected to a Network (over a PIF) then packets from the specified host can be transmitted/received by the corresponding host. Example fields of the PIF class include "device" (which specifies the device name to which the PIF corresponds -- e.g. eth0) and "MAC" (which specifies the MAC address of the underlying NIC that a PIF represents). Note that PIFs abstract both physical interfaces and VLANs (the latter distinguished by the existence of a positive integer in the "VLAN" field).|
+| PBD   | A PBD (Physical Block Device) object represents an attachment between a Host and a SR (Storage Repository) object. Fields include "currently-attached" (which specifies whether the chunk of storage represented by the specified SR object) is currently available to the host; and "device_config" (which specifies storage-driver specific parameters that determines how the low-level storage devices are configured on the specified host -- e.g. in the case of an SR rendered on an NFS filer, device_config may specify the host-name of the filer and the path on the filer in which the SR files live.)|</p>
+<p>The following image presents a graphical overview of the API classes involved in managing VMs, Hosts, Storage and Networking. From this diagram, the symmetry between storage and network configuration, and also the symmetry between virtual machine and host configuration is plain to see.</p>
+<p><img alt="Common API Classes" src="./img/dia_class_overview.png" /></p>
+<h2 id="working-with-vifs-and-vbds"><a class="toclink" href="#working-with-vifs-and-vbds">Working with VIFs and VBDs</a></h2>
+<p>In this section we walk through a few more complex scenarios, describing informally how various tasks involving virtual storage and network devices can be accomplished using the API.</p>
+<h3 id="creating-disks-and-attaching-them-to-vms"><a class="toclink" href="#creating-disks-and-attaching-them-to-vms">Creating disks and attaching them to VMs</a></h3>
+<p>Let's start by considering how to make a new blank disk image and attach it to a running VM. We will assume that we already have ourselves a running VM, and we know its corresponding API object reference (e.g. we may have created this VM using the procedure described in the previous section, and had the server return its reference to us.) We will also assume that we have authenticated with the XenServer installation and have a corresponding session reference. Indeed in the rest of this chapter, for the sake of brevity, we will stop mentioning sessions altogether.</p>
+<h4 id="creating-a-new-blank-disk-image"><a class="toclink" href="#creating-a-new-blank-disk-image">Creating a new blank disk image</a></h4>
+<p>The first step is to instantiate the disk image on physical storage. We do this by calling VDI.create(). The VDI.create call takes a number of parameters, including:</p>
+<ul>
+<li>
+<p>name_label and name_description: a human-readable name/description for the disk (e.g. for convenient display in the UI etc.). These fields can be left blank if desired.</p>
+</li>
+<li>
+<p>SR: the object reference of the Storage Repository representing the physical storage in which the VDI's bits will be placed.</p>
+</li>
+<li>
+<p>read_only: setting this field to true indicates that the VDI can only be attached to VMs in a read-only fashion. (Attempting to attach a VDI with its read_only field set to true in a read/write fashion results in error.)</p>
+</li>
+</ul>
+<p>Invoking the VDI.create call causes the XenServer installation to create a blank disk image on physical storage, create an associated VDI object (the datamodel instance that refers to the disk image on physical storage) and return a reference to this newly created VDI object.</p>
+<p>The way in which the disk image is represented on physical storage depends on the type of the SR in which the created VDI resides. For example, if the SR is of type "lvm" then the new disk image will be rendered as an LVM volume; if the SR is of type "nfs" then the new disk image will be a sparse VHD file created on an NFS filer. (You can query the SR type through the API using the SR.get_type() call.)</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>Some SR types might round up the virtual-size value to make it divisible by a configured    block size.</p>
+</div>
+<h4 id="attaching-the-disk-image-to-a-vm"><a class="toclink" href="#attaching-the-disk-image-to-a-vm">Attaching the disk image to a VM</a></h4>
+<p>So far we have a running VM (that we assumed the existence of at the start of this example) and a fresh VDI that we just created. Right now, these are both independent objects that exist on the XenServer Host, but there is nothing linking them together. So our next step is to create such a link, associating the VDI with our VM.</p>
+<p>The attachment is formed by creating a new "connector" object called a VBD (Virtual Block Device). To create our VBD we invoke the VBD.create() call. The VBD.create() call takes a number of parameters including:</p>
+<ul>
+<li>
+<p>VM - the object reference of the VM to which the VDI is to be attached</p>
+</li>
+<li>
+<p>VDI - the object reference of the VDI that is to be attached</p>
+</li>
+<li>
+<p>mode - specifies whether the VDI is to be attached in a read-only or a read-write fashion</p>
+</li>
+<li>
+<p>userdevice - specifies the block device inside the guest through which applications running inside the VM will be able to read/write the VDI's bits.</p>
+</li>
+<li>
+<p>type - specifies whether the VDI should be presented inside the VM as a regular disk or as a CD. (Note that this particular field has more meaning for Windows VMs than it does for Linux VMs, but we will not explore this level of detail in this chapter.)</p>
+</li>
+</ul>
+<p>Invoking VBD.create makes a VBD object on the XenServer installation and returns its object reference. However, this call in itself does not have any side-effects on the running VM (that is, if you go and look inside the running VM you will see that the block device has not been created). The fact that the VBD object exists but that the block device in the guest is not active, is reflected by the fact that the VBD object's currently_attached field is set to false.</p>
+<p>For expository purposes, the following image presents a graphical example that shows the relationship between VMs, VBDs, VDIs and SRs. In this instance a VM object has 2 attached VDIs: there are 2 VBD objects that form the connections between the VM object and its VDIs; and the VDIs reside within the same SR.</p>
+<p><img alt="A VM object with 2 associated VDIs" src="./img/dia_vm_sr.png" /></p>
+<h4 id="hotplugging-the-vbd"><a class="toclink" href="#hotplugging-the-vbd">Hotplugging the VBD</a></h4>
+<p>If we rebooted the VM at this stage then, after rebooting, the block device corresponding to the VBD would appear: on boot, XenServer queries all VBDs of a VM and actively attaches each of the corresponding VDIs.</p>
+<p>Rebooting the VM is all very well, but recall that we wanted to attach a newly created blank disk to a running VM. This can be achieved by invoking the plug method on the newly created VBD object. When the plug call returns successfully, the block device to which the VBD relates will have appeared inside the running VM -- i.e. from the perspective of the running VM, the guest operating system is led to believe that a new disk device has just been hot plugged. Mirroring this fact in the managed world of the API, the currently_attached field of the VBD is set to true.</p>
+<p>Unsurprisingly, the VBD plug method has a dual called "unplug". Invoking the unplug method on a VBD object causes the associated block device to be hot unplugged from a running VM, setting the currently_attached field of the VBD object to false accordingly.</p>
+<h3 id="creating-and-attaching-network-devices-to-vms"><a class="toclink" href="#creating-and-attaching-network-devices-to-vms">Creating and attaching Network Devices to VMs</a></h3>
+<p>The API calls involved in configuring virtual network interfaces in VMs are similar in many respects to the calls involved in configuring virtual disk devices. For this reason we will not run through a full example of how one can create network interfaces using the API object-model; instead we will use this section just to outline briefly the symmetry between virtual networking device and virtual storage device configuration.</p>
+<p>The networking analogue of the VBD class is the VIF class. Just as a VBD is the API representation of a block device inside a VM, a VIF (Virtual network InterFace) is the API representation of a network device inside a VM. Whereas VBDs associate VM objects with VDI objects, VIFs associate VM objects with Network objects. Just like VBDs, VIFs have a currently_attached field that determines whether or not the network device (inside the guest) associated with the VIF is currently active or not. And as we saw with VBDs, at VM boot-time the VIFs of the VM are queried and a corresponding network device for each created inside the booting VM. Similarly, VIFs also have plug and unplug methods for hot plugging/unplugging network devices in/out of running VMs.</p>
+<h3 id="host-configuration-for-networking-and-storage"><a class="toclink" href="#host-configuration-for-networking-and-storage">Host configuration for networking and storage</a></h3>
+<p>We have seen that the VBD and VIF classes are used to manage configuration of block devices and network devices (respectively) inside VMs. To manage host configuration of storage and networking there are two analogous classes: PBD (Physical Block Device) and PIF (Physical [network] InterFace).</p>
+<h4 id="host-storage-configuration-pbds"><a class="toclink" href="#host-storage-configuration-pbds">Host storage configuration: PBDs</a></h4>
+<p>Let us start by considering the PBD class. A PBD_create() call takes a number of parameters including:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>physical machine on which the PBD is available</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>the Storage Repository that the PBD connects to</td>
+</tr>
+<tr>
+<td>device_config</td>
+<td>a string-to-string map that is provided to the host's SR-backend-driver, containing the low-level parameters required to configure the physical storage device(s) on which the SR is to be realized. The specific contents of the device_config field depend on the type of the SR to which the PBD is connected. (Executing xe sm-listwill show a list of possible SR types; the configuration field in this enumeration specifies the device_config parameters that each SR type expects.)</td>
+</tr>
+</tbody>
+</table>
+<p>For example, imagine we have an SR object s of type "nfs" (representing a directory on an NFS filer within which VDIs are stored as VHD files); and let's say that we want a host, h, to be able to access s. In this case we invoke PBD.create() specifying host h, SR s, and a value for the device_config parameter that is the following map:</p>
+<p><code>("server", "my_nfs_server.example.com"), ("serverpath", "/scratch/mysrs/sr1")</code></p>
+<p>This tells the XenServer Host that SR s is accessible on host h, and further that to access SR s, the host needs to mount the directory /scratch/mysrs/sr1 on the NFS server named my_nfs_server.example.com.</p>
+<p>Like VBD objects, PBD objects also have a field called currently_attached. Storage repositories can be attached and detached from a given host by invoking PBD.plug and PBD.unplug methods respectively.</p>
+<h4 id="host-networking-configuration-pifs"><a class="toclink" href="#host-networking-configuration-pifs">Host networking configuration: PIFs</a></h4>
+<p>Host network configuration is specified by virtue of PIF objects. If a PIF object connects a network object, n, to a host object h, then the network corresponding to n is bridged onto a physical interface (or a physical interface plus a VLAN tag) specified by the fields of the PIF object.</p>
+<p>For example, imagine a PIF object exists connecting host h to a network n, and that device field of the PIF object is set to eth0. This means that all packets on network n are bridged to the NIC in the host corresponding to host network device eth0.</p>
+<h2 id="exporting-and-importing-vms"><a class="toclink" href="#exporting-and-importing-vms">Exporting and Importing VMs</a></h2>
+<p>VMs can be exported to a file and later imported to any XenServer host. The export protocol is a simple HTTP(S) GET, which should be performed on the master if the VM is on a pool member. Authorization is either standard HTTP basic authentication, or if a session has already been obtained, this can be used. The VM to export is specified either by UUID or by reference. To keep track of the export, a task can be created and passed in using its reference. The request might result in a redirect if the VM's disks are only accessible on a pool member.</p>
+<p>The following arguments are passed on the command line:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_id</td>
+<td>the reference of the session being used to authenticate; required only when not using HTTP basic authentication</td>
+</tr>
+<tr>
+<td>task_id</td>
+<td>the reference of the task object with which to keep track of the operation; optional, required only if you have created a task object to keep track of the export</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>the reference of the VM; required only if not using the UUID</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>the UUID of the VM; required only if not using the reference</td>
+</tr>
+</tbody>
+</table>
+<p>For example, using the Linux command line tool cURL:</p>
+<p><code>curl http://root:foo@myxenserver1/export?uuid=&lt;vm_uuid&gt; -o &lt;exportfile&gt;</code></p>
+<p>will export the specified VM to the file exportfile.</p>
+<p>To export just the metadata, use the URI http://server/export_metadata.</p>
+<p>The import protocol is similar, using HTTP(S) PUT. The session_id and task_id arguments are as for the export. The ref and uuid are not used; a new reference and uuid will be generated for the VM. There are some additional parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>restore</td>
+<td>if true, the import is treated as replacing the original VM - the implication of this currently is that the MAC addresses on the VIFs are exactly as the export was, which will lead to conflicts if the original VM is still being run.</td>
+</tr>
+<tr>
+<td>force</td>
+<td>if true, any checksum failures will be ignored (the default is to destroy the VM if a checksum error is detected)</td>
+</tr>
+<tr>
+<td>sr_id</td>
+<td>the reference of an SR into which the VM should be imported. The default behavior is to import into the Pool.default_SR.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, again using cURL:</p>
+<p><code>curl -T &lt;exportfile&gt; http://root:foo@myxenserver2/import</code>
+will import the VM to the default SR on the server.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>If no default SR has been set, and no sr_uuid is specified, the error message   "DEFAULT_SR_NOT_FOUND" is returned</p>
+</div>
+<p>Another example:</p>
+<p><code>curl -T &lt;exportfile&gt; http://root:foo@myxenserver2/import?sr_id=&lt;opaque_ref_of_sr&gt;</code>
+will import the VM to the specified SR on the server.</p>
+<p>To import just the metadata, use the URI http://server/import_metadata</p>
+<h3 id="xen-virtual-appliance-xva-vm-import-format"><a class="toclink" href="#xen-virtual-appliance-xva-vm-import-format">Xen Virtual Appliance (XVA) VM Import Format</a></h3>
+<p>XenServer supports a human-readable legacy VM input format called XVA. This section describes the syntax and structure of XVA.</p>
+<p>An XVA consists of a directory containing XML metadata and a set of disk images. A VM represented by an XVA is not intended to be directly executable. Data within an XVA package is compressed and intended for either archiving on permanent storage or for being transmitted to a VM server - such as a XenServer host - where it can be decompressed and executed.</p>
+<p>XVA is a hypervisor-neutral packaging format; it should be possible to create simple tools to instantiate an XVA VM on any other platform. XVA does not specify any particular runtime format; for example disks may be instantiated as file images, LVM volumes, QCoW images, VMDK or VHD images. An XVA VM may be instantiated any number of times, each instantiation may have a different runtime format.</p>
+<p>XVA does not:</p>
+<ul>
+<li>
+<p>specify any particular serialization or transport format</p>
+</li>
+<li>
+<p>provide any mechanism for customizing VMs (or templates) on install</p>
+</li>
+<li>
+<p>address how a VM may be upgraded post-install</p>
+</li>
+<li>
+<p>define how multiple VMs, acting as an appliance, may communicate</p>
+</li>
+</ul>
+<p>These issues are all addressed by the related Open Virtual Appliance specification.</p>
+<p>An XVA is a directory containing, at a minimum, a file called ova.xml. This file describes the VM contained within the XVA and is described in Section 3.2. Disks are stored within sub-directories and are referenced from the ova.xml. The format of disk data is described later in Section 3.3.</p>
+<p>The following terms will be used in the rest of the chapter:</p>
+<ul>
+<li>
+<p>HVM: a mode in which unmodified OS kernels run with the help of virtualization support in the hardware.</p>
+</li>
+<li>
+<p>PV: a mode in which specially modified "paravirtualized" kernels run explicitly on top of a hypervisor without requiring hardware support for virtualization.</p>
+</li>
+</ul>
+<p>The <code>"ova.xml"</code> file contains the following elements:</p>
+<p><code>&lt;appliance version="0.1"&gt;</code>
+The number in the attribute "version" indicates the version of this specification to which the XVA is constructed; in this case version 0.1. Inside the <appliance> there is exactly one <vm>: (in the OVA specification, multiple <vm>s are permitted)</p>
+<p><code>&lt;vm name="name"&gt;</code>
+Each <vm> element describes one VM. The "name" attribute is for future internal use only and must be unique within the ova.xml file. The "name" attribute is permitted to be any valid UTF-8 string. Inside each <vm> tag are the following compulsory elements:</p>
+<p><code>&lt;label&gt;... text ... &lt;/label&gt;</code>
+A short name for the VM to be displayed in a UI.</p>
+<p><code>&lt;shortdesc&gt; ... description ... &lt;/shortdesc&gt;</code>
+A description for the VM to be displayed in the UI. Note that for both <code>&lt;label&gt;</code> and <code>&lt;shortdesc&gt;</code> contents, leading and trailing whitespace will be ignored.</p>
+<p><code>&lt;config mem_set="268435456" vcpus="1"/&gt;</code>
+The <config> element has attributes which describe the amount of memory in bytes (mem_set) and number of CPUs (VCPUs) the VM should have.</p>
+<p>Each <vm> has zero or more <code>&lt;vbd&gt;</code> elements representing block devices which look like the following:</p>
+<p><code>&lt;vbd device="sda" function="root" mode="w" vdi="vdi_sda"/&gt;</code>
+The attributes have the following meanings:</p>
+<ul>
+<li>
+<p>device
+    name of the physical device to expose to the VM. For linux guests we use "sd[a-z]" and for windows guests we use "hd[a-d]".</p>
+</li>
+<li>
+<p>function
+if marked as "root", this disk will be used to boot the guest. (NB this does not imply the existence of the Linux root i.e. / filesystem) Only one device should be marked as "root". See Section 3.4 describing VM booting. Any other string is ignored.</p>
+</li>
+<li>
+<p>mode
+either "w" or "ro" if the device is to be read/write or read-only</p>
+</li>
+<li>
+<p>vdi
+the name of the disk image (represented by a <vdi> element) to which this block device is connected</p>
+</li>
+</ul>
+<p>Each <code>&lt;vm&gt;</code> may have an optional <code>&lt;hacks&gt;</code> section like the following: <code>&lt;hacks is_hvm="false" kernel_boot_cmdline="root=/dev/sda1 ro"/&gt;</code> The <code>&lt;hacks&gt;</code> element is present in the XVA files generated by XenServer but will be removed in future. The attribute "is_hvm" is either "true" or "false", depending on whether the VM should be booted in HVM or not. The "kernel_boot_cmdline" contains additional kernel commandline arguments when booting a guest using pygrub.</p>
+<p>In addition to a <code>&lt;vm&gt;</code> element, the <code>&lt;appliance&gt;</code> will contain zero or more <code>&lt;vdi&gt;</code> elements like the following:</p>
+<p><code>&lt;vdi name="vdi_sda" size="5368709120" source="file://sda"
+type="dir-gzipped-chunks"&gt;</code>
+Each <code>&lt;vdi&gt;</code> corresponds to a disk image. The attributes have the following meanings:</p>
+<p>name: name of the VDI, referenced by the vdi attribute of <code>&lt;vbd&gt;</code> elements. Any valid UTF-8 string is permitted.</p>
+<p>size: size of the required image in bytes</p>
+<p>source: a URI describing where to find the data for the image, only file:// URIs are currently permitted and must describe paths relative to the directory containing the ova.xml</p>
+<p>type: describes the format of the disk data (see Section 3.3)</p>
+<p>A single disk image encoding is specified in which has type "dir-gzipped-chunks": Each image is represented by a directory containing a sequence of files as follows:</p>
+<p><code>-rw-r--r-- 1 dscott xendev 458286013    Sep 18 09:51 chunk000000000.gz
+-rw-r--r-- 1 dscott xendev 422271283    Sep 18 09:52 chunk000000001.gz
+-rw-r--r-- 1 dscott xendev 395914244    Sep 18 09:53 chunk000000002.gz
+-rw-r--r-- 1 dscott xendev 9452401      Sep 18 09:53 chunk000000003.gz
+-rw-r--r-- 1 dscott xendev 1096066      Sep 18 09:53 chunk000000004.gz
+-rw-r--r-- 1 dscott xendev 971976       Sep 18 09:53 chunk000000005.gz
+-rw-r--r-- 1 dscott xendev 971976       Sep 18 09:53 chunk000000006.gz
+-rw-r--r-- 1 dscott xendev 971976       Sep 18 09:53 chunk000000007.gz
+-rw-r--r-- 1 dscott xendev 573930       Sep 18 09:53 chunk000000008.gz</code></p>
+<p>Each file (named <code>"chunk-XXXXXXXXX.gz"</code>) is a gzipped file containing exactly 1e9 bytes (1GB, not 1GiB) of raw block data. The small size was chosen to be safely under the maximum file size limits of several filesystems. If the files are gunzipped and then concatenated together, the original image is recovered.</p>
+<p>XenServer provides two mechanisms for booting a VM: (i) using a paravirtualized kernel extracted through pygrub; and (ii) using HVM. The current implementation uses the "is_hvm" flag within the <hacks> section to decide which mechanism to use.</p>
+<p>This rest of this section describes a very simple Debian VM packaged as an XVA. The VM has two disks, one with size 5120MiB and used for the root filesystem and used to boot the guest using pygrub and the other of size 512MiB which is used for swap. The VM has 512MiB of memory and uses one virtual CPU.</p>
+<p>At the topmost level the simple Debian VM is represented by a single directory:</p>
+<p><code>$ ls -l
+total 4
+drwxr-xr-x 3 dscott xendev 4096 Oct 24 09:42 very simple Debian VM</code></p>
+<p>Inside the main XVA directory are two sub-directories - one per disk - and the single file: ova.xml:</p>
+<p><code>$ ls -l very\ simple\ Debian\ VM/
+total 8
+-rw-r--r-- 1 dscott xendev 1016 Oct 24 09:42 ova.xml
+drwxr-xr-x 2 dscott xendev 4096 Oct 24 09:42 sda
+drwxr-xr-x 2 dscott xendev 4096 Oct 24 09:53 sdb</code></p>
+<p>Inside each disk sub-directory are a set of files, each file contains 1GB of raw disk block data compressed using gzip:</p>
+<p><code>$ ls -l very\ simple\ Debian\ VM/sda/
+total 2053480
+-rw-r--r-- 1 dscott xendev 202121645 Oct 24 09:43 chunk-000000000.gz
+-rw-r--r-- 1 dscott xendev 332739042 Oct 24 09:45 chunk-000000001.gz
+-rw-r--r-- 1 dscott xendev 401299288 Oct 24 09:48 chunk-000000002.gz
+-rw-r--r-- 1 dscott xendev 389585534 Oct 24 09:50 chunk-000000003.gz
+-rw-r--r-- 1 dscott xendev 624567877 Oct 24 09:53 chunk-000000004.gz
+-rw-r--r-- 1 dscott xendev 150351797 Oct 24 09:54 chunk-000000005.gz
+$ ls -l very\ simple\ Debian\ VM/sdb
+total 516
+-rw-r--r-- 1 dscott xendev 521937 Oct 24 09:54 chunk-000000000.gz</code></p>
+<p>The example simple Debian VM would have an XVA file like the following:</p>
+<p><code>&lt;?xml version="1.0" ?&gt;
+&lt;appliance version="0.1"&gt;
+  &lt;vm name="vm"&gt;
+  &lt;label&gt;
+  very simple Debian VM
+  &lt;/label&gt;
+  &lt;shortdesc&gt;
+  the description field can contain any valid UTF-8
+  &lt;/shortdesc&gt;
+  &lt;config mem_set="536870912" vcpus="1"/&gt;
+  &lt;hacks is_hvm="false" kernel_boot_cmdline="root=/dev/sda1 ro "&gt;
+  &lt;!--This section is temporary and will be ignored in future. Attribute
+is_hvm ("true" or "false") indicates whether the VM will be booted in HVM mode. In
+future this will be autodetected. Attribute kernel_boot_cmdline contains the kernel
+commandline for the case where a proper grub menu.lst is not present. In future
+booting shall only use pygrub.--&gt;
+  &lt;/hacks&gt;
+  &lt;vbd device="sda" function="root" mode="w" vdi="vdi_sda"/&gt;
+  &lt;vbd device="sdb" function="swap" mode="w" vdi="vdi_sdb"/&gt;
+  &lt;/vm&gt;
+  &lt;vdi name="vdi_sda" size="5368709120" source="file://sda" type="dir-gzippedchunks"/&gt;
+  &lt;vdi name="vdi_sdb" size="536870912" source="file://sdb" type="dir-gzippedchunks"/&gt;
+&lt;/appliance&gt;</code></p>
+<h2 id="xml-rpc-notes"><a class="toclink" href="#xml-rpc-notes">XML-RPC notes</a></h2>
+<h3 id="datetimes"><a class="toclink" href="#datetimes">Datetimes</a></h3>
+<p>The API deviates from the XML-RPC specification in handling of datetimes. The API appends a "Z" to the end of datetime strings, which is meant to indicate that the time is expressed in UTC.</p>
+<h2 id="where-to-look-next"><a class="toclink" href="#where-to-look-next">Where to look next</a></h2>
+<p>In this chapter we have presented a brief high-level overview of the API and its object-model. The aim here is not to present the detailed semantics of the API, but just to provide enough background for you to start reading the code samples of the next chapter and to find your way around the more detailed XenServer API Reference reference document.</p>
+<p>There are a number of places you can find more information:</p>
+<p>The XenServer Administrators Guide contains an overview of the xe CLI. Since a good deal of xe commands are a thin veneer over the API, playing with xe is a good way to start finding your way around the API object model described in this chapter.</p>
+<p>The code samples in the next chapter provide some concrete instances of API coding in a variety of client languages.</p>
+<p>The <a href="http://support.citrix.com/article/CTX134590">XenServer API Reference reference</a> document provides a more detailed description of the API semantics as well as describing the format of XML/RPC messages on the wire.</p>
+<p>There are a few scripts that use the API in the XenServer Host dom0 itself. For example, "/opt/xensource/libexec/shutdown" is a python program that cleanly shuts VMs down. This script is invoked when the host itself is shut down.</p>
+<h1 id="using-the-api"><a class="toclink" href="#using-the-api">Using the API</a></h1>
+<p>This chapter describes how to use the XenServer Management API from real programs to manage XenServer Hosts and VMs. The chapter begins with a walk-through of a typical client application and demonstrates how the API can be used to perform common tasks. Example code fragments are given in python syntax but equivalent code in the other programming languages would look very similar. The language bindings themselves are discussed afterwards and the chapter finishes with walk-throughs of two complete examples.</p>
+<h2 id="anatomy-of-a-typical-application"><a class="toclink" href="#anatomy-of-a-typical-application">Anatomy of a typical application</a></h2>
+<p>This section describes the structure of a typical application using the XenServer Management API. Most client applications begin by connecting to a XenServer Host and authenticating (e.g. with a username and password). Assuming the authentication succeeds, the server will create a "session" object and return a reference to the client. This reference will be passed as an argument to all future API calls. Once authenticated, the client may search for references to other useful objects (e.g. XenServer Hosts, VMs, etc.) and invoke operations on them. Operations may be invoked either synchronously or asynchronously; special task objects represent the state and progress of asynchronous operations. These application elements are all described in detail in the following sections.</p>
+<h3 id="choosing-a-low-level-transport"><a class="toclink" href="#choosing-a-low-level-transport">Choosing a low-level transport</a></h3>
+<p>API calls can be issued over two transports:</p>
+<ul>
+<li>
+<p>SSL-encrypted TCP on port 443 (https) over an IP network</p>
+</li>
+<li>
+<p>plaintext over a local Unix domain socket: /var/xapi/xapi</p>
+</li>
+</ul>
+<p>The SSL-encrypted TCP transport is used for all off-host traffic while the Unix domain socket can be used from services running directly on the XenServer Host itself. In the SSL-encrypted TCP transport, all API calls should be directed at the Resource Pool master; failure to do so will result in the error HOST_IS_SLAVE, which includes the IP address of the master as an error parameter.</p>
+<p>Because the master host of a pool can change, especially if HA is enabled on a pool, clients must implement the following steps to detect a master host change and connect to the new master as required:</p>
+<p><strong>Handling pool master changes</strong></p>
+<ol>
+<li>
+<p>Subscribe to updates in the list of hosts servers, and maintain a current list of hosts in the pool</p>
+</li>
+<li>
+<p>If the connection to the pool master fails to respond, attempt to connect to all hosts in the list until one responds</p>
+</li>
+<li>
+<p>The first host to respond will return the HOST_IS_SLAVE error message, which contains the identity of the new pool master (unless of course the host is the new master)</p>
+</li>
+<li>
+<p>Connect to the new master</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>As a special-case, all messages sent through the Unix domain socket are transparently   forwarded to the correct node.</p>
+</div>
+<h3 id="authentication-and-session-handling"><a class="toclink" href="#authentication-and-session-handling">Authentication and session handling</a></h3>
+<p>The vast majority of API calls take a session reference as their first parameter; failure to supply a valid reference will result in a SESSION_INVALID error being returned. Acquire a session reference by supplying a username and password to the login_with_password function.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>As a special-case, if this call is executed over the local Unix domain socket then the  username and password are ignored and the call always succeeds</p>
+</div>
+<p>Every session has an associated "last active" timestamp which is updated on every API call. The server software currently has a built-in limit of 500 active sessions and will remove those with the oldest "last active" field if this limit is exceeded for a given username or originator. In addition all sessions whose "last active" field is older than 24 hours are also removed. Therefore it is important to:</p>
+<ul>
+<li>
+<p>Specify an appropriate originator when logging in; and</p>
+</li>
+<li>
+<p>Remember to log out of active sessions to avoid leaking them; and</p>
+</li>
+<li>
+<p>Be prepared to log in again to the server if a SESSION_INVALID error is caught.</p>
+</li>
+</ul>
+<p>In the following Python fragment a connection is established over the Unix domain socket and a session is created:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">XenAPI</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">XenAPI</span><span class="o">.</span><span class="n">xapi_local</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">login_with_password</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;2.3&quot;</span><span class="p">,</span> <span class="s2">&quot;My Widget v0.1&quot;</span><span class="p">)</span>
+        <span class="o">...</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="finding-references-to-useful-objects"><a class="toclink" href="#finding-references-to-useful-objects">Finding references to useful objects</a></h3>
+<p>Once an application has authenticated the next step is to acquire references to objects in order to query their state or invoke operations on them. All objects have a set of "implicit" messages which include the following:</p>
+<ul>
+<li>
+<p>get_by_name_label : return a list of all objects of a particular class with a particular label;</p>
+</li>
+<li>
+<p>get_by_uuid : return a single object named by its UUID;</p>
+</li>
+<li>
+<p>get_all : return a set of references to all objects of a particular class; and</p>
+</li>
+<li>
+<p>get_all_records : return a map of reference to records for each object of a particular class.</p>
+</li>
+</ul>
+<p>For example, to list all hosts:</p>
+<p><code>hosts = session.xenapi.host.get_all()</code>
+To find all VMs with the name "my first VM":</p>
+<p><code>vms = session.xenapi.VM.get_by_name_label('my first VM')</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>Object name_label fields are not guaranteed to be unique and so the get_by_name_label API   call returns a set of references rather than a single reference.</p>
+</div>
+<p>In addition to the methods of finding objects described above, most objects also contain references to other objects within fields. For example it is possible to find the set of VMs running on a particular host by calling:</p>
+<p><code>vms = session.xenapi.host.get_resident_VMs(host)</code></p>
+<h3 id="invoking-synchronous-operations-on-objects"><a class="toclink" href="#invoking-synchronous-operations-on-objects">Invoking synchronous operations on objects</a></h3>
+<p>Once object references have been acquired, operations may be invoked on them. For example to start a VM:</p>
+<p><code>session.xenapi.VM.start(vm, False, False)</code>
+All API calls are by default synchronous and will not return until the operation has completed or failed. For example in the case of VM.start the call does not return until the VM has started booting.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>When the VM.start call returns the VM will be booting. To determine when the booting has    finished, wait for the in-guest agent to report internal statistics through the     VM_guest_metrics object.</p>
+</div>
+<h3 id="using-tasks-to-manage-asynchronous-operations"><a class="toclink" href="#using-tasks-to-manage-asynchronous-operations">Using Tasks to manage asynchronous operations</a></h3>
+<p>To simplify managing operations which take quite a long time (e.g. VM.clone and VM.copy) functions are available in two forms: synchronous (the default) and asynchronous. Each asynchronous function returns a reference to a task object which contains information   about the in-progress operation including:</p>
+<ul>
+<li>
+<p>whether it is pending</p>
+</li>
+<li>
+<p>whether it is has succeeded or failed</p>
+</li>
+<li>
+<p>progress (in the range 0-1)</p>
+</li>
+<li>
+<p>the result or error code returned by the operation</p>
+</li>
+</ul>
+<p>An application which wanted to track the progress of a VM.clone operation and display a progress bar would have code like the following:</p>
+<div class="codehilite"><pre><span></span>vm = session.xenapi.VM.get_by_name_label(&#39;my vm&#39;)
+task = session.xenapi.Async.VM.clone(vm)
+while session.xenapi.task.get_status(task) == &quot;pending&quot;:
+        progress = session.xenapi.task.get_progress(task)
+        update_progress_bar(progress)
+        time.sleep(1)
+session.xenapi.task.destroy(task)
+</pre></div>
+
+
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>A well-behaved client should remember to delete tasks created by asynchronous operations    when it has finished reading the result or error. If the number of tasks exceeds a built-   in threshold then the server will delete the oldest of the completed tasks.</p>
+</div>
+<h3 id="subscribing-to-and-listening-for-events"><a class="toclink" href="#subscribing-to-and-listening-for-events">Subscribing to and listening for events</a></h3>
+<p>With the exception of the task and metrics classes, whenever an object is modified the server generates an event. Clients can subscribe to this event stream on a per-class basis and receive updates rather than resorting to frequent polling. Events come in three types:</p>
+<ul>
+<li>
+<p>add - generated when an object has been created;</p>
+</li>
+<li>
+<p>del - generated immediately before an object is destroyed; and</p>
+</li>
+<li>
+<p>mod - generated when an object's field has changed.</p>
+</li>
+</ul>
+<p>Events also contain a monotonically increasing ID, the name of the class of object and a snapshot of the object state equivalent to the result of a get_record().</p>
+<p>Clients register for events by calling event.register() with a list of class names or the special string "*". Clients receive events by executing event.next() which blocks until events are available and returns the new events.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>Since the queue of generated events on the server is of finite length a very slow client    might fail to read the events fast enough; if this happens an EVENTS_LOST error is  returned. Clients should be prepared to handle this by re-registering for events and    checking that the condition they are waiting for hasn't become true while they were     unregistered.</p>
+</div>
+<p>The following python code fragment demonstrates how to print a summary of every event generated by a system: (similar code exists in <code>Xenserver-SDK/XenServerPython/samples/watch-all-events.py</code>)</p>
+<div class="codehilite"><pre><span></span><span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%8s</span><span class="s2">  </span><span class="si">%20s</span><span class="s2">  </span><span class="si">%5s</span><span class="s2">  </span><span class="si">%s</span><span class="s2">&quot;</span>
+<span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">register</span><span class="p">([</span><span class="s2">&quot;*&quot;</span><span class="p">])</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;(unknown)&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;snapshot&quot;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">snapshot</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;snapshot&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s2">&quot;name_label&quot;</span> <span class="ow">in</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">[</span><span class="s2">&quot;name_label&quot;</span><span class="p">]</span>
+            <span class="k">print</span> <span class="n">fmt</span> <span class="o">%</span> <span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;operation&#39;</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>           
+    <span class="k">except</span> <span class="n">XenAPI</span><span class="o">.</span><span class="n">Failure</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">details</span> <span class="o">==</span> <span class="p">[</span> <span class="s2">&quot;EVENTS_LOST&quot;</span> <span class="p">]:</span>
+            <span class="k">print</span> <span class="s2">&quot;Caught EVENTS_LOST; should reregister&quot;</span>
+</pre></div>
+
+
+<h2 id="language-bindings"><a class="toclink" href="#language-bindings">Language bindings</a></h2>
+<h3 id="c"><a class="toclink" href="#c">C</a></h3>
+<p>The SDK includes the source to the C language binding in the directory XenServer-SDK/libxenserver/src together with a Makefile which compiles the binding into a library. Every API object is associated with a header file which contains declarations for all that object's API functions; for example the type definitions and functions required to invoke VM operations are all contained in xen_vm.h.</p>
+<p><strong>C binding dependencies</strong>
+|||
+-------------|---------------|
+|Platform|supported:    Linux|
+|Library:|The language binding is generated as a libxenserver.so that is linked by C programs.|
+|Dependencies:|<ul><li>XML library (libxml2.so on GNU Linux)</li><li>Curl library (libcurl2.so)</li></ul>|</p>
+<p>The following simple examples are included with the C bindings:</p>
+<ul>
+<li>
+<p>test_vm_async_migrate: demonstrates how to use asynchronous API calls to migrate running VMs from a slave host to the pool master.</p>
+</li>
+<li>
+<p>test_vm_ops: demonstrates how to query the capabilities of a host, create a VM, attach a fresh blank disk image to the VM and then perform various powercycle operations;</p>
+</li>
+<li>
+<p>test_failures: demonstrates how to translate error strings into enum_xen_api_failure, and vice versa;</p>
+</li>
+<li>
+<p>test_event_handling: demonstrates how to listen for events on a connection.</p>
+</li>
+<li>
+<p>test_enumerate: demonstrates how to enumerate the various API objects.</p>
+</li>
+</ul>
+<h3 id="c_1"><a class="toclink" href="#c_1">C</a></h3>
+<p>The C# bindings are contained within the directory XenServer-SDK/XenServer.NET and include project files suitable for building under Microsoft Visual Studio. Every API object is associated with one C# file; for example the functions implementing the VM operations are contained within the file VM.cs.</p>
+<p><strong>C# binding dependencies</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform supported:</td>
+<td>Windows with .NET version 4.5</td>
+</tr>
+<tr>
+<td>Library:</td>
+<td>The language binding is generated as a Dynamic Link Library XenServer.dll that is linked by C# programs.</td>
+</tr>
+<tr>
+<td>Dependencies:</td>
+<td>CookComputing.XMLRpcV2.dll is needed for the XenServer.dll to be able to communicate with the xml-rpc server. We ship a patched 2.1.0.6 version and recommend that you use this one, though others may work.</td>
+</tr>
+</tbody>
+</table>
+<p>Three examples are included with the C# bindings in the directory XenServer-SDK/XneServer.NET/samples as separate projects of the XenSdkSample.sln solution:</p>
+<ul>
+<li>
+<p>GetVariousRecords: logs into a XenServer Host and displays information about hosts, storage and virtual machines;</p>
+</li>
+<li>
+<p>GetVmRecords: logs into a XenServer Host and lists all the VM records;</p>
+</li>
+<li>
+<p>VmPowerStates: logs into a XenServer Host, finds a VM and takes it through the various power states. Requires a shut-down VM to be already installed.</p>
+</li>
+</ul>
+<h3 id="java"><a class="toclink" href="#java">Java</a></h3>
+<p>The Java bindings are contained within the directory XenServer-SDK/XenServerJava and include project files suitable for building under Microsoft Visual Studio. Every API object is associated with one Java file; for example the functions implementing the VM operations are contained within the file VM.java.</p>
+<p><strong>Java binding dependencies</strong>
+|||
+-------------|---------------|
+|Platform supported:|Linux and Windows|
+|Library:|  The language binding is generated as a Java Archive file xenserver-7.0.jar that is linked by Java programs.|
+|Dependencies:|<ul><li>xmlrpc-client-3.1.jar is needed for the xenserver.jar to be able to communicate with the xml-rpc server.</li><li>ws-commons-util-1.0.2.jar is needed to run the examples.</li></ul>|</p>
+<p>Running the main file XenServer-SDK/XenServerJava/samples/RunTests.java will run a series of examples included in the same directory:</p>
+<ul>
+<li>
+<p>AddNetwork: Adds a new internal network not attached to any NICs;</p>
+</li>
+<li>
+<p>SessionReuse: Demonstrates how a Session object can be shared between multiple Connections;</p>
+</li>
+<li>
+<p>AsyncVMCreate: Makes asynchronously a new VM from a built-in template, starts and stops it;</p>
+</li>
+<li>
+<p>VdiAndSrOps: Performs various SR and VDI tests, including creating a dummy SR;</p>
+</li>
+<li>
+<p>CreateVM: Creates a VM on the default SR with a network and DVD drive;</p>
+</li>
+<li>
+<p>DeprecatedMethod: Tests a warning is displayed when a deprecated API method is called;</p>
+</li>
+<li>
+<p>GetAllRecordsOfAllTypes: Retrieves all the records for all types of objects;</p>
+</li>
+<li>
+<p>SharedStorage: Creates a shared NFS SR;</p>
+</li>
+<li>
+<p>StartAllVMs: Connects to a host and tries to start each VM on it.</p>
+</li>
+</ul>
+<h3 id="powershell"><a class="toclink" href="#powershell">PowerShell</a></h3>
+<p>The PowerShell bindings are contained within the directory XenServer-SDK/XenServerPowerShell. We provide the PowerShell module XenServerPSModule and source code exposing the XenServer API as Windows PowerShell cmdlets.</p>
+<p><strong>PowerShell binding dependencies</strong>
+|||
+-------------|---------------|
+|Platform supported:|Windows with .NET Framework 4.5 and PowerShell v4.0|
+|Library:|XenServerPSModule|
+|Dependencies:|CookComputing.XMLRpcV2.dll is needed to be able to communicate with the xml-rpc server. We ship a patched 2.1.0.6 version and recommend that you use this one, though others may work.|</p>
+<p>The following example scripts are included with the PowerShell bindings in the directory XenServer-SDK/XenServerPowerShell/samples:</p>
+<ul>
+<li>
+<p>AutomatedTestCore.ps1: demonstrates how to log into a XenServer host, create a storage repository and a VM, and then perform various powercycle operations.</p>
+</li>
+<li>
+<p>HttpTest.ps1: demonstrates how to log into a XenServer host, create a VM, and then perform operations such as VM importing and exporting, patch upload, and retrieval of performance statistics.</p>
+</li>
+</ul>
+<h3 id="python"><a class="toclink" href="#python">Python</a></h3>
+<p>The python bindings are contained within a single file: XenServer-SDK/XenServerPython/XenAPI.py.</p>
+<p><strong>Python binding dependencies</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform supported:</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>Library:</td>
+<td>XenAPI.py</td>
+</tr>
+<tr>
+<td>Dependencies:</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>The SDK includes 7 python examples:</p>
+<ul>
+<li>
+<p>fixpbds.py - reconfigures the settings used to access shared storage;</p>
+</li>
+<li>
+<p>install.py - installs a Debian VM, connects it to a network, starts it up and waits for it to report its IP address;</p>
+</li>
+<li>
+<p>license.py - uploads a fresh license to a XenServer Host;</p>
+</li>
+<li>
+<p>permute.py - selects a set of VMs and uses XenMotion to move them simultaneously between hosts;</p>
+</li>
+<li>
+<p>powercycle.py - selects a set of VMs and powercycles them;</p>
+</li>
+<li>
+<p>shell.py - a simple interactive shell for testing;</p>
+</li>
+<li>
+<p>vm_start_async.py - demonstrates how to invoke operations asynchronously;</p>
+</li>
+<li>
+<p>watch-all-events.py - registers for all events and prints details when they occur.</p>
+</li>
+</ul>
+<h3 id="command-line-interface-cli"><a class="toclink" href="#command-line-interface-cli">Command Line Interface (CLI)</a></h3>
+<p>Besides using raw XML-RPC or one of the supplied language bindings, third-party software developers may integrate with XenServer Hosts by using the XE command line interface xe. The xe CLI is installed by default on XenServer hosts; a stand-alone remote CLI is also available for Linux. On Windows, the xe.exe CLI executable is installed along with XenCenter.</p>
+<p><strong>CLI dependencies</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform supported:</td>
+<td>Linux and Windows</td>
+</tr>
+<tr>
+<td>Library:</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Binary:</td>
+<td>xe (xe.exe on Windows)</td>
+</tr>
+<tr>
+<td>Dependencies:</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>The CLI allows almost every API call to be directly invoked from a script or other program, silently taking care of the required session management. The XE CLI syntax and capabilities are described in detail in the XenServer Administrator's Guide. For additional resources and examples, visit the <a href="http://support.citrix.com/">Citrix Knowledge Center</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>When running the CLI from a XenServer Host console, tab-completion of both command names    and arguments is available.</p>
+</div>
+<h2 id="complete-application-examples"><a class="toclink" href="#complete-application-examples">Complete application examples</a></h2>
+<p>This section describes two complete examples of real programs using the API.</p>
+<h3 id="simultaneously-migrating-vms-using-xenmotion"><a class="toclink" href="#simultaneously-migrating-vms-using-xenmotion">Simultaneously migrating VMs using XenMotion</a></h3>
+<p>This python example (contained in XenServer-SDK/XenServerPython/samples/permute.py) demonstrates how to use XenMotion to move VMs simultaneously between hosts in a Resource Pool. The example makes use of asynchronous API calls and shows how to wait for a set of tasks to complete.</p>
+<p>The program begins with some standard boilerplate and imports the API bindings module</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">XenAPI</span>
+</pre></div>
+
+
+<p>Next the commandline arguments containing a server URL, username, password and a number of iterations are parsed. The username and password are used to establish a session which is passed to the function main, which is called multiple times in a loop. Note the use of try: finally: to make sure the program logs out of its session at the end.</p>
+<div class="codehilite"><pre><span></span>if __name__ == &quot;__main__&quot;:
+    if len(sys.argv) &lt;&gt; 5:
+        print &quot;Usage:&quot;
+        print sys.argv[0], &quot; &lt;url&gt; &lt;username&gt; &lt;password&gt; &lt;iterations&gt;&quot;
+        sys.exit(1)
+    url = sys.argv[1]
+    username = sys.argv[2]
+    password = sys.argv[3]
+    iterations = int(sys.argv[4])
+    # First acquire a valid session by logging in:
+    session = XenAPI.Session(url)
+    session.xenapi.login_with_password(username, password, &quot;2.3&quot;,
+                                       &quot;Example migration-demo v0.1&quot;)
+    try:
+        for i in range(iterations):
+            main(session, i)
+    finally:
+        session.xenapi.session.logout()
+</pre></div>
+
+
+<p>The main function examines each running VM in the system, taking care to filter out control domains (which are part of the system and not controllable by the user). A list of running VMs and their current hosts is constructed.</p>
+<div class="codehilite"><pre><span></span>def main(session, iteration):
+    # Find a non-template VM object
+    all = session.xenapi.VM.get_all()
+    vms = []
+    hosts = []
+    for vm in all:
+        record = session.xenapi.VM.get_record(vm)
+        if not(record[&quot;is_a_template&quot;]) and \
+           not(record[&quot;is_control_domain&quot;]) and \
+           record[&quot;power_state&quot;] == &quot;Running&quot;:
+            vms.append(vm)
+            hosts.append(record[&quot;resident_on&quot;])
+    print &quot;%d: Found %d suitable running VMs&quot; % (iteration, len(vms))
+</pre></div>
+
+
+<p>Next the list of hosts is rotated:</p>
+<div class="codehilite"><pre><span></span>#use a rotation as a permutation
+    hosts = [hosts[-1]] + hosts[:(len(hosts)-1)]
+</pre></div>
+
+
+<p>Each VM is then moved using XenMotion to the new host under this rotation (i.e. a VM running on host at position 2 in the list will be moved to the host at position 1 in the list etc.) In order to execute each of the movements in parallel, the asynchronous version of the VM.pool_migrate is used and a list of task references constructed. Note the live flag passed to the VM.pool_migrate; this causes the VMs to be moved while they are still running.</p>
+<div class="codehilite"><pre><span></span>tasks = []
+    for i in range(0, len(vms)):
+        vm = vms[i]
+        host = hosts[i]
+        task = session.xenapi.Async.VM.pool_migrate(vm, host, { &quot;live&quot;: &quot;true&quot; })
+        tasks.append(task)
+</pre></div>
+
+
+<p>The list of tasks is then polled for completion:</p>
+<div class="codehilite"><pre><span></span>finished = False
+    records = {}
+    while not(finished):
+        finished = True
+        for task in tasks:
+            record = session.xenapi.task.get_record(task)
+            records[task] = record
+            if record[&quot;status&quot;] == &quot;pending&quot;:
+                finished = False
+        time.sleep(1)
+</pre></div>
+
+
+<p>Once all tasks have left the pending state (i.e. they have successfully completed, failed or been cancelled) the tasks are polled once more to see if they all succeeded:</p>
+<div class="codehilite"><pre><span></span>allok = True
+    for task in tasks:
+        record = records[task]
+        if record[&quot;status&quot;] &lt;&gt; &quot;success&quot;:
+            allok = False
+</pre></div>
+
+
+<p>If any one of the tasks failed then details are printed, an exception is raised and the task objects left around for further inspection. If all tasks succeeded then the task objects are destroyed and the function returns.</p>
+<div class="codehilite"><pre><span></span><span class="nt">if</span> <span class="nt">not</span><span class="o">(</span><span class="nt">allok</span><span class="o">):</span>
+        <span class="nt">print</span> <span class="s2">&quot;One of the tasks didn&#39;t succeed at&quot;</span><span class="o">,</span> <span class="err">\</span>
+            <span class="nt">time</span><span class="nc">.strftime</span><span class="o">(</span><span class="s2">&quot;%F:%HT%M:%SZ&quot;</span><span class="o">,</span> <span class="nt">time</span><span class="nc">.gmtime</span><span class="o">())</span>
+        <span class="nt">idx</span> <span class="o">=</span> <span class="nt">0</span>
+        <span class="nt">for</span> <span class="nt">task</span> <span class="nt">in</span> <span class="nt">tasks</span><span class="o">:</span>
+            <span class="nt">record</span> <span class="o">=</span> <span class="nt">records</span><span class="cp">[</span><span class="nx">task</span><span class="cp">]</span>
+            <span class="nt">vm_name</span> <span class="o">=</span> <span class="nt">session</span><span class="nc">.xenapi.VM.get_name_label</span><span class="o">(</span><span class="nt">vms</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
+            <span class="nt">host_name</span> <span class="o">=</span> <span class="nt">session</span><span class="nc">.xenapi.host.get_name_label</span><span class="o">(</span><span class="nt">hosts</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
+            <span class="nt">print</span> <span class="s2">&quot;%s : %12s %s -&gt; %s </span><span class="cp">[</span> <span class="nx">status</span><span class="p">:</span> <span class="o">%</span><span class="nx">s</span><span class="p">;</span> <span class="n">result</span><span class="o"> =</span> <span class="o">%</span><span class="nx">s</span><span class="p">;</span> <span class="n">error</span><span class="o"> =</span> <span class="o">%</span><span class="nx">s</span> <span class="cp">]</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="err">\</span>
+                  <span class="o">(</span><span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;uuid&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;name_label&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">vm_name</span><span class="o">,</span> <span class="nt">host_name</span><span class="o">,</span>      <span class="err">\</span>
+                   <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;status&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;result&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">repr</span><span class="o">(</span><span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;error_info&quot;</span><span class="cp">]</span><span class="o">))</span>
+            <span class="nt">idx</span> <span class="o">=</span> <span class="nt">idx</span> <span class="o">+</span> <span class="nt">1</span>
+        <span class="nt">raise</span> <span class="s2">&quot;Task failed&quot;</span>
+    <span class="nt">else</span><span class="o">:</span>
+        <span class="nt">for</span> <span class="nt">task</span> <span class="nt">in</span> <span class="nt">tasks</span><span class="o">:</span>
+            <span class="nt">session</span><span class="nc">.xenapi.task.destroy</span><span class="o">(</span><span class="nt">task</span><span class="o">)</span>
+</pre></div>
+
+
+<h3 id="cloning-a-vm-using-the-xe-cli"><a class="toclink" href="#cloning-a-vm-using-the-xe-cli">Cloning a VM using the XE CLI</a></h3>
+<p>This example is a bash script which uses the XE CLI to clone a VM   taking care to shut it down first if it is powered on.</p>
+<p>The example begins with some boilerplate which first checks if the environment variable XE has been set: if it has it assumes that it points to the full path of the CLI, else it is assumed that the XE CLI is on the current path. Next the script prompts the user for a server name, username and password:</p>
+<div class="codehilite"><pre><span></span># Allow the path to the &#39;xe&#39; binary to be overridden by the XE environment variable
+if [ -z &quot;<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span>&quot; ]; then
+  XE=xe
+fi
+if [ ! -e &quot;<span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/.xe&quot; ]; then
+  read -p &quot;Server name: &quot; SERVER
+  read -p &quot;Username: &quot; USERNAME
+  read -p &quot;Password: &quot; PASSWORD
+  XE=&quot;<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> -s <span class="cp">${</span><span class="n">SERVER</span><span class="cp">}</span> -u <span class="cp">${</span><span class="n">USERNAME</span><span class="cp">}</span> -pw <span class="cp">${</span><span class="n">PASSWORD</span><span class="cp">}</span>&quot;
+fi
+</pre></div>
+
+
+<p>Next the script checks its commandline arguments. It requires exactly one: the UUID of the VM which is to be cloned:</p>
+<div class="codehilite"><pre><span></span># Check if there&#39;s a VM by the uuid specified
+<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-list params=uuid | grep -q &quot; <span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span>$&quot;
+if [ $? -ne 0 ]; then
+        echo &quot;error: no vm uuid \&quot;<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span>\&quot; found&quot;
+        exit 2
+fi
+</pre></div>
+
+
+<p>The script then checks the power state of the VM and if it is running, it attempts a clean shutdown. The event system is used to wait for the VM to enter state "Halted".</p>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>The XE CLI supports a command-line argument --minimal which causes it to print its output   without excess whitespace or formatting, ideal for use from scripts. If multiple values     are returned they are comma-separated.</p>
+</div>
+<div class="codehilite"><pre><span></span>#Check the power state of the vm
+name=$(<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-list uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span> params=name-label --minimal)
+state=$(<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-list uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span> params=power-state --minimal)
+wasrunning=0
+# If the VM state is running, we shutdown the vm first
+if [ &quot;<span class="cp">${</span><span class="n">state</span><span class="cp">}</span>&quot; = &quot;running&quot; ]; then
+        <span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-shutdown uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span>
+        <span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> event-wait class=vm power-state=halted uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span>
+        wasrunning=1
+fi
+</pre></div>
+
+
+<p>The VM is then cloned and the new VM has its name_label set to cloned_vm.</p>
+<div class="codehilite"><pre><span></span># Clone the VM
+newuuid=$(<span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-clone uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span> new-name-label=cloned_vm)
+</pre></div>
+
+
+<p>Finally, if the original VM had been running and was shutdown, both it and the new VM are started.</p>
+<div class="codehilite"><pre><span></span># If the VM state was running before cloning, we start it again
+# along with the new VM.
+if [ &quot;<span class="nv">$wasrunning</span>&quot; -eq 1 ]; then
+        <span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-start uuid=<span class="cp">${</span><span class="n">vmuuid</span><span class="cp">}</span>
+        <span class="cp">${</span><span class="n">XE</span><span class="cp">}</span> vm-start uuid=<span class="cp">${</span><span class="n">newuuid</span><span class="cp">}</span>
+fi
+</pre></div>
+
+
+<h1 id="using-http-to-interact-with-xenserver"><a class="toclink" href="#using-http-to-interact-with-xenserver">Using HTTP to interact with XenServer</a></h1>
+<p>XenServer exposes an HTTP interface on each host, that can be used to perform various operations. This chapter describes the available mechanisms.</p>
+<h2 id="vm-import-and-export"><a class="toclink" href="#vm-import-and-export">VM Import and Export</a></h2>
+<p>Because the import and export of VMs can take some time to complete, an asynchronous HTTP interface to the import and export operations is provided. To perform an export using the XenServer API, construct an HTTP GET call providing a valid session ID, task ID and VM UUID, as shown in the following pseudo code:</p>
+<div class="codehilite"><pre><span></span>task = Task.create()
+result = HTTP.get(
+  server, 80, &quot;/export?session_id=&lt;session_id&gt;&amp;task_id=&lt;task_id&gt;&amp;ref=&lt;vm_uuid&gt;&quot;);
+</pre></div>
+
+
+<p>For the import operation, use an HTTP PUT call as demonstrated in the following pseudo code:</p>
+<div class="codehilite"><pre><span></span><span class="ss">task =</span> Task<span class="o">.</span>create<span class="p">()</span>
+<span class="ss">result =</span> HTTP<span class="o">.</span>put<span class="p">(</span>
+  server<span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;/import?session_id=&lt;session_id&gt;&amp;task_id=&lt;task_id&gt;&amp;ref=&lt;vm_uuid&gt;&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="getting-xenserver-performance-statistics"><a class="toclink" href="#getting-xenserver-performance-statistics">Getting XenServer Performance Statistics</a></h2>
+<p>XenServer records statistics about the performance of various aspects of your XenServer installation. The metrics are stored persistently for long term access and analysis of historical trends. Where storage is available to a VM, the statistics are written to disk when a VM is shut down. Statistics are stored in RRDs (Round Robin Databases), which are maintained for individual VMs (including the control domain) and the server. RRDs are resident on the server on which the VM is running, or the pool master when the VM is not running. The RRDs are also backed up every day.</p>
+<div class="admonition danger">
+<p class="admonition-title">Warning</p>
+<p>In earlier versions of the XenServer API, instantaneous performance metrics could be    obtained using the VM_metrics, VM_guest_metrics, host_metrics methods and associated    methods. These methods has been deprecated in favor of using the http handler described in  this chapter to download the statistics from the RRDs on the VMs and servers. Note that by  default the legacy metrics will return zeroes. To revert to periodic statistical polling    as present in earlier versions of XenServer, set the other- config:rrd_update_interval=<interval> parameters on your host to one of the following   values, and restart your host:</p>
+</div>
+<blockquote>
+<p>never
+This is the default, meaning no periodic polling is performed.</p>
+<p>1 Polling is performed every 5 seconds.</p>
+<p>2 Polling is performed every minute.</p>
+<p>By default, the older metrics APIs will not return any values, and so this key must be enabled to run monitoring clients which use the legacy monitoring protocol.</p>
+</blockquote>
+<p>Statistics are persisted for a maximum of one year, and are stored at different granularities. The average and most recent values are stored at intervals of:</p>
+<ul>
+<li>
+<p>5 seconds for the past 10 minutes</p>
+</li>
+<li>
+<p>one minute for the past 2 hours</p>
+</li>
+<li>
+<p>one hour for the past week</p>
+</li>
+<li>
+<p>one day for the past year</p>
+</li>
+</ul>
+<p>RRDs are saved to disk as uncompressed XML. The size of each RRD when written to disk ranges from 200KiB to approximately 1.2MiB when the RRD stores the full year of statistics.</p>
+<div class="admonition danger">
+<p class="admonition-title">Warning</p>
+<p>If statistics cannot be written to disk, for example when a disk is full, statistics will   be lost and the last saved version of the RRD will be used.</p>
+</div>
+<p>Statistics can be downloaded over HTTP in XML format, for example using wget. See http://oss.oetiker.ch/rrdtool/doc/rrddump.en.html and http://oss.oetiker.ch/rrdtool/doc/rrdxport.en.html for information about the XML format. HTTP authentication can take the form of a username and password or a session token. Parameters are appended to the URL following a question mark (?) and separated by ampersands (&amp;).</p>
+<p>To obtain an update of all VM statistics on a host, the URL would be of the form:</p>
+<p><code>http://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;/rrd_updates?start=&lt;secondssinceepoch&gt;</code>
+This request returns data in an rrdtool xport style XML format, for every VM resident on the particular host that is being queried. To differentiate which column in the export is associated with which VM, the legend field is prefixed with the UUID of the VM.</p>
+<p>To obtain host updates too, use the query parameter host=true:</p>
+<p><code>http://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;/rrd_updates?start=&lt;secondssinceepoch&gt;&amp;host=true</code>
+The step will decrease as the period decreases, which means that if you request statistics for a shorter time period you will get more detailed statistics.</p>
+<p><strong><em>Additional rrd_updates parameters</em></strong></p>
+<p><code>cf=&lt;ave|min|max&gt;</code>   the data consolidation mode
+<code>interval=&lt;interval&gt;</code> the interval between values to be reported</p>
+<blockquote>
+<p><strong><em>Note</em></strong>
+By default only ave statistics are available. To obtain min and max statistics for a VM, run the following command:
+<code>xe pool-param-set uuid=&lt;pool_uuid&gt; other-config:create_min_max_in_new_VM_RRDs</code>
+To obtain all statistics for a host:</p>
+</blockquote>
+<p><code>http://&lt;username:password@host&gt;/host_rrd</code>
+To obtain all statistics for a VM:</p>
+<p><code>http://&lt;username:password@host&gt;/vm_rrd?uuid=&lt;vm_uuid&gt;</code></p>
+<h1 id="chapter-6-xenserver-api-extensions"><a class="toclink" href="#chapter-6-xenserver-api-extensions">Chapter 6. XenServer API extensions</a></h1>
+<p>The XenAPI is a general and comprehensive interface to managing the life-cycles of Virtual Machines, and offers a lot of flexibility in the way that XenAPI providers may implement specific functionality (e.g. storage provisioning, or console handling). XenServer has several extensions which provide useful functionality used in our own XenCenter interface. The workings of these mechanisms are described in this chapter.</p>
+<p>Extensions to the XenAPI are often provided by specifying other-config map keys to various objects. The use of this parameter indicates that the functionality is supported for that particular release of XenServer, but not as a long-term feature. We are constantly evaluating promoting functionality into the API, but this requires the nature of the interface to be well-understood. Developer feedback as to how you are using some of these extensions is always welcome to help us make these decisions.</p>
+<h2 id="61-vm-console-forwarding"><a class="toclink" href="#61-vm-console-forwarding">6.1. VM console forwarding</a></h2>
+<p>Most XenAPI graphical interfaces will want to gain access to the VM consoles, in order to render them to the user as if they were physical machines. There are several types of consoles available, depending on the type of guest or if the physical host console is being accessed:</p>
+<p><strong><em>Console access</em></strong></p>
+<table>
+<thead>
+<tr>
+<th>Operating System</th>
+<th>Text</th>
+<th>Graphical</th>
+<th>Optimized graphical</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>No</td>
+<td>VNC, using an API call</td>
+<td>RDP, directly from guest</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>Yes, through VNC and an API call</td>
+<td>No</td>
+<td>VNC, directly from guest</td>
+</tr>
+<tr>
+<td>Physical Host</td>
+<td>Yes, through VNC and an API call</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Hardware-assisted VMs, such as Windows, directly provide a graphical console over VNC. There is no text-based console, and guest networking is not necessary to use the graphical console. Once guest networking has been established, it is more efficient to setup Remote Desktop Access and use an RDP client to connect directly (this must be done outside of the XenAPI).</p>
+<p>Paravirtual VMs, such as Linux guests, provide a native text console directly. XenServer provides a utility (called vncterm) to convert this text-based console into a graphical VNC representation. Guest networking is not necessary for this console to function. As with Windows above, Linux distributions often configure VNC within the guest, and directly connect to it over a guest network interface.</p>
+<p>The physical host console is only available as a vt100 console, which is exposed through the XenAPI as a VNC console by using vncterm in the control domain.</p>
+<p>RFB (Remote Framebuffer) is the protocol which underlies VNC, specified in The RFB Protocol. Third-party developers are expected to provide their own VNC viewers, and many freely available implementations can be adapted for this purpose. RFB 3.3 is the minimum version which viewers must support.</p>
+<h3 id="611-retrieving-vnc-consoles-using-the-api"><a class="toclink" href="#611-retrieving-vnc-consoles-using-the-api">6.1.1. Retrieving VNC consoles using the API</a></h3>
+<p>VNC consoles are retrieved using a special URL passed through to the host agent. The sequence of API calls is as follows:</p>
+<ol>
+<li>
+<p>Client to Master/443: XML-RPC: Session.login_with_password().</p>
+</li>
+<li>
+<p>Master/443 to Client: Returns a session reference to be used with subsequent calls.</p>
+</li>
+<li>
+<p>Client to Master/443: XML-RPC: VM.get_by_name_label().</p>
+</li>
+<li>
+<p>Master/443 to Client: Returns a reference to a particular VM (or the "control domain" if you want to retrieve the physical host console).</p>
+</li>
+<li>
+<p>Client to Master/443: XML-RPC: VM.get_consoles().</p>
+</li>
+<li>
+<p>Master/443 to Client: Returns a list of console objects associated with the VM.</p>
+</li>
+<li>
+<p>Client to Master/443: XML-RPC: VM.get_location().</p>
+</li>
+<li>
+<p>Returns a URI describing where the requested console is located. The URIs are of the form: https://192.168.0.1/console?ref=OpaqueRef:c038533a-af99-a0ff-9095-c1159f2dc6a0.</p>
+</li>
+<li>
+<p>Client to 192.168.0.1: HTTP CONNECT "/console?ref=(...)"</p>
+</li>
+</ol>
+<p>The final HTTP CONNECT is slightly non-standard since the HTTP/1.1 RFC specifies that it should only be a host and a port, rather than a URL. Once the HTTP connect is complete, the connection can subsequently directly be used as a VNC server without any further HTTP protocol action.</p>
+<p>This scheme requires direct access from the client to the control domain's IP, and will not work correctly if there are Network Address Translation (NAT) devices blocking such connectivity. You can use the CLI to retrieve the console URI from the client and perform a connectivity check.</p>
+<p><strong><em>To retrieve a console URI using the CLI</em></strong></p>
+<ol>
+<li>
+<p>Retrieve the VM UUID by running:</p>
+<p><code>xe vm-list params=uuid --minimal name-label=name</code></p>
+</li>
+<li>
+<p>Retrieve the console information:</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>xe console-list vm-uuid=uuid
+uuid ( RO): 714f388b-31ed-67cb-617b-0276e35155ef
+vm-uuid ( RO): 8acb7723-a5f0-5fc5-cd53-9f1e3a7d3069
+vm-name-label ( RO): etch
+protocol ( RO): RFB
+location ( RO): https://192.168.0.1/console?ref=(...)
+Use command-line utilities like ping to test connectivity to the IP address provided in the location field.
+</pre></div>
+
+
+<h3 id="612-disabling-vnc-forwarding-for-linux-vm"><a class="toclink" href="#612-disabling-vnc-forwarding-for-linux-vm">6.1.2. Disabling VNC forwarding for Linux VM</a></h3>
+<p>When creating and destroying Linux VMs, the host agent automatically manages the vncterm processes which convert the text console into VNC. Advanced users who wish to directly access the text console can disable VNC forwarding for that VM. The text console can then only be accessed directly from the control domain directly, and graphical interfaces such as XenCenter will not be able to render a console for that VM.</p>
+<p><strong><em>Disabling a Linux VNC console using the CLI</em></strong></p>
+<ol>
+<li>
+<p>Before starting the guest, set the following parameter on the VM record:</p>
+<p><code>xe vm-param-set uuid=uuid other-config:disable_pv_vnc=1</code>
+2. Start the VM.</p>
+</li>
+<li>
+<p>Use the CLI to retrieve the underlying domain ID of the VM with:
+    `xe vm-list params=dom-id uuid=<uuid> --minimal</p>
+</li>
+<li>On the host console, connect to the text console directly by:<code></code>/usr/lib/xen/bin/xenconsole <domain_id>`
+This configuration is an advanced procedure, and we do not recommend that the text console is directly used for heavy I/O operations. Instead, connect to the guest over SSH or some other network-based connection mechanism.</li>
+</ol>
+<h2 id="62-paravirtual-linux-installation"><a class="toclink" href="#62-paravirtual-linux-installation">6.2. Paravirtual Linux installation</a></h2>
+<p>The installation of paravirtual Linux guests is complicated by the fact that a Xen-aware kernel must be booted, rather than simply installing the guest using hardware-assistance. This does have the benefit of providing near-native installation speed due to the lack of emulation overhead. XenServer supports the installation of several different Linux distributions, and abstracts this process as much as possible.</p>
+<p>To this end, a special bootloader known as eliloader is present in the control domain which reads various other-config keys in the VM record at start time and performs distribution-specific installation behavior.</p>
+<ul>
+<li>
+<p>install-repository - Required. Path to a repository; 'http', 'https', 'ftp', or 'nfs'. Should be specified as would be used by the target installer, but not including prefixes, e.g. method=.</p>
+</li>
+<li>
+<p>install-vnc - Default: false. Use VNC where available during the installation.</p>
+</li>
+<li>
+<p>install-vncpasswd - Default: empty. The VNC password to use, when providing one is possible using the command-line of the target distribution.</p>
+</li>
+<li>
+<p>install-round - Default: 1. The current bootloader round. Not to be edited by the user (see below)</p>
+</li>
+</ul>
+<h3 id="621-red-hat-enterprise-linux-4144"><a class="toclink" href="#621-red-hat-enterprise-linux-4144">6.2.1. Red Hat Enterprise Linux 4.1/4.4</a></h3>
+<p>eliloader is used for two rounds of booting. In the first round, it returns the installer initrd and kernel from /opt/xensource/packages/files/guest-installer. Then, on the second boot, it removes the additional updates disk from the VM, switches the bootloader to pygrub, and then begins a normal boot.</p>
+<p>This sequence is required since Red Hat does not provide a Xen kernel for these distributions, and so the XenServer custom kernels for those distributions are used instead.</p>
+<h3 id="622-red-hat-enterprise-linux-4550"><a class="toclink" href="#622-red-hat-enterprise-linux-4550">6.2.2. Red Hat Enterprise Linux 4.5/5.0</a></h3>
+<p>Similar to the RHEL4.4 installation, except that the kernel and ramdisk are downloaded directly form the network repository that was specified by the user, and switch the bootloader to pygrub immediately. Note that pygrub is not executed immediately, and so will only be parsed on the next boot.</p>
+<p>The network retrieval enables users to install the upstream Red Hat vendor kernel directly from their network repository. An updated XenServer kernel is also provided on the xs-tools.iso built-in ISO image which fixes various Xen-related bugs.</p>
+<h3 id="623-suse-enterprise-linux-10-sp1"><a class="toclink" href="#623-suse-enterprise-linux-10-sp1">6.2.3. SUSE Enterprise Linux 10 SP1</a></h3>
+<p>This requires a two-round boot process. The first round downloads the kernel and ramdisk from the network repository and boots them. The second round then inspects the disks to find the installed kernel and ramdisk, and sets the PV-bootloader-args to reflect these paths within the guest filesystem. This process emulates the domUloader which SUSE use as an alternative to pygrub. Finally, the bootloader is set to pygrub and is executed to begin a normal boot.</p>
+<p>The SLES 10 installation method means that the path for the kernel and ramdisk is stored in the VM record rather than in the guest menu.lst, but this is the only way it would ever work since the YAST package manager doesn't write a valid menu.lst.</p>
+<h3 id="624-centos-45-50"><a class="toclink" href="#624-centos-45-50">6.2.4. CentOS 4.5 / 5.0</a></h3>
+<p>The CentOS installation mechanism is similar to that of the Red Hat installation notes above, save that some MD5 checksums are different which eliloader recognizes.</p>
+<h2 id="63-adding-xenstore-entries-to-vms"><a class="toclink" href="#63-adding-xenstore-entries-to-vms">6.3. Adding Xenstore entries to VMs</a></h2>
+<p>Developers may wish to install guest agents into VMs which take special action based on the type of the VM. In order to communicate this information into the guest, a special Xenstore name-space known as vm-data is available which is populated at VM creation time. It is populated from the xenstore-data map in the VM record.</p>
+<p><strong><em>To populate a Xenstore node foo in a VM</em></strong></p>
+<ol>
+<li>
+<p>Set the xenstore-data parameter in the VM record:</p>
+<p><code>xe vm-param-set uuid=&lt;vm_uuid&gt; xenstore-data:vm-data/foo=bar¡¤</code></p>
+</li>
+<li>
+<p>Start the VM.</p>
+</li>
+<li>
+<p>If it is a Linux-based VM, install the XenServer Tools and use the xenstore-read to verify that the node exists in Xenstore.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong><em>Note</em></strong>
+Only prefixes beginning with vm-data are permitted, and anything not in this name-space will be silently ignored when starting the VM.</p>
+</blockquote>
+<h2 id="64-security-enhancements"><a class="toclink" href="#64-security-enhancements">6.4. Security enhancements</a></h2>
+<p>The control domain in XenServer 7.0 and above has various security enhancements in order to harden it against attack from malicious guests. Developers should never notice any loss of correct functionality as a result of these changes, but they are documented here as variations of behavior from other distributions.</p>
+<ul>
+<li>
+<p>The socket interface, xenstored, access using libxenstore. Interfaces are restricted by xs_restrict().</p>
+</li>
+<li>
+<p>The device /dev/xen/evtchn, which is accessed by calling xs_evtchn_open() in libxenctrl. A handle can be restricted using xs_evtchn_restrict().</p>
+</li>
+<li>
+<p>The device /proc/xen/privcmd, accessed through xs_interface_open() in libxenctrl. A handle is restricted using xc_interface_restrict(). Some privileged commands are naturally hard to restrict (e.g. the ability to make arbitrary hypercalls), and these are simply prohibited on restricted handles.</p>
+</li>
+<li>
+<p>A restricted handle cannot later be granted more privilege, and so the interface must be closed and re-opened. Security is only gained if the process cannot subsequently open more handles.</p>
+</li>
+</ul>
+<p>The control domain privileged user-space interfaces can now be restricted to only work for certain domains. There are three interfaces affected by this change:</p>
+<ul>
+<li>
+<p>The qemu device emulation processes and vncterm terminal emulation processes run as a non-root user ID and are restricted into an empty directory. They uses the restriction API above to drop privileges where possible.</p>
+</li>
+<li>
+<p>Access to xenstore is rate-limited to prevent malicious guests from causing a denial of service on the control domain. This is implemented as a token bucket with a restricted fill-rate, where most operations take one token and opening a transaction takes 20. The limits are set high enough that they should never be hit when running even a large number of concurrent guests under loaded operation.</p>
+</li>
+<li>
+<p>The VNC guest consoles are bound only to the localhost interface, so that they are not exposed externally even if the control domain packet filter is disabled by user intervention.</p>
+</li>
+</ul>
+<h2 id="65-advanced-settings-for-network-interfaces"><a class="toclink" href="#65-advanced-settings-for-network-interfaces">6.5. Advanced settings for network interfaces</a></h2>
+<p>Virtual and physical network interfaces have some advanced settings that can be configured using the other-config map parameter. There is a set of custom ethtool settings and some miscellaneous settings.</p>
+<h3 id="651-ethtool-settings"><a class="toclink" href="#651-ethtool-settings">6.5.1. ethtool settings</a></h3>
+<p>Developers might wish to configure custom ethtool settings for physical and virtual network interfaces. This is accomplished with ethtool-<option> keys in the other-config map parameter.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Valid settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ethtool-rx</td>
+<td>Specify if RX checksumming is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-tx</td>
+<td>Specify if TX checksumming is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-sg</td>
+<td>Specify if scatter-gather is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-tso</td>
+<td>Specify if tcp segmentation offload is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-ufo</td>
+<td>Specify if UDP fragmentation offload is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-gso</td>
+<td>Specify if generic segmentation offload is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-autoneg</td>
+<td>Specify if autonegotiation is enabled</td>
+<td>on or true to enable the setting, off or false to disable it</td>
+</tr>
+<tr>
+<td>ethtool-speed</td>
+<td>Set the device speed in Mb/s</td>
+<td>10, 100, or 1000</td>
+</tr>
+<tr>
+<td>ethtool-duplex</td>
+<td>Set full or half duplex mode</td>
+<td>half or full</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to enable TX checksumming on a virtual NIC using the xe CLI:
+<code>xe vif-param-set uuid=&lt;VIF UUID&gt; other-config:ethtool-tx="on"</code></p>
+<p>or:</p>
+<p><code>xe vif-param-set uuid=&lt;VIF UUID&gt; other-config:ethtool-tx="true"</code>
+To set the duplex setting on a physical NIC to half duplex using the xe CLI:</p>
+<p><code>xe vif-param-set uuid=&lt;VIF UUID&gt; other-config:ethtool-duplex="half"</code></p>
+<h3 id="652-miscellaneous-settings"><a class="toclink" href="#652-miscellaneous-settings">6.5.2. Miscellaneous settings</a></h3>
+<p>You can also set a promiscuous mode on a VIF or PIF by setting the promiscuous key to on. For example, to enable promiscuous mode on a physical NIC using the xe CLI:</p>
+<p><code>xe pif-param-set uuid=&lt;PIF UUID&gt; other-config:promiscuous="on"</code>
+or:</p>
+<p><code>xe pif-param-set uuid=&lt;PIF UUID&gt; other-config:promiscuous="true"</code>
+The VIF and PIF objects have a MTU parameter that is read-only and provide the current setting of the maximum transmission unit for the interface. You can override the default maximum transmission unit of a physical or virtual NIC with the mtu key in the other-config map parameter. For example, to reset the MTU on a virtual NIC to use jumbo frames using the xe CLI:</p>
+<p><code>xe vif-param-set uuid=&lt;VIF UUID&gt; other-config:mtu=9000</code>
+Note that changing the MTU of underlying interfaces is an advanced and experimental feature, and may lead to unexpected side-effects if you have varying MTUs across NICs in a single resource pool.</p>
+<h2 id="66-internationalization-for-sr-names"><a class="toclink" href="#66-internationalization-for-sr-names">6.6. Internationalization for SR names</a></h2>
+<p>The SRs created at install time now have an other_config key indicating how their names may be internationalized.</p>
+<p>other_config["i18n-key"] may be one of</p>
+<ul>
+<li>
+<p>local-hotplug-cd</p>
+</li>
+<li>
+<p>local-hotplug-disk</p>
+</li>
+<li>
+<p>local-storage</p>
+</li>
+<li>
+<p>xenserver-tools</p>
+</li>
+</ul>
+<p>Additionally, other_config["i18n-original-value-<field name>"] gives the value of that field when the SR was created. If XenCenter sees a record where SR.name_label equals other_config["i18n-original-value-name_label"] (that is, the record has not changed since it was created during XenServer installation), then internationalization will be applied. In other words, XenCenter will disregard the current contents of that field, and instead use a value appropriate to the user's own language.</p>
+<p>If you change SR.name_label for your own purpose, then it no longer is the same as other_config["i18n-original-value-name_label"]. Therefore, XenCenter does not apply internationalization, and instead preserves your given name.</p>
+<h2 id="67-hiding-objects-from-xencenter"><a class="toclink" href="#67-hiding-objects-from-xencenter">6.7. Hiding objects from XenCenter</a></h2>
+<p>Networks, PIFs, and VMs can be hidden from XenCenter by adding the key HideFromXenCenter=true to the other_config parameter for the object. This capability is intended for ISVs who know what they are doing, not general use by everyday users. For example, you might want to hide certain VMs because they are cloned VMs that shouldn't be used directly by general users in your environment.</p>
+<p>In XenCenter, hidden Networks, PIFs, and VMs can be made visible, using the <strong><em>View</em></strong> menu.</p>
+<h1 id="chapter-7-xencenter-api-extensions"><a class="toclink" href="#chapter-7-xencenter-api-extensions">Chapter 7. XenCenter API Extensions</a></h1>
+<p>The following section details the assumptions and API extensions that we have made, over and above the documented API. Extensions are encoded as particular key-value pairs in dictionaries such as VM.other_config.</p>
+<h2 id="71-pool"><a class="toclink" href="#71-pool">7.1. Pool</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pool.name_label</td>
+<td>An empty name_label indicates that the pool should be hidden on the tree view.</td>
+</tr>
+<tr>
+<td>pool.rolling_upgrade_in_progress</td>
+<td>Present if the pool is in the middle of a rolling upgrade.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="72-host"><a class="toclink" href="#72-host">7.2. Host</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host.other_config["iscsi_iqn"]</td>
+<td>The host's iSCSI IQN.</td>
+</tr>
+<tr>
+<td>host.license_params["expiry"]</td>
+<td>The expiry date of the host's license, in ISO 8601, UTC.</td>
+</tr>
+<tr>
+<td>host.license_params["sku_type"]</td>
+<td>The host license type i.e. Server or Enterprise.</td>
+</tr>
+<tr>
+<td>host.license_params["restrict_pooling"]</td>
+<td>Returns true if pooling is restricted by the host.</td>
+</tr>
+<tr>
+<td>host.license_params["restrict_connection"]</td>
+<td>The number of connections that can be made from XenCenter is restricted.</td>
+</tr>
+<tr>
+<td>host.license_params["restrict_qos"]</td>
+<td>Returns true if Quality of Service settings are enabled on the host.</td>
+</tr>
+<tr>
+<td>host.license_params["restrict_vlan"]</td>
+<td>Returns true if creation of virtual networks is restricted on the host.</td>
+</tr>
+<tr>
+<td>host.license_params["restrict_pool_attached_storage"]</td>
+<td>Returns true if the creation of shared storage is restricted on this host.</td>
+</tr>
+<tr>
+<td>host.software_version["product_version"]</td>
+<td>Returns the host's product version.</td>
+</tr>
+<tr>
+<td>host.software_version["build_number"]</td>
+<td>Returns the host's build number.</td>
+</tr>
+<tr>
+<td>host.software_version["xapi"]</td>
+<td>Returns the host's api revision number.</td>
+</tr>
+<tr>
+<td>host.software_version["package-linux"]</td>
+<td>Returns "installed" if the Linux pack has been installed.</td>
+</tr>
+<tr>
+<td>host.software_version["oem_build_number"]</td>
+<td>If the host is the OEM version, return its revision number.</td>
+</tr>
+<tr>
+<td>host.logging["syslog_destination"]</td>
+<td>Gets or sets the destination for the XenServer system logger (null for local logging).</td>
+</tr>
+<tr>
+<td>host.logging["multipathing"]</td>
+<td>"true" if storage multipathing is enabled on this host.</td>
+</tr>
+<tr>
+<td>host.logging["boot_time"]</td>
+<td>A floating point Unix time giving the time that the host booted.</td>
+</tr>
+<tr>
+<td>host.logging["agent_start_time"]</td>
+<td>A floating point Unix time giving the time that the control domain management daemon started.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="73-vm"><a class="toclink" href="#73-vm">7.3. VM</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.other_config["default_template"]</td>
+<td>This template is one that was installed by Citrix. This is used to selectively hide these in the tree view, to use a different icon for them, and to disallow deletion.</td>
+</tr>
+<tr>
+<td>VM.other_config["xensource_internal"]</td>
+<td>This template is special, such as the P2V server template. These are completely hidden by the UI.</td>
+</tr>
+<tr>
+<td>VM.other_config["install_distro"] == "rhlike"</td>
+<td>This template is for RHEL 4.5, RHEL 5, or CentOS equivalents. This is used to prompt for the Install Repository during install, including support for install from ISO / CD on Miami, and to modify NFS URLs to suit these installers.</td>
+</tr>
+<tr>
+<td>VM.other_config["install_distro"] in { "rhel41"</td>
+<td>"rhel44" }</td>
+</tr>
+<tr>
+<td>VM.other_config["install_distro"] == "sleslike"</td>
+<td>This template is for SLES 10 and SLES 9. This is used to prompt for the Install Repository during install, like the EL5 ones, but in this case the NFS URLs are not modified. ISO support is available for SLES 10 on XenServer 7.0. Use install-methods to distinguish between SLES 9 and SLES 10 on that platform.</td>
+</tr>
+<tr>
+<td>VM.other_config["install-repository"] == "cdrom"</td>
+<td>Requests an install from a repository in the VM's attached CD drive, rather than a URL.</td>
+</tr>
+<tr>
+<td>VM.other_config["auto_poweron"]</td>
+<td>Gets or sets whether the VM starts when the server boots, "true" or "false".</td>
+</tr>
+<tr>
+<td>VM.other_config["ignore_excessive_vcpus"]</td>
+<td>Gets or sets to ignore XenCenter's warning if a VM has more VCPUs than its host has physical CPUs, true to ignore.</td>
+</tr>
+<tr>
+<td>VM.other_config["HideFromXenCenter"]</td>
+<td>Gets or sets whether XenCenter will show the VM in the treeview, "true" to hide.</td>
+</tr>
+<tr>
+<td>VM.other_config["import_task"]</td>
+<td>Gets the import task that created this VM.</td>
+</tr>
+<tr>
+<td>VM.HVM_boot_params["order"]</td>
+<td>Gets or sets the VM's boot order on HVM VM's only, e.g. "CDN" will boot in the following order - First boot disk, CD drive, Network.</td>
+</tr>
+<tr>
+<td>VM.VCPU_params["weight"]</td>
+<td>Gets or sets the IONice value for the VM's VCPUs, ranges from 1 to 65536, 65536 being the highest.</td>
+</tr>
+<tr>
+<td>VM.pool_migrate(..., options['live'])</td>
+<td>true indicates live migration. XenCenter always uses this.</td>
+</tr>
+<tr>
+<td>VM.other_config["install-methods"]</td>
+<td>A comma-separated list of install methods available for this template. May include "cdrom", "nfs", "http" or "ftp".</td>
+</tr>
+<tr>
+<td>VM.other_config["last_shutdown_time"]</td>
+<td>The time that this VM was last shut down or rebooted, formatted as a UTC ISO8601 datetime.</td>
+</tr>
+<tr>
+<td>VM.other_config["p2v_source_machine"]</td>
+<td>The source machine, if this VM was imported by a P2V process.</td>
+</tr>
+<tr>
+<td>VM.other_config["p2v_import_date"]</td>
+<td>The date the VM was imported, if it was imported by a P2V process. Formatted as a UTC ISO8601 datetime.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="74-sr"><a class="toclink" href="#74-sr">7.4.  SR</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SR.other_config["auto-scan"]</td>
+<td>The SR will be automatically scanned for changes. Set on all SRs created by XenCenter.</td>
+</tr>
+<tr>
+<td>SR.sm_config["type"]</td>
+<td>Set as type cd for SRs which are physical CD drives.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="75-vdi"><a class="toclink" href="#75-vdi">7.5. VDI</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VDI.type</td>
+<td>user instead of system is used to mean "do or do not allow deletion of the VDI through the GUI, if this disk is attached to a VM". The intention here is to prevent you from corrupting a VM (you should uninstall it instead). suspend and crashdump record suspend and core dumps respectively. ephemeral is currently unused.</td>
+</tr>
+<tr>
+<td>VDI.managed</td>
+<td>All unmanaged VDIs are completely hidden in the UI. These are branch points in VHD chains, or unused LUN-per-VDI disks.</td>
+</tr>
+<tr>
+<td>VDI.sm_config["vmhint"]</td>
+<td>The UUID of the VM that this VDI supports. This is set when VDIs are created through the user interface, to improve performance for certain storage backends.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="76-vbd"><a class="toclink" href="#76-vbd">7.6. VBD</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VBD.other_config["is_owner"]</td>
+<td>If set, then this disk may be deleted when the VM is uninstalled.</td>
+</tr>
+<tr>
+<td>VBD.other_config["class"]</td>
+<td>Set to an integer, corresponding to the Best Effort setting of ionice.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="77-network"><a class="toclink" href="#77-network">7.7. Network</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network.other_config["automatic"]</td>
+<td>The New VM wizard will create a VIF connected to this network by default, if this key has any value other than false.</td>
+</tr>
+<tr>
+<td>network.other_config["import_task"]</td>
+<td>Gets the import task that created this network.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="78-vm_guest_metrics"><a class="toclink" href="#78-vm_guest_metrics">7.8. VM_guest_metrics</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PV_drivers_version["major"]</td>
+<td>Gets the major version of the VM's PV drivers' version.</td>
+</tr>
+<tr>
+<td>PV_drivers_version["minor"]</td>
+<td>Gets the minor version of the VM's PV drivers' version.</td>
+</tr>
+<tr>
+<td>PV_drivers_version["micro"]</td>
+<td>Gets the micro (build number) of the VM's PV drivers' version.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="79-task"><a class="toclink" href="#79-task">7.9. Task</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task.other_config["object_creation"] == "complete"</td>
+<td>For the task associated with a VM import, this flag will be set when all the objects (VMs, networks) have been created. This is useful in the import VM wizard for us to then go and re-map all the networks that need it.</td>
+</tr>
+</tbody>
+</table>
+              
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.15.3
+Build Date UTC : 2016-11-16 08:59:51.663197
+-->

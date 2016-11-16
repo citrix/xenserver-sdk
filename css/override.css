@@ -1,0 +1,179 @@
+@font-face{
+font-family:"citrixsans-regular";
+src:url("citrix-sans/citrixsans-regular.eot");
+src:url("citrix-sans/citrixsans-regular.eot?") format('eot'),
+    url("citrix-sans/citrixsans-regular.woff") format("woff"),
+    url("citrix-sans/citrixsans-regular.ttf") format("truetype"),
+}
+@font-face{
+font-family:"citrixsans-bold";
+src:url("citrix-sans/citrixsans-bold.eot");
+src:url("citrix-sans/citrixsans-bold.eot?") format('eot'),
+    url("citrix-sans/citrixsans-bold.woff") format("woff"),
+    url("citrix-sans/citrixsans-bold.ttf") format("truetype"),
+}
+      
+  /* go on with normal style definitions */
+  html, body, div, span, applet, object, iframe,
+ p, blockquote, pre,
+a, abbr, acronym, address, big, cite,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video ,input[type="text"]{
+    	font-family: 'citrixsans-regular', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+     	font-family: 'citrixsans-bold', sans-serif;
+		font-weight:600;
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+	overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+code, kbd, pre, samp  {
+    font-family: monospace,serif !important;
+    font-size: 12px !important;
+}
+p code {
+    word-wrap: break-word;
+}
+
+nav.stickynav{
+  background-image: none !important;
+  background: #fff !important
+}
+
+.wy-nav-content{
+  background: #fff !important;  padding:0px !important;max-width: 1000px
+}
+.wy-body-for-nav {
+    background: left repeat-y #fff;
+    background-size: 300px 1px;
+    background: none !important
+}
+.header-top{
+  background: #000 !important
+}
+.logo-citrix{
+      height: 40px;
+  
+}
+.logo-position{
+    position: relative;
+    top: 15px;
+}
+
+.header-top-right{
+  float: right;padding-top: 10px;padding-right: 10px
+}
+
+.text-content{
+  line-height: 30px;
+}
+
+.wy-nav-content-wrap {
+    margin-left: 270px;
+    max-width: none;
+    background: #ffffff;
+}
+.wy-nav-shift{
+  top: 80px;padding-top:20px;
+}
+.wy-grid-for-nav{top:90px;}
+.errspan {
+ float: right;
+    margin-right: 0px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 2;
+  color:#227be3 !important;cursor: pointer;
+    left: -20px;
+}
+.wy-nav-side {
+    width: 300px;
+}
+.wy-nav-content-wrap {
+    margin-left: 310px;
+    max-width: none;
+    background: #ffffff;
+}
+.searchdocs{
+  border-radius: 5px !important;
+  width: 400px;
+  padding-top: 15px;
+  padding-bottom: 15px;height: 35px
+}
+.toclink{
+  color: #000 !important
+}
+.wy-menu-vertical li.on a, .wy-menu-vertical li.current a{
+      color: #227be3 !important;
+}
+@media screen and (min-width: 1400px){
+.wy-nav-content {
+    margin: 0;
+    background: #fff;
+}
+}
+@media screen and (max-width: 768px){
+.header-top-left img {
+    height: 25px;
+    width: auto;
+}
+.wy-nav-content-wrap{
+  margin-left: 0px
+}
+.searchdocs{
+  border-radius: 5px !important;
+  width: 200px;
+  padding-top: 15px;
+  padding-bottom: 30px;height: 35px
+}
+.header-top-right{
+  padding-right: 0px
+}
+.section{
+	padding-left:15px;
+	padding-right:15px;
+	
+}
+
+}
+
+@media screen and (max-width: 480px){
+
+.searchdocs{
+  border-radius: 5px !important;
+  width: 100px;
+  padding-top: 15px;
+  padding-bottom: 30px;height: 35px
+}
+
+}
+
+.wy-menu-vertical li.current ul li a {
+   padding: 0 2em;
+   font-size: 15px;
+   line-height: 25px;
+}
+
