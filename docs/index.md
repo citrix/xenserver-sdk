@@ -59,7 +59,7 @@ We will start our tour of the API by describing the calls required to create a n
 	We recommend strongly against using the VM.create call, which may be removed or changed in 	a future version of the API. Read on to learn other ways to make a new VM.
 
 ### Authentication: acquiring a session reference
-The first step is to call Session.login_with_password(`<username>`, `<password>`, `<client_API_version>`, `<originator>`). The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the username and password are authenticated correctly, the result of this call is a session reference. Subsequent API calls take the session reference as a parameter. In this way we ensure that only API users who are suitably authorized can perform operations on a XenServer installation. You can continue to use the same session for any number of API calls. When you have finished the session, Citrix recommends that you call ```Session.logout(session)``` to clean up: see later.
+The first step is to call `Session.login_with_password(<username>, <password>, <client_API_version>, <originator>)`. The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the username and password are authenticated correctly, the result of this call is a session reference. Subsequent API calls take the session reference as a parameter. In this way we ensure that only API users who are suitably authorized can perform operations on a XenServer installation. You can continue to use the same session for any number of API calls. When you have finished the session, Citrix recommends that you call `Session.logout(session)` to clean up: see later.
 
 ### Acquiring a list of templates to base a new VM installation on
 The next step is to query the list of "templates" on the host. Templates are specially-marked VM objects that specify suitable default parameters for a variety of supported guest types. (If you want to see a quick enumeration of the templates on a XenServer installation for yourself then you can execute the xe template-list CLI command.) To get a list of templates from the API, we need to find the VM objects on the server that have their is_a_template field set to true. One way to do this by calling VM.get_all_records(session) where the session parameter is the reference we acquired from our Session.login_with_password call earlier. This call queries the server, returning a snapshot (taken at the time of the call) containing all the VM object references and their field values.
@@ -312,7 +312,7 @@ The `"ova.xml"` file contains the following elements:
 ```xml
 <appliance version="0.1">
 ```
-The number in the attribute "version" indicates the version of this specification to which the XVA is constructed; in this case version 0.1. Inside the <appliance> there is exactly one <vm>: (in the OVA specification, multiple <vm>s are permitted)
+The number in the attribute "version" indicates the version of this specification to which the XVA is constructed; in this case version 0.1. Inside the `<appliance>` there is exactly one `<vm>`: (in the OVA specification, multiple `<vm>`s are permitted)
 
 ```xml
 <vm name="name">
@@ -388,7 +388,7 @@ A single disk image encoding is specified in which has type "dir-gzipped-chunks"
 
 Each file (named `"chunk-XXXXXXXXX.gz"`) is a gzipped file containing exactly 1e9 bytes (1GB, not 1GiB) of raw block data. The small size was chosen to be safely under the maximum file size limits of several filesystems. If the files are gunzipped and then concatenated together, the original image is recovered.
 
-XenServer provides two mechanisms for booting a VM: (i) using a paravirtualized kernel extracted through pygrub; and (ii) using HVM. The current implementation uses the "is_hvm" flag within the <hacks> section to decide which mechanism to use.
+XenServer provides two mechanisms for booting a VM: (i) using a paravirtualized kernel extracted through pygrub; and (ii) using HVM. The current implementation uses the "is_hvm" flag within the `<hacks>` section to decide which mechanism to use.
 
 This rest of this section describes a very simple Debian VM packaged as an XVA. The VM has two disks, one with size 5120MiB and used for the root filesystem and used to boot the guest using pygrub and the other of size 512MiB which is used for swap. The VM has 512MiB of memory and uses one virtual CPU.
 
@@ -1118,7 +1118,7 @@ eliloader is used for two rounds of booting. In the first round, it returns the 
 This sequence is required since Red Hat does not provide a Xen kernel for these distributions, and so the XenServer custom kernels for those distributions are used instead.
 
 ### Red Hat Enterprise Linux 4.5/5.0
-Similar to the RHEL4.4 installation, except that the kernel and ramdisk are downloaded directly form the network repository that was specified by the user, and switch the bootloader to pygrub immediately. Note that pygrub is not executed immediately, and so will only be parsed on the next boot.
+Similar to the RHEL4.4 installation, except that the kernel and ramdisk are downloaded directly from the network repository that was specified by the user, and switch the bootloader to pygrub immediately. Note that pygrub is not executed immediately, and so will only be parsed on the next boot.
 
 The network retrieval enables users to install the upstream Red Hat vendor kernel directly from their network repository. An updated XenServer kernel is also provided on the xs-tools.iso built-in ISO image which fixes various Xen-related bugs.
 
@@ -1275,7 +1275,7 @@ The following section details the assumptions and API extensions that we have ma
 | VM.other_config["default_template"]                          | This template is one that was installed by Citrix. This is used to selectively hide these in the tree view, to use a different icon for them, and to disallow deletion.                                                                                                                                              |
 | VM.other_config["xensource_internal"]                        | This template is special, such as the P2V server template. These are completely hidden by the UI.                                                                                                                                                                                                                    |
 | VM.other_config["install_distro"] == "rhlike"                | This template is for RHEL 4.5, RHEL 5, or CentOS equivalents. This is used to prompt for the Install Repository during install, including support for install from ISO / CD on Miami, and to modify NFS URLs to suit these installers.                                                                               |
-| VM.other_config["install_distro"] in { "rhel41" | "rhel44" } | This template is for RHEL 4.1, RHEL 4.4, or CentOS equivalents. This is used to prompt for the Install Repository during install, and to modify NFS URLs to suit these installers. No ISO support is available for these templates.                                                                                  |
+| VM.other_config["install_distro"] in { "rhel41" or "rhel44" } | This template is for RHEL 4.1, RHEL 4.4, or CentOS equivalents. This is used to prompt for the Install Repository during install, and to modify NFS URLs to suit these installers. No ISO support is available for these templates.                                                                                  |
 | VM.other_config["install_distro"] == "sleslike"              | This template is for SLES 10 and SLES 9. This is used to prompt for the Install Repository during install, like the EL5 ones, but in this case the NFS URLs are not modified. ISO support is available for SLES 10 on XenServer 7.0. Use install-methods to distinguish between SLES 9 and SLES 10 on that platform. |
 | VM.other_config["install-repository"] == "cdrom"             | Requests an install from a repository in the VM's attached CD drive, rather than a URL.                                                                                                                                                                                                                              |
 | VM.other_config["auto_poweron"]                              | Gets or sets whether the VM starts when the server boots, "true" or "false".                                                                                                                                                                                                                                         |
