@@ -1,6 +1,6 @@
 site_name: Citrix XenServer SDK
 site_description: Reference guide for Citrix XenServer SDK
-theme_dir: theme_onepage
+theme_dir: citrix-sdk
 #theme: mkdocs
 #repo_url: https://github.com/ajitchelat/AppDNA-SDK.git
 markdown_extensions:
