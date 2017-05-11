@@ -1,184 +1,187 @@
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Reference guide for Citrix XenServer SDK">
-  
-  
-  <title>Citrix XenServer SDK</title>
-  
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
 
-  <link rel="shortcut icon" href="
-https://www.citrix.com/etc/designs/citrix/icon-favicon.png">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="Reference guide for Citrix XenServer SDK">  
+    <title>Citrix XenServer SDK</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="./css/highlight.css">
+    <link rel="stylesheet" href="./css/override.css" type="text/css" />
+    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "None";
+      var mkdocs_page_input_path = "index.md";
+      var mkdocs_page_url = "/";
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/highlight.css">
-  <link rel="stylesheet" href="./css/override.css" type="text/css" />
-  <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" />
-
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "None";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
-  </script>
-  
-  <script src="./js/jquery-1.10.2.min.js"></script>
-  <script src="./js/bootstrap-3.0.3.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script>
-  <script src="./js/theme.js"></script>
-  <script src="./js/base.js"></script>
-  <script src="./js/custom.js"></script>
-  <script src="./js/nav.js"></script> 
-
-  
-</head>
-
-<body class="wy-body-for-nav" role="document" data-spy="scroll" data-target=".bs-sidebar">
-
-	<div class="header-top">
-		<div class="header-top-left">
-			<a href="http://citrix.github.io" class="logo-position"><img height="60" src="https://thumbnail-ec2.sharefile.com/thumbnail.aspx?encparams=ypL2J0l-In6gqXJ7yeyKP8A1rqwKMH-C8-nfkJcHJNIN7Y0yZiJsYOcUe-uc0YeZzWLQSFSd1FnuMHPa30XSSINHuGOA8nvvnBT5WmjGlKvd5mxJ4IfT7iTVyHELwhWQiNCznPCiIFyhkA78uKX77PlU2iyhM4YdRM1NKabBe-4wXuiFJsbtAxyJ2UukO_E2ZSf1W3l75Dw8G0zflVkT-EFqyx1zSGId0qzLjm6nzJ8dA9zo-1AJzUisdzmGMzHOq_LMsOWyaalvmcWvCkl-q10GBSbfekfTIFW9LpZNYjkLNSnK8rcwNjWVr_jYayrGjIj2e5dDIMiDj3NRvW51AvHRjxYH9xRRRtY$" target="_blank" class="logo-citrix"><span style="color:#fff;font-size: 20px;position: relative;top:4px;left: 5px">SDK Reference</span></a>
-		</div>
-		<div class="header-top-right">
-			<ul>
-			<!--	<li class="list-inline home"><a href=".">HOME</a></li>
-				<li class="list-inline support"><a href="http://support.citrix.com">SUPPORT</a></li>-->
-				<form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-            <li class="list-inline support"><input name="q" id="txtName" type="text" placeholder="Search SDKs"
-            class="searchdocs">
-<a class="fa fa-search errspan"></a></li>
-</form>
-				<!--<li class="list-inline"><a href="http://citrix.com/download">DOWNLOADS</a></li>-->
-			</ul>
-
-		</div>
-	</div>
-  <div class="wy-grid-for-nav">
-
+    </script>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <div role="search">
+    <script src="./js/jquery-2.1.1.min.js"></script>
+    <script src="./js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="./js/highlight.pack.js"></script>
+    <script src="./js/theme.js"></script>
+    <script src="./js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+      
+        <div class="header-top-left">
+          <a href="http://citrix.github.io" class="logo-position"><img height="60" src="./img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+            </form>
+
+          </ul>
+
+        </div>
+      
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
 	<i class="fa fa-search"></i>
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
-      </div>
+          </div>
 
-      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
-			<div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#citrix-xenserver-70-software-development-kit">Citrix XenServer 7.0 Software Development Kit</a></li>
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href=".">Index</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#citrix-xenserver-70-software-development-kit" style="padding:0px;position: relative;">&nbsp;Citrix XenServer 7.0 Software Development Kit</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#introduction" style="padding:0px;position: relative;">&nbsp;Introduction</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#getting-started" style="padding:0px;position: relative;">&nbsp;Getting Started</a></li>
+                
+                    <li><a class="toctree-l4" href="#system-requirements-and-preparation" style="padding:0px;position: relative;">System Requirements and Preparation</a></li>
+                
+                    <li><a class="toctree-l4" href="#downloading" style="padding:0px;position: relative;">Downloading</a></li>
+                
+                    <li><a class="toctree-l4" href="#content-map" style="padding:0px;position: relative;">Content Map</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#overview-of-the-xenserver-api" style="padding:0px;position: relative;">&nbsp;Overview of the XenServer API</a></li>
+                
+                    <li><a class="toctree-l4" href="#getting-started-with-the-api" style="padding:0px;position: relative;">Getting Started with the API</a></li>
+                
+                    <li><a class="toctree-l4" href="#object-model-overview" style="padding:0px;position: relative;">Object Model Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#working-with-vifs-and-vbds" style="padding:0px;position: relative;">Working with VIFs and VBDs</a></li>
+                
+                    <li><a class="toctree-l4" href="#exporting-and-importing-vms" style="padding:0px;position: relative;">Exporting and Importing VMs</a></li>
+                
+                    <li><a class="toctree-l4" href="#xml-rpc-notes" style="padding:0px;position: relative;">XML-RPC notes</a></li>
+                
+                    <li><a class="toctree-l4" href="#where-to-look-next" style="padding:0px;position: relative;">Where to look next</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#using-the-api" style="padding:0px;position: relative;">&nbsp;Using the API</a></li>
+                
+                    <li><a class="toctree-l4" href="#anatomy-of-a-typical-application" style="padding:0px;position: relative;">Anatomy of a typical application</a></li>
+                
+                    <li><a class="toctree-l4" href="#language-bindings" style="padding:0px;position: relative;">Language bindings</a></li>
+                
+                    <li><a class="toctree-l4" href="#complete-application-examples" style="padding:0px;position: relative;">Complete application examples</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#using-http-to-interact-with-xenserver" style="padding:0px;position: relative;">&nbsp;Using HTTP to interact with XenServer</a></li>
+                
+                    <li><a class="toctree-l4" href="#vm-import-and-export" style="padding:0px;position: relative;">VM Import and Export</a></li>
+                
+                    <li><a class="toctree-l4" href="#getting-xenserver-performance-statistics" style="padding:0px;position: relative;">Getting XenServer Performance Statistics</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#xenserver-api-extensions" style="padding:0px;position: relative;">&nbsp;XenServer API extensions</a></li>
+                
+                    <li><a class="toctree-l4" href="#vm-console-forwarding" style="padding:0px;position: relative;">VM console forwarding</a></li>
+                
+                    <li><a class="toctree-l4" href="#paravirtual-linux-installation" style="padding:0px;position: relative;">Paravirtual Linux installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#adding-xenstore-entries-to-vms" style="padding:0px;position: relative;">Adding Xenstore entries to VMs</a></li>
+                
+                    <li><a class="toctree-l4" href="#security-enhancements" style="padding:0px;position: relative;">Security enhancements</a></li>
+                
+                    <li><a class="toctree-l4" href="#advanced-settings-for-network-interfaces" style="padding:0px;position: relative;">Advanced settings for network interfaces</a></li>
+                
+                    <li><a class="toctree-l4" href="#internationalization-for-sr-names" style="padding:0px;position: relative;">Internationalization for SR names</a></li>
+                
+                    <li><a class="toctree-l4" href="#hiding-objects-from-xencenter" style="padding:0px;position: relative;">Hiding objects from XenCenter</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#xencenter-api-extensions" style="padding:0px;position: relative;">&nbsp;XenCenter API Extensions</a></li>
+                
+                    <li><a class="toctree-l4" href="#pool" style="padding:0px;position: relative;">Pool</a></li>
+                
+                    <li><a class="toctree-l4" href="#host" style="padding:0px;position: relative;">Host</a></li>
+                
+                    <li><a class="toctree-l4" href="#vm" style="padding:0px;position: relative;">VM</a></li>
+                
+                    <li><a class="toctree-l4" href="#sr" style="padding:0px;position: relative;">SR</a></li>
+                
+                    <li><a class="toctree-l4" href="#vdi" style="padding:0px;position: relative;">VDI</a></li>
+                
+                    <li><a class="toctree-l4" href="#vbd" style="padding:0px;position: relative;">VBD</a></li>
+                
+                    <li><a class="toctree-l4" href="#network" style="padding:0px;position: relative;">Network</a></li>
+                
+                    <li><a class="toctree-l4" href="#vm_guest_metrics" style="padding:0px;position: relative;">VM_guest_metrics</a></li>
+                
+                    <li><a class="toctree-l4" href="#task" style="padding:0px;position: relative;">Task</a></li>
+                
+            
+            </ul>
         
-    
-        <li class="main "><a href="#introduction">Introduction</a></li>
-        
-    
-        <li class="main "><a href="#getting-started">Getting Started</a></li>
-        
-            <li><a href="#system-requirements-and-preparation">System Requirements and Preparation</a></li>
-        
-            <li><a href="#downloading">Downloading</a></li>
-        
-            <li><a href="#content-map">Content Map</a></li>
-        
-    
-        <li class="main "><a href="#overview-of-the-xenserver-api">Overview of the XenServer API</a></li>
-        
-            <li><a href="#getting-started-with-the-api">Getting Started with the API</a></li>
-        
-            <li><a href="#object-model-overview">Object Model Overview</a></li>
-        
-            <li><a href="#working-with-vifs-and-vbds">Working with VIFs and VBDs</a></li>
-        
-            <li><a href="#exporting-and-importing-vms">Exporting and Importing VMs</a></li>
-        
-            <li><a href="#xml-rpc-notes">XML-RPC notes</a></li>
-        
-            <li><a href="#where-to-look-next">Where to look next</a></li>
-        
-    
-        <li class="main "><a href="#using-the-api">Using the API</a></li>
-        
-            <li><a href="#anatomy-of-a-typical-application">Anatomy of a typical application</a></li>
-        
-            <li><a href="#language-bindings">Language bindings</a></li>
-        
-            <li><a href="#complete-application-examples">Complete application examples</a></li>
-        
-    
-        <li class="main "><a href="#using-http-to-interact-with-xenserver">Using HTTP to interact with XenServer</a></li>
-        
-            <li><a href="#vm-import-and-export">VM Import and Export</a></li>
-        
-            <li><a href="#getting-xenserver-performance-statistics">Getting XenServer Performance Statistics</a></li>
-        
-    
-        <li class="main "><a href="#xenserver-api-extensions">XenServer API extensions</a></li>
-        
-            <li><a href="#vm-console-forwarding">VM console forwarding</a></li>
-        
-            <li><a href="#paravirtual-linux-installation">Paravirtual Linux installation</a></li>
-        
-            <li><a href="#adding-xenstore-entries-to-vms">Adding Xenstore entries to VMs</a></li>
-        
-            <li><a href="#security-enhancements">Security enhancements</a></li>
-        
-            <li><a href="#advanced-settings-for-network-interfaces">Advanced settings for network interfaces</a></li>
-        
-            <li><a href="#internationalization-for-sr-names">Internationalization for SR names</a></li>
-        
-            <li><a href="#hiding-objects-from-xencenter">Hiding objects from XenCenter</a></li>
-        
-    
-        <li class="main "><a href="#xencenter-api-extensions">XenCenter API Extensions</a></li>
-        
-            <li><a href="#pool">Pool</a></li>
-        
-            <li><a href="#host">Host</a></li>
-        
-            <li><a href="#vm">VM</a></li>
-        
-            <li><a href="#sr">SR</a></li>
-        
-            <li><a href="#vdi">VDI</a></li>
-        
-            <li><a href="#vbd">VBD</a></li>
-        
-            <li><a href="#network">Network</a></li>
-        
-            <li><a href="#vm_guest_metrics">VM_guest_metrics</a></li>
-        
-            <li><a href="#task">Task</a></li>
-        
-    
-    </ul>
-</div>
-      </div>
-      &nbsp;
-    </nav>
+    </li>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
 
-      
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-         <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".">Docs</a> &raquo;</li>
     
@@ -191,10 +194,22 @@ https://www.citrix.com/etc/designs/citrix/icon-favicon.png">
   </ul>
   <hr/>
 </div> -->
-          <div role="main">
-            <div class="section">
-             
-                <h1 id="citrix-xenserver-70-software-development-kit"><a class="toclink" href="#citrix-xenserver-70-software-development-kit">Citrix XenServer 7.0 Software Development Kit</a></h1>
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="citrix-xenserver-70-software-development-kit"><a class="toclink" href="#citrix-xenserver-70-software-development-kit">Citrix XenServer 7.0 Software Development Kit</a></h1>
 <h1 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h1>
 <p>Welcome to the developer's guide for XenServer. Here you will find the information you need in order to understand and use the Software Development Kit (SDK) that XenServer provides. This information will provide you with some of the architectural background and thinking that underpins the APIs, the tools that have been provided, and how to quickly get off the ground.</p>
 <h1 id="getting-started"><a class="toclink" href="#getting-started">Getting Started</a></h1>
@@ -267,7 +282,7 @@ https://www.citrix.com/etc/designs/citrix/icon-favicon.png">
 <p>We recommend strongly against using the VM.create call, which may be removed or changed in  a future version of the API. Read on to learn other ways to make a new VM.</p>
 </div>
 <h3 id="authentication-acquiring-a-session-reference"><a class="toclink" href="#authentication-acquiring-a-session-reference">Authentication: acquiring a session reference</a></h3>
-<p>The first step is to call Session.login_with_password(<code>&lt;username&gt;</code>, <code>&lt;password&gt;</code>, <code>&lt;client_API_version&gt;</code>, <code>&lt;originator&gt;</code>). The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the username and password are authenticated correctly, the result of this call is a session reference. Subsequent API calls take the session reference as a parameter. In this way we ensure that only API users who are suitably authorized can perform operations on a XenServer installation. You can continue to use the same session for any number of API calls. When you have finished the session, Citrix recommends that you call <code>Session.logout(session)</code> to clean up: see later.</p>
+<p>The first step is to call <code>Session.login_with_password(&lt;username&gt;, &lt;password&gt;, &lt;client_API_version&gt;, &lt;originator&gt;)</code>. The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the username and password are authenticated correctly, the result of this call is a session reference. Subsequent API calls take the session reference as a parameter. In this way we ensure that only API users who are suitably authorized can perform operations on a XenServer installation. You can continue to use the same session for any number of API calls. When you have finished the session, Citrix recommends that you call <code>Session.logout(session)</code> to clean up: see later.</p>
 <h3 id="acquiring-a-list-of-templates-to-base-a-new-vm-installation-on"><a class="toclink" href="#acquiring-a-list-of-templates-to-base-a-new-vm-installation-on">Acquiring a list of templates to base a new VM installation on</a></h3>
 <p>The next step is to query the list of "templates" on the host. Templates are specially-marked VM objects that specify suitable default parameters for a variety of supported guest types. (If you want to see a quick enumeration of the templates on a XenServer installation for yourself then you can execute the xe template-list CLI command.) To get a list of templates from the API, we need to find the VM objects on the server that have their is_a_template field set to true. One way to do this by calling VM.get_all_records(session) where the session parameter is the reference we acquired from our Session.login_with_password call earlier. This call queries the server, returning a snapshot (taken at the time of the call) containing all the VM object references and their field values.</p>
 <p>(Remember that at this stage we are not concerned about the particular mechanisms by which the returned object references and field values can be manipulated in any particular client language: that detail is dealt with by our language-specific API bindings and described concretely in the following chapter. For now it suffices just to assume the existence of an abstract mechanism for reading and manipulating objects and field values returned by API calls.)</p>
@@ -597,7 +612,7 @@ https://www.citrix.com/etc/designs/citrix/icon-favicon.png">
 </pre></div>
 
 
-<p>The number in the attribute "version" indicates the version of this specification to which the XVA is constructed; in this case version 0.1. Inside the <appliance> there is exactly one <vm>: (in the OVA specification, multiple <vm>s are permitted)</p>
+<p>The number in the attribute "version" indicates the version of this specification to which the XVA is constructed; in this case version 0.1. Inside the <code>&lt;appliance&gt;</code> there is exactly one <code>&lt;vm&gt;</code>: (in the OVA specification, multiple <code>&lt;vm&gt;</code>s are permitted)</p>
 <div class="codehilite"><pre><span></span><span class="nt">&lt;vm</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
 </pre></div>
 
@@ -668,36 +683,36 @@ the name of the disk image (represented by a <vdi> element) to which this block 
 
 
 <p>Each file (named <code>"chunk-XXXXXXXXX.gz"</code>) is a gzipped file containing exactly 1e9 bytes (1GB, not 1GiB) of raw block data. The small size was chosen to be safely under the maximum file size limits of several filesystems. If the files are gunzipped and then concatenated together, the original image is recovered.</p>
-<p>XenServer provides two mechanisms for booting a VM: (i) using a paravirtualized kernel extracted through pygrub; and (ii) using HVM. The current implementation uses the "is_hvm" flag within the <hacks> section to decide which mechanism to use.</p>
+<p>XenServer provides two mechanisms for booting a VM: (i) using a paravirtualized kernel extracted through pygrub; and (ii) using HVM. The current implementation uses the "is_hvm" flag within the <code>&lt;hacks&gt;</code> section to decide which mechanism to use.</p>
 <p>This rest of this section describes a very simple Debian VM packaged as an XVA. The VM has two disks, one with size 5120MiB and used for the root filesystem and used to boot the guest using pygrub and the other of size 512MiB which is used for swap. The VM has 512MiB of memory and uses one virtual CPU.</p>
 <p>At the topmost level the simple Debian VM is represented by a single directory:</p>
 <div class="codehilite"><pre><span></span>$ ls -l
-total 4
-drwxr-xr-x <span class="m">3</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> 09:42 very simple Debian VM
+total <span class="m">4</span>
+drwxr-xr-x <span class="m">3</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> <span class="m">09</span>:42 very simple Debian VM
 </pre></div>
 
 
 <p>Inside the main XVA directory are two sub-directories - one per disk - and the single file: ova.xml:</p>
 <div class="codehilite"><pre><span></span>$ ls -l very<span class="se">\ </span>simple<span class="se">\ </span>Debian<span class="se">\ </span>VM/
-total 8
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">1016</span> Oct <span class="m">24</span> 09:42 ova.xml
-drwxr-xr-x <span class="m">2</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> 09:42 sda
-drwxr-xr-x <span class="m">2</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> 09:53 sdb
+total <span class="m">8</span>
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">1016</span> Oct <span class="m">24</span> <span class="m">09</span>:42 ova.xml
+drwxr-xr-x <span class="m">2</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> <span class="m">09</span>:42 sda
+drwxr-xr-x <span class="m">2</span> dscott xendev <span class="m">4096</span> Oct <span class="m">24</span> <span class="m">09</span>:53 sdb
 </pre></div>
 
 
 <p>Inside each disk sub-directory are a set of files, each file contains 1GB of raw disk block data compressed using gzip:</p>
 <div class="codehilite"><pre><span></span>$ ls -l very<span class="se">\ </span>simple<span class="se">\ </span>Debian<span class="se">\ </span>VM/sda/
-total 2053480
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">202121645</span> Oct <span class="m">24</span> 09:43 chunk-000000000.gz
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">332739042</span> Oct <span class="m">24</span> 09:45 chunk-000000001.gz
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">401299288</span> Oct <span class="m">24</span> 09:48 chunk-000000002.gz
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">389585534</span> Oct <span class="m">24</span> 09:50 chunk-000000003.gz
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">624567877</span> Oct <span class="m">24</span> 09:53 chunk-000000004.gz
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">150351797</span> Oct <span class="m">24</span> 09:54 chunk-000000005.gz
+total <span class="m">2053480</span>
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">202121645</span> Oct <span class="m">24</span> <span class="m">09</span>:43 chunk-000000000.gz
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">332739042</span> Oct <span class="m">24</span> <span class="m">09</span>:45 chunk-000000001.gz
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">401299288</span> Oct <span class="m">24</span> <span class="m">09</span>:48 chunk-000000002.gz
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">389585534</span> Oct <span class="m">24</span> <span class="m">09</span>:50 chunk-000000003.gz
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">624567877</span> Oct <span class="m">24</span> <span class="m">09</span>:53 chunk-000000004.gz
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">150351797</span> Oct <span class="m">24</span> <span class="m">09</span>:54 chunk-000000005.gz
 $ ls -l very<span class="se">\ </span>simple<span class="se">\ </span>Debian<span class="se">\ </span>VM/sdb
-total 516
--rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">521937</span> Oct <span class="m">24</span> 09:54 chunk-000000000.gz
+total <span class="m">516</span>
+-rw-r--r-- <span class="m">1</span> dscott xendev <span class="m">521937</span> Oct <span class="m">24</span> <span class="m">09</span>:54 chunk-000000000.gz
 </pre></div>
 
 
@@ -1257,12 +1272,12 @@ while True:
 <p>If any one of the tasks failed then details are printed, an exception is raised and the task objects left around for further inspection. If all tasks succeeded then the task objects are destroyed and the function returns.</p>
 <div class="codehilite"><pre><span></span><span class="nt">if</span> <span class="nt">not</span><span class="o">(</span><span class="nt">allok</span><span class="o">):</span>
         <span class="nt">print</span> <span class="s2">&quot;One of the tasks didn&#39;t succeed at&quot;</span><span class="o">,</span> <span class="err">\</span>
-            <span class="nt">time</span><span class="nc">.strftime</span><span class="o">(</span><span class="s2">&quot;%F:%HT%M:%SZ&quot;</span><span class="o">,</span> <span class="nt">time</span><span class="nc">.gmtime</span><span class="o">())</span>
+            <span class="nt">time</span><span class="p">.</span><span class="nc">strftime</span><span class="o">(</span><span class="s2">&quot;%F:%HT%M:%SZ&quot;</span><span class="o">,</span> <span class="nt">time</span><span class="p">.</span><span class="nc">gmtime</span><span class="o">())</span>
         <span class="nt">idx</span> <span class="o">=</span> <span class="nt">0</span>
         <span class="nt">for</span> <span class="nt">task</span> <span class="nt">in</span> <span class="nt">tasks</span><span class="o">:</span>
             <span class="nt">record</span> <span class="o">=</span> <span class="nt">records</span><span class="cp">[</span><span class="nx">task</span><span class="cp">]</span>
-            <span class="nt">vm_name</span> <span class="o">=</span> <span class="nt">session</span><span class="nc">.xenapi.VM.get_name_label</span><span class="o">(</span><span class="nt">vms</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
-            <span class="nt">host_name</span> <span class="o">=</span> <span class="nt">session</span><span class="nc">.xenapi.host.get_name_label</span><span class="o">(</span><span class="nt">hosts</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
+            <span class="nt">vm_name</span> <span class="o">=</span> <span class="nt">session</span><span class="p">.</span><span class="nc">xenapi</span><span class="p">.</span><span class="nc">VM</span><span class="p">.</span><span class="nc">get_name_label</span><span class="o">(</span><span class="nt">vms</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
+            <span class="nt">host_name</span> <span class="o">=</span> <span class="nt">session</span><span class="p">.</span><span class="nc">xenapi</span><span class="p">.</span><span class="nc">host</span><span class="p">.</span><span class="nc">get_name_label</span><span class="o">(</span><span class="nt">hosts</span><span class="cp">[</span><span class="nx">idx</span><span class="cp">]</span><span class="o">)</span>
             <span class="nt">print</span> <span class="s2">&quot;%s : %12s %s -&gt; %s </span><span class="cp">[</span> <span class="nx">status</span><span class="p">:</span> <span class="o">%</span><span class="nx">s</span><span class="p">;</span> <span class="n">result</span><span class="o"> =</span> <span class="o">%</span><span class="nx">s</span><span class="p">;</span> <span class="n">error</span><span class="o"> =</span> <span class="o">%</span><span class="nx">s</span> <span class="cp">]</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="err">\</span>
                   <span class="o">(</span><span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;uuid&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;name_label&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">vm_name</span><span class="o">,</span> <span class="nt">host_name</span><span class="o">,</span>      <span class="err">\</span>
                    <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;status&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;result&quot;</span><span class="cp">]</span><span class="o">,</span> <span class="nt">repr</span><span class="o">(</span><span class="nt">record</span><span class="cp">[</span><span class="s2">&quot;error_info&quot;</span><span class="cp">]</span><span class="o">))</span>
@@ -1270,7 +1285,7 @@ while True:
         <span class="nt">raise</span> <span class="s2">&quot;Task failed&quot;</span>
     <span class="nt">else</span><span class="o">:</span>
         <span class="nt">for</span> <span class="nt">task</span> <span class="nt">in</span> <span class="nt">tasks</span><span class="o">:</span>
-            <span class="nt">session</span><span class="nc">.xenapi.task.destroy</span><span class="o">(</span><span class="nt">task</span><span class="o">)</span>
+            <span class="nt">session</span><span class="p">.</span><span class="nc">xenapi</span><span class="p">.</span><span class="nc">task</span><span class="p">.</span><span class="nc">destroy</span><span class="o">(</span><span class="nt">task</span><span class="o">)</span>
 </pre></div>
 
 
@@ -1544,7 +1559,7 @@ Use command-line utilities like ping to test connectivity to the IP address prov
 <p>eliloader is used for two rounds of booting. In the first round, it returns the installer initrd and kernel from /opt/xensource/packages/files/guest-installer. Then, on the second boot, it removes the additional updates disk from the VM, switches the bootloader to pygrub, and then begins a normal boot.</p>
 <p>This sequence is required since Red Hat does not provide a Xen kernel for these distributions, and so the XenServer custom kernels for those distributions are used instead.</p>
 <h3 id="red-hat-enterprise-linux-4550"><a class="toclink" href="#red-hat-enterprise-linux-4550">Red Hat Enterprise Linux 4.5/5.0</a></h3>
-<p>Similar to the RHEL4.4 installation, except that the kernel and ramdisk are downloaded directly form the network repository that was specified by the user, and switch the bootloader to pygrub immediately. Note that pygrub is not executed immediately, and so will only be parsed on the next boot.</p>
+<p>Similar to the RHEL4.4 installation, except that the kernel and ramdisk are downloaded directly from the network repository that was specified by the user, and switch the bootloader to pygrub immediately. Note that pygrub is not executed immediately, and so will only be parsed on the next boot.</p>
 <p>The network retrieval enables users to install the upstream Red Hat vendor kernel directly from their network repository. An updated XenServer kernel is also provided on the xs-tools.iso built-in ISO image which fixes various Xen-related bugs.</p>
 <h3 id="suse-enterprise-linux-10-sp1"><a class="toclink" href="#suse-enterprise-linux-10-sp1">SUSE Enterprise Linux 10 SP1</a></h3>
 <p>This requires a two-round boot process. The first round downloads the kernel and ramdisk from the network repository and boots them. The second round then inspects the disks to find the installed kernel and ramdisk, and sets the PV-bootloader-args to reflect these paths within the guest filesystem. This process emulates the domUloader which SUSE use as an alternative to pygrub. Finally, the bootloader is set to pygrub and is executed to begin a normal boot.</p>
@@ -1834,8 +1849,8 @@ Use command-line utilities like ping to test connectivity to the IP address prov
 <td>This template is for RHEL 4.5, RHEL 5, or CentOS equivalents. This is used to prompt for the Install Repository during install, including support for install from ISO / CD on Miami, and to modify NFS URLs to suit these installers.</td>
 </tr>
 <tr>
-<td>VM.other_config["install_distro"] in { "rhel41"</td>
-<td>"rhel44" }</td>
+<td>VM.other_config["install_distro"] in { "rhel41" or "rhel44" }</td>
+<td>This template is for RHEL 4.1, RHEL 4.4, or CentOS equivalents. This is used to prompt for the Install Repository during install, and to modify NFS URLs to suit these installers. No ISO support is available for these templates.</td>
 </tr>
 <tr>
 <td>VM.other_config["install_distro"] == "sleslike"</td>
@@ -2008,20 +2023,19 @@ Use command-line utilities like ping to test connectivity to the IP address prov
 <td>For the task associated with a VM import, this flag will be set when all the objects (VMs, networks) have been created. This is useful in the import VM wizard for us to then go and re-map all the networks that need it.</td>
 </tr>
 </tbody>
-</table>
-              
+</table> 
+
+                </div>
+              </div>
 
             </div>
           </div>
 
-        </div>
+        </section>
+
       </div>
-
-    </section>
-
-  </div>
-
-<!--<div class="rst-versions" role="note" style="cursor: pointer">
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -2038,10 +2052,11 @@ Use command-line utilities like ping to test connectivity to the IP address prov
 	</div>
 </div>-->
 
-</body>
+  </body>
+
 </html>
 
 <!--
-MkDocs version : 0.15.3
-Build Date UTC : 2017-01-04 10:22:42.946964
+MkDocs version : 0.16.1
+Build Date UTC : 2017-05-11 12:50:27
 -->

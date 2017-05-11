@@ -17,21 +17,21 @@ h3, h4, h5, h6 {
  * https://github.com/mkdocs/mkdocs/issues/175
  */
 
-.expli{
+.expli , .expul{
     display: inline-table !important;
     padding-left: 5px !important;
     padding-right: 0px !important;
     padding-bottom: 0px !important;
 }
-.current{
-	display: inline-table !important;
-	padding-left:5px !important;
-}
 
+.expul i.fa{
+	padding-right:5px !important;
+}
+.subnav li.toctree-l1 {
+	display:none;
+}
 .wy-menu-vertical span {
     line-height: 18px;
-    padding: 0.4045em 1.618em;
-    display: block;
     position: relative;
     font-size: 90%;
     color: #404545;
@@ -54,15 +54,7 @@ h3, h4, h5, h6 {
     overflow-y: auto;
 }
 
-/*
- * readthedocs theme hides nav items when the window height is
- * too small to contain them.
- *
- * https://github.com/mkdocs/mkdocs/issues/#348
- */
-.wy-menu-vertical ul {
-  margin-bottom: 2em;
-}
+
 
 /*
  * Fix wrapping in the code highlighting
@@ -160,12 +152,12 @@ nav.stickynav {background-image: url('../img/grey_calm.png');background-repeat:n
 .social-links i {font-size:18px;padding:0 5px}
 .wy-side-nav-search input[type="text"] {border-radius:5px;border:0;box-shadow:none;background:#99A3A2;width:90%;color:#fff;padding-left:25px}
 .wy-side-nav-search {margin:0;background:#cdcece;}
-#rtd-search-form i {position:absolute;top:17px;left:30px;color: #B9C1C1}
+/*#rtd-search-form i {position:absolute;top:17px;left:30px;color: #B9C1C1}*/
 .header-top {width:100%;position:fixed;top:0;left:0;height:70px;border-bottom:2px solid #2A5B8C;background:#ffffff;z-index:400}
 .header-top-left {float:left;padding:3px 0 3px 25px;width:270px}
 .header-top-left img{padding: 0}
 .header-top-right {float:left;padding-left:30px ; padding-top: 30px}
-.wy-grid-for-nav {top:70px} 
+/*.wy-grid-for-nav {top:70px} */
 .wy-menu-vertical a:hover, .wy-menu-vertical li.current {background:#fff}
 .wy-menu-vertical li.on a, .wy-menu-vertical li.current a{border:0;color:#0C447C}
 .wy-menu-vertical li.current ul li a{padding:0 2em;font-size:11px}
@@ -203,7 +195,7 @@ nav.stickynav {background-image: url('../img/grey_calm.png');background-repeat:n
 	transform: scale3d(1, 1, 1);
 	color: #37474f
 }
-
+.rst-content .section h1, .rst-content .section h2 {padding-top: none}
 img {padding: 20px 0}
 @media screen and (max-width:768px){
 .header-top-left {width: auto}

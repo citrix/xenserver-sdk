@@ -1,3 +1,7 @@
+require.config( { 
+waitSeconds : 0}
+);
+
 require([
     base_url + '/mkdocs/js/mustache.min.js',
     base_url + '/mkdocs/js/lunr.min.js',
