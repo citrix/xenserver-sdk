@@ -4273,7 +4273,12 @@ nav.stickynav {
     color: #fcfcfc
 }
 .rst-versions.rst-badge {
-    display: none !important;
+    width: auto;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    border: none;
+    max-width: 300px
 }
 .rst-versions.rst-badge .fa-book,
 .rst-versions.rst-badge .icon-book {
