@@ -1,5 +1,5 @@
 @import url("//s3.amazonaws.com/citrix-cdn/can.cdn/marketing/assets/fonts/citrix-fonts.css?v=dta-home-page-redesign-4");
-      
+
 /* go on with normal style definitions */
 html, body, div, span, applet, object, iframe,
 p, blockquote, pre,
@@ -10,8 +10,8 @@ b, u, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video ,input[type="text"]{
     font-family: 'citrixsans-regular';
@@ -34,15 +34,15 @@ h1{
 
 h2{
     font-family: 'citrixsans-bold';
-	font-size:18px;
+	font-size:24px;
 	padding-left:20px;
 	color:#000000;
 }
 
 h3{
     font-family: 'citrixsans-light';
-	font-size:24px;
-	padding-left:24px;
+	font-size:18px;
+	padding-left:20px;
 	color:#000000;
 }
 
@@ -86,7 +86,7 @@ table{
 
 table > tbody > tr> td> p{
 	padding-left:0px;
-	
+
 }
 
 p{
@@ -97,13 +97,13 @@ p{
 }
 /*
 #rtd-search-form{
-	
+
 	display:none;
 }
 */
 .rightAlign{
 	display:none;
-	
+
 }
 
 pre {
@@ -150,7 +150,7 @@ nav.stickynav{
 }
 .logo-citrix{
       height: 34px;
-  
+
 }
 .header-elements li{
   list-style-type: none;
@@ -249,7 +249,7 @@ input[type=text] {
 .section{
 	padding-left:15px;
 	padding-right:15px;
-	
+
 }
 
 }

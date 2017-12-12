@@ -1,13 +1,18 @@
-site_name: Citrix XenServer SDK
-site_description: Reference guide for Citrix XenServer SDK
+site_name: Citrix XenServer 7.1 LTSR Software Development Kit Guide
+site_description: Citrix XenServer 7.1 LTSR Software Development Kit Guide
 theme_dir: citrix-sdk
-#theme: mkdocs
-#repo_url: https://github.com/ajitchelat/AppDNA-SDK.git
 markdown_extensions:
   - admonition
-  - codehilite
-  - toc:
-     anchorlink: True
+  - codehilite(guess_lang=false)
+  - toc(permalink=true)
+  - footnotes
+  - meta
 
 pages:
-- Index: index.md
+- Introduction: index.md
+- Getting Started: getting-started.md
+- Overview: overview.md
+- Using: using.md
+- Using HTTP: using-http.md
+- XenServer API Extensions: xs-api-extensions.md
+- XenCenter API Extensions: xc-api-extensions.md
