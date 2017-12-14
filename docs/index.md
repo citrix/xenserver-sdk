@@ -1,4 +1,4 @@
-Citrix XenServer 7.1 LTSR Software Development Kit Guide
+Citrix XenServer 7.3 Software Development Kit Guide
 ==============================================
 
 Introduction

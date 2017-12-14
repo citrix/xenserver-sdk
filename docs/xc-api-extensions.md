@@ -46,11 +46,7 @@ VM
 |---------------------------------------------|------------------------------------------------------------------------------------------------|
 | VM.other\_config\["default\_template"\]     | This template is one that was installed by . This is used to  selectively hide these in the tree view, to use a different icon for them, and to disallow deletion. |
 | VM.other\_config\["xensource\_internal"\]   | This template is special, such as the P2V server template. These are completely hidden by the UI. |
-| VM.other\_config\["install\_distro"\] == "rhlike" | This template is for RHEL 4.5, RHEL 5, or CentOS equivalents. This is used to prompt for the Install Repository during install, including       support for install from ISO / CD, and to modify NFS URLs to suit these installers.               |
-| VM.other_config["install_distro"] in { "rhel41"  "rhel44" } | This template is for RHEL 4.1, RHEL 4.4, or CentOS equivalents. This is used to prompt for the Install Repository during
-install, and to modify NFS URLs to suit these installers. No ISO support is available for these templates. |
-| VM.other_config["install_distro"] == "sleslike" | This template is for SLES 10 and SLES 9. This is used to prompt for the Install Repository during install, like the EL5 ones, but in
-this case the NFS URLs are not modified. ISO support is available for SLES 10 on XenServer 7.1. Use install-methods to distinguish between SLES 9 and SLES 10 on that platform.|
+| VM.other\_config\["install\_distro"\] == "rhlike" | This template is for RHEL 5, or CentOS equivalents. This is used to prompt for the Install Repository during install, including       support for install from ISO / CD, and to modify NFS URLs to suit these installers.               |
 | VM.other\_config\["install-repository"\] == "cdrom" | Requests an install from a repository in the VM's attached CD drive, rather than a URL.|
 | VM.other\_config\["auto\_poweron"\]         | Gets or sets whether the VM starts when the server boots, "true" or "false".                   |
 | VM.other\_config\["ignore\_excessive\_vcpus"\] | Gets or sets to ignore XenCenter warning if a VM has more VCPUs than its host has physical CPUs, `true` to ignore. |
