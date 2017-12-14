@@ -105,7 +105,7 @@ The following simple examples are included with the C bindings:
 -   `test_get_records`: demonstrates how to obtain information on API
     objects such as hosts, VMs, and storage repositories.
 
-### C\# 
+### C &#35;
 
 The XenServer-SDK directory contains the following folders that are
 relevant to C\# programmers:
