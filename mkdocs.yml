@@ -1,5 +1,5 @@
-site_name: Citrix XenServer 7.1 LTSR Software Development Kit Guide
-site_description: Citrix XenServer 7.1 LTSR Software Development Kit Guide
+site_name: Citrix XenServer 7.3 CR Software Development Kit Guide
+site_description: Citrix XenServer 7.3 CR Software Development Kit Guide
 theme_dir: citrix-sdk
 markdown_extensions:
   - admonition
