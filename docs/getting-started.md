@@ -145,15 +145,12 @@ relevant to C\# programmers:
 
 **Examples**:
 
-Three examples are included with the C\# bindings in the directory
+Two examples are included with the C\# bindings in the directory
 `XenServer-SDK/XenServer.NET/samples` as separate projects of the
 `XenSdkSample.sln` solution:
 
 -   `GetVariousRecords`: logs into a XenServer Host and displays
     information about hosts, storage and virtual machines;
-
--   `GetVmRecords`: logs into a XenServer Host and lists all the VM
-    records;
 
 -   `VmPowerStates`: logs into a XenServer Host, finds a VM and
     takes it through the various power states. Requires a shut-down VM
@@ -193,7 +190,7 @@ The XenServer-SDK directory contains the following folders that are relevant to 
 +  Windows
 
 **Library**:
-+  The language binding is generated as a Java Archive file `xenserver-7.1.jar` that is linked by Java programs.
++  The language binding is generated as a Java Archive file `xenserver-7.3.jar` that is linked by Java programs.
 
 **Dependencies**:
 +  `xmlrpc-client-3.1.jar`
