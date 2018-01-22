@@ -222,21 +222,16 @@ The control domain privileged user-space interfaces can now be
 restricted to only work for certain domains. There are three interfaces
 affected by this change:
 
--   The `qemu` device emulation processes and `vncterm` terminal emulation processes run as a non-root user ID
-    and are restricted into an empty directory. They uses the
-    restriction API above to drop privileges where possible.
+-   The `qemu` device emulation processes and `vncterm` terminal emulation processes run as a non-root user ID and are restricted into an empty directory.
+    They use the restriction API above to drop privileges where possible.
 
--   Access to xenstore is rate-limited to prevent malicious guests from
-    causing a denial of service on the control domain. This is
-    implemented as a token bucket with a restricted fill-rate, where
-    most operations take one token and opening a transaction takes 20.
-    The limits are set high enough that they should never be hit when
-    running even a large number of concurrent guests under loaded
-    operation.
+-   The guests and the control domain are protected from denial of service attacks on xenstore by a mechanism that gives access to xenstore in a round-robin fashion.
+    One operation is performed for each guest successively.
+    Thus a high number of operations in xenstore for one guest does not impact the operations for other domains.
+    No domU guest can ever perform a xenstore write that conflicts with any other domain's operation.
+    This is because of the ownership and permissions of the various subtrees that &PRODUCT_BRAND; creates in the store.
 
--   The VNC guest consoles are bound only to the `localhost` interface,
-    so that they are not exposed externally even if the control domain
-    packet filter is disabled by user intervention.
+-   The VNC guest consoles are bound only to the `localhost` interface, so that they are not exposed externally even if the control domain packet filter is disabled by user intervention.
 
 Advanced settings for network interfaces 
 ----------------------------------------

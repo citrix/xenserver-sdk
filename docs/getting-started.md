@@ -190,7 +190,7 @@ The XenServer-SDK directory contains the following folders that are relevant to 
 +  Windows
 
 **Library**:
-+  The language binding is generated as a Java Archive file `xenserver-7.3.jar` that is linked by Java programs.
++  The language binding is generated as a Java Archive file `xenserver-7.4.jar` that is linked by Java programs.
 
 **Dependencies**:
 +  `xmlrpc-client-3.1.jar`
