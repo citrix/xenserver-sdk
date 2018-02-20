@@ -1,122 +1,122 @@
-Overview of the XenServer API
-==================================
+# Overview of the XenServer API
 
-This chapter introduces the XenServer API (subsequently referred to
+This chapter introduces the XenServer API (after here referred to
 as the "API") and its associated object model. The API has the following
 key features:
 
--   **Management of all aspects of the XenServer Host.**
+-  **Management of all aspects of the XenServer Host.**
 
     The API allows you to manage VMs, storage, networking, host
-    configuration and pools. Performance and status metrics can also be
+    configuration, and pools. Performance and status metrics can also be
     queried from the API.
 
--   **Persistent Object Model.**
+-  **Persistent Object Model.**
 
-    The results of all side-effecting operations (e.g. object creation,
-    deletion and parameter modifications) are persisted in a server-side
-    database that is managed by the XenServer installation.
+    The results of all side-effecting operations (for example: object creation,
+    deletion, and parameter changes) are persisted in a server-side
+    database that is managed by XenServer.
 
--   **An event mechanism.**
+-  **An event mechanism.**
 
     Through the API, clients can register to be notified when persistent
-    (server-side) objects are modified. This enables applications to
-    keep track of datamodel modifications performed by concurrently
+    (server-side) objects are changed. This enables applications to
+    track datamodel changes performed by concurrently
     executing clients.
 
--   **Synchronous and asynchronous invocation.**
+-  **Synchronous and asynchronous invocation.**
 
     All API calls can be invoked synchronously (that is, block until
-    completion); any API call that may be long-running can also be
+    completion). Any API call that might be long-running can also be
     invoked *asynchronously*. Asynchronous calls return immediately with
     a reference to a *task* object. This task object can be queried
     (through the API) for progress and status information. When an
     asynchronously invoked operation completes, the result (or error
     code) is available from the task object.
 
--   **Remotable and Cross-Platform.**
+-  **Remotable and Cross-Platform.**
 
-    The client issuing the API calls does not have to be resident on the
-    host being managed; nor does it have to be connected to the host
-    over ssh in order to execute the API. API calls make use of the
-    XML-RPC protocol to transmit requests and responses over the
+    The client issuing the API calls doesn't have to be resident on the
+    host being managed. The client also does not have to be connected to the host
+    over ssh to execute the API. API calls use the
+    RPC protocol to transmit requests and responses over the
     network.
 
--   **Secure and Authenticated Access.**
+-  **Secure and Authenticated Access.**
 
-    The XML-RPC API server executing on the host accepts secure socket
+    The RPC API backend executing on the host accepts secure socket
     connections. This allows a client to execute the APIs over the https
     protocol. Further, all the API calls execute in the context of a
-    login session generated through username and password validation at
+    login session generated through user name and password validation at
     the server. This provides secure and authenticated access to the
     XenServer installation.
 
-XenServer API Deprecation Policy
-------------------------------------------
+## XenServer API Deprecation Policy
+
 Items that will be removed in a future release are marked as deprecated.
 
 By default, Citrix will continue to support deprecated APIs and product functionality up to and including the next XenServer Long Term Service Release (LTSR). Deprecated items will usually be removed in a Current Release following that LTSR.
 
 In exceptional cases, an item might be deprecated and removed before the next LTSR. For example, a change might be required to improve security. If this happens, Citrix will make customers aware of the change to the API or the product functionality.
 
+
 This deprecation policy applies only to APIs and functionality that are documented at the following locations:
-+  [Citrix Product Documentation](http://docs.citrix.com/en-us/xenserver.html)
-+  [Citrix Developer Documentation](http://developer-docs.citrix.com)
 
-Getting Started with the API 
-----------------------------
+-  [Citrix Product Documentation](http://docs.citrix.com/en-us/xenserver.html)
+-  [Citrix Developer Documentation](http://developer-docs.citrix.com)
 
-We will start our tour of the API by describing the calls required to
-create a new VM on a XenServer installation, and take it through a
-start/suspend/resume/stop cycle. This is done without reference to code
-in any specific language; at this stage we just describe the informal
-sequence of RPC invocations that accomplish our "install and start"
+
+
+## Getting Started with the API
+
+Let's start our tour of the API by describing the calls required to
+create a VM on a XenServer installation, and take it through a
+start/suspend/resume/stop cycle. This section does not reference code
+in any specific language. At this stage we just describe the informal
+sequence of RPC invocations that do our "install and start"
 task.
 
 > **Note**
 >
-> We recommend strongly against using the `VM.create` call, which may be
+> We recommend strongly against using the `VM.create` call, which might be
 > removed or changed in a future version of the API. Read on to learn
 > other ways to make a new VM.
 
-### Authentication: acquiring a session reference 
+### Authentication: acquiring a session reference
 
-The first step is to call `Session.login_with_password(username,  password, client_API_version, originator)`. The API is session based, so before you can make other calls you will need to authenticate with the server. Assuming the
-username and password are authenticated correctly, the result of this
+The first step is to call `Session.login_with_password(username,  password, client_API_version, originator)`. The API is session based, so before you can make other calls you must authenticate with the server. Assuming the user name and password are authenticated correctly, the result of this
 call is a *session reference*. Subsequent API calls take the session
-reference as a parameter. In this way we ensure that only API users who
+reference as a parameter. In this way, we ensure that only API users who
 are suitably authorized can perform operations on a XenServer
 installation. You can continue to use the same session for any number of
 API calls. When you have finished the session, 
 recommends that you call `Session.logout(session)` to clean up: see
 later.
 
-### Acquiring a list of templates to base a new VM installation on 
+### Acquiring a list of templates to base a new VM installation on
 
 The next step is to query the list of "templates" on the host. Templates
-are specially-marked VM objects that specify suitable default parameters
-for a variety of supported guest types. (If you want to see a quick
+are specially marked VM objects that specify suitable default parameters
+for various supported guest types. (If you want to see a quick
 enumeration of the templates on a XenServer installation for
-yourself then you can execute the `xe template-list` CLI command.) To
-get a list of templates from the API, we need to find the VM objects on
+yourself, you can execute the `xe template-list` CLI command.) To
+get a list of templates from the API, find the VM objects on
 the server that have their `is_a_template` field set to true. One way to
-do this by calling `VM.get_all_records(session)` where the session parameter is the reference we acquired
+do find these objects is by calling `VM.get_all_records(session)` where the session parameter is the reference we acquired
 from our `Session.login_with_password` call earlier. This call queries the server, returning a
 snapshot (taken at the time of the call) containing all the VM object
 references and their field values.
 
-(Remember that at this stage we are not concerned about the particular
-mechanisms by which the returned object references and field values can
+(Remember that at this stage we are not concerned with how the returned object references and field values can
 be manipulated in any particular client language: that detail is dealt
-with by our language-specific API bindings and described concretely in
-the following chapter. For now it suffices just to assume the existence
+with by each language-specific SDK and described concretely in
+the following chapter. For now, assume the existence
 of an abstract mechanism for reading and manipulating objects and field
 values returned by API calls.)
 
-Now that we have a snapshot of all the VM objects' field values in the
-memory of our client application we can simply iterate through them and
-find the ones that have their `is_a_template` value set to `true`. At this
-stage let's assume that our example application further iterates through
+Now we have a snapshot of the VM objects' field values in the
+memory of our client application, iterate through them and
+find the VMs that have their `is_a_template` value set to `true`. At this
+stage, let's assume that our example application further iterates through
 the template objects and remembers the reference corresponding to the
 one that has its "`name_label`" set to "Debian Etch 4.0" (one of the
 default Linux templates supplied with XenServer).
@@ -124,17 +124,17 @@ default Linux templates supplied with XenServer).
 ### Installing the VM based on a template
 
 Continuing through our example, we must now install a new VM based on
-the template we selected. The installation process requires 2 API calls:
+the template we selected. The installation process requires two API calls:
 
--   First we must now invoke the API call
-    `VM.clone(session, t_ref, "my first VM")`. This tells the server to clone the VM object
-    referenced by `t_ref` in order to make a new VM object. The return
+-  First we must now invoke the API call
+    `VM.clone(session, t_ref, "my first VM")`. This call tells the server to clone the VM object
+    referenced by `t_ref` to make a new VM object. The return
     value of this call is the VM reference corresponding to the
-    newly-created VM. Let's call this `new_vm_ref`.
+    newly created VM. Let's call this `new_vm_ref`.
 
--   At this stage the object referred to by `new_vm_ref` is still a
-    template (just like the VM object referred to by `t_ref`, from which
-    it was cloned). To make `new_vm_ref` into a VM object we need to
+-  At this stage, the object referred to by `new_vm_ref` is still a
+    template (like the VM object referred to by `t_ref`, from which
+    it was cloned). To make `new_vm_ref` into a VM object, we must
     call `VM.provision(session, new_vm_ref)`. When this call returns the
     `new_vm_ref` object will have had its `is_a_template` field set to
     false, indicating that `new_vm_ref` now refers to a regular VM ready
@@ -142,252 +142,250 @@ the template we selected. The installation process requires 2 API calls:
 
 > **Note**
 >
-> The provision operation may take a few minutes, as it is as during
-> this call that the template's disk images are created. In the case of
+> The provision operation can take a few minutes, as it is as during
+> this call that the template's disk images are created. For
 > the Debian template, the newly created disks are also at this stage
 > populated with a Debian root filesystem.
 
-### Taking the VM through a start/suspend/resume/stop cycle 
+### Taking the VM through a start/suspend/resume/stop cycle
 
-Now we have an object reference representing our newly-installed VM, it
+Now we have an object reference representing our newly installed VM, it
 is trivial to take it through a few lifecycle operations:
 
--   To start our VM we can just call `VM.start(session, new_vm_ref)`
+-  To start our VM, we can call `VM.start(session, new_vm_ref)`
 
--   After it's running, we can suspend it by calling
+-  After it's running, we can suspend it by calling
     `VM.suspend(session, new_vm_ref)`,
 
--   and then resume it by calling `VM.resume(session, new_vm_ref)`.
+-  We can resume it by calling `VM.resume(session, new_vm_ref)`.
 
--   We can call `VM.shutdown(session, new_vm_ref)` to shutdown the VM
+-  We can call `VM.shutdown(session, new_vm_ref)` to shut down the VM
     cleanly.
 
-### Logging out 
+### Logging out
 
-Once an application is finished interacting with a XenServer Host
-it is good practice to call `Session.logout(session)`. This invalidates
+When an application is finished interacting with a XenServer Host,
+it is good practice to call `Session.logout(session)`. This call invalidates
 the session reference (so it cannot be used in subsequent API calls) and
-simultaneously deallocates server-side memory used to store the session
-object.
+deallocates server-side memory used to store the session object.
 
-Although inactive sessions will eventually timeout, the server has a
+Although inactive sessions eventually time out, the server has a
 hardcoded limit of 500 concurrent sessions for each `username` or
-`originator`. Once this limit has been reached fresh logins will evict
-the session objects that have been used least recently, causing their
-associated session references to become invalid. For successful
+`originator`. After this limit has been reached, fresh logins evict
+the session objects that have been used least recently. The session
+references of these evicted session objects become invalid. For successful
 interoperability with other applications, concurrently accessing the
 server, the best policy is:
 
--   Choose a string that identifies your application and its version.
+-  Choose a string that identifies your application and its version.
 
--   Create a single session at start-of-day, using that identifying
+-  Create a single session at start-of-day, using that identifying
     string for the `originator` parameter to `Session.login_with_password`.
 
--   Use this session throughout the application (note that sessions can
-    be used across multiple separate client-server *network
-    connections*) and then explicitly logout when possible.
+-  Use this session throughout the application and then explicitly logout when possible.
+
+    Note: Sessions can be used across multiple separate client-server *network
+    connections*.
 
 If a poorly written client leaks sessions or otherwise exceeds the
 limit, then as long as the client uses an appropriate `originator`
-argument, it will be easily identifiable from the XenServer logs
-and XenServer will destroy the longest-idle sessions of the rogue
-client only; this may cause problems for that client but not for other
-clients. If the misbehaving client did not specify an `originator`, it would be harder to identify and would cause
-the premature destruction of sessions of any clients that also did not
+argument, it is easily identifiable from the XenServer logs.
+XenServer destroys the longest-idle sessions of the rogue
+client only. This behavior might cause problems for that client but not for other
+clients. If the misbehaving client doesn't specify an `originator`, it is harder to identify and causes
+the premature destruction of other client sessions that also didn't
 specify an `originator`
 
-### Install and start example: summary 
+### Install and start example: summary
 
 We have seen how the API can be used to install a VM from a
-XenServer template and perform a number of lifecycle operations on
-it. You will note that the number of calls we had to make in order to
+XenServer template and perform various lifecycle operations on
+it. Note that the number of calls we had to make to
 affect these operations was small:
 
--   One call to acquire a session: `Session.login_with_password()`
+-  One call to acquire a session: `Session.login_with_password()`
 
--   One call to query the VM (and template) objects present on the
+-  One call to query the VM (and template) objects present on the
     XenServer installation: `VM.get_all_records()`. Recall that we
     used the information returned from this call to select a suitable
     template to install from.
 
--   Two calls to install a VM from our chosen template: `VM.clone()`,
+-  Two calls to install a VM from our chosen template: `VM.clone()`,
     followed by `VM.provision()`.
 
--   One call to start the resultant VM: `VM.start()` (and similarly
-    other single calls to suspend, resume and shutdown accordingly)
+-  One call to start the resultant VM: `VM.start()` (and similarly
+    other single calls to suspend, resume, and shut down accordingly)
 
--   And then one call to logout `Session.logout()`
+-  And then one call to log out `Session.logout()`
 
-The take-home message here is that, although the API as a whole is
-complex and fully featured, common tasks (such as creating and
-performing lifecycle operations on VMs) are very straightforward to
-perform, requiring only a small number of simple API calls. Keep this in
-mind while you study the next section which may, on first reading,
+Although the API as a whole is
+complex and fully featured, common tasks (such as VM
+lifecycle operations) are straightforward, requiring only a few simple API calls.
+Keep this fact in mind as you study the next section which might, on first reading,
 appear a little daunting!
 
-Object Model Overview 
----------------------
+## Object Model Overview
 
 This section gives a high-level overview of the object model of the API.
-A more detailed description of the parameters and methods of each class
-outlined here can be found in the XenServer API Reference document.
+For a more detailed description of the parameters and methods of each class, see the XenServer API Reference document.
 
 We start by giving a brief outline of some of the core classes that make
-up the API. (Don't worry if these definitions seem somewhat abstract in
-their initial presentation; the textual description in subsequent
-sections, and the code-sample walk through in the next Chapter will help
+up the API. (Don't worry if these definitions seem abstract in
+their initial presentation. The textual description in the following
+sections, and the code-sample walk through in the next Chapter
 make these concepts concrete.)
 
 --------------------------
 
-#### VM                                    
+### VM
 
 A VM object represents a particular virtual machine instance on a XenServer Host or Resource Pool. Example
 methods include `start`, `suspend`, `pool_migrate`; example parameters include `power_state`, `memory_static_max`, and `name_label`. (In the previous section we saw how the VM class is used to represent both templates and regular VMs)
 
-#### Host
+### Host
 
 A host object represents a physical host in a XenServer pool. Example methods include `reboot` and `shutdown`. Example parameters include `software_version`, `hostname`, and \[IP\]`address`.
 
-#### VDI
+### VDI
 
-A VDI object represents a *Virtual Disk Image*. Virtual Disk Images can be attached to VMs, in which case a
-block device appears inside the VM through which the bits encapsulated by the Virtual Disk Image can be read
-and written. Example methods of the VDI class include "resize" and "clone". Example fields include
-"virtual\_size" and "sharable". (When we called `VM.provision` on the VM template in our previous example, some VDI objects were automatically created to
-represent the newly created disks, and attached to the VM object.)
+A VDI object represents a *Virtual Disk Image*. Virtual Disk Images can be attached to VMs. A
+block device appears inside the VM through which the bits encapsulated by the attached Virtual Disk Image can be read
+and written. Example methods of the VDI class include `resize` and `clone`. Example fields include
+`virtual_size` and `sharable`.
+When we called `VM.provision` on the VM template in our previous example, some VDI objects were automatically created to
+represent the newly created disks. These VDIs were attached to the VM object.
 
-####  SR
+### SR
 
-An SR (*Storage Repository*) aggregates a collection of VDIs and encapsulates the properties of physical
-storage on which the VDIs' bits reside. Example parameters include `type` (which determines the storage-specific driver a XenServer installation uses to read/write
-the SR's VDIs) and `physical_utilisation`; example methods include `scan` (which invokes the storage-specific
-driver to acquire a list of the VDIs contained with the SR and the properties of these VDIs) and `create` (which initializes a block of physical storage so it is ready to store VDIs).
+An SR (*Storage Repository*) aggregates a collection of VDIs, It encapsulates the properties of physical
+storage on which the VDIs' bits reside. Example parameters include:
 
-####  Network
+-  `type` which determines the storage-specific driver a XenServer installation uses to read/write the SR's VDIs
+-  `physical_utilisation`
+
+Example methods include
+
+-  `scan` which invokes the storage-specific driver to acquire a list of the VDIs contained with the SR and the properties of these VDIs
+-  `create` which initializes a block of physical storage so it is ready to store VDIs
+
+### Network
 
 A network object represents a layer-2 network that exists in the environment in which the XenServer Host
-instance lives. Since XenServer does not manage networks directly this is a lightweight class that serves
-merely to model physical and virtual network topology. VM and Host objects that are *attached* to a particular
-Network object (by virtue of VIF and PIF instances -- see below) can send network packets to each other. 
- 
-----------------
+instance lives. Since XenServer does not manage networks directly, network is a lightweight class that models
+ physical and virtual network topology. VM and Host objects that are *attached* to a particular
+Network object can send network packets to each other. The objects are attached through VIF and PIF instances. For more information, see the following section.
 
-At this point, readers who are finding this enumeration of classes
-rather terse may wish to skip to the code walk-throughs of the next
-chapter: there are plenty of useful applications that can be written
-using only a subset of the classes already described! For those who wish
+--------------------------
+
+If you are finding this enumeration of classes rather terse, you can skip to the code walk-throughs of the next
+chapter. There are plenty of useful applications that can be written
+using only a subset of the classes already described. If you want
 to continue this description of classes in the abstract, read on.
 
-On top of the classes listed above, there are 4 more that act as
-*connectors*, specifying relationships between VMs and Hosts, and
-Storage and Networks. The first 2 of these classes that we will
-consider, *VBD* and *VIF*, determine how VMs are attached to virtual
-disks and network objects respectively:
+In addition to the classes listed in the previous section, there are four more that act as
+*connectors*. These *connectors* specify relationships between VMs and Hosts and
+Storage and Networks.
+The first two of these classes that we consider, *VBD* and *VIF*, determine how VMs are attached to virtual
+disks and network objects respectively.
 
------------------- 
+--------------------------
 
-#### VBD 
+### VBD
 
 A VBD (*Virtual Block Device*) object represents an
-attachment between a VM and a VDI. When a VM is booted
+attachment between a VM and a VDI. When a VM is booted,
 its VBD objects are queried to determine which disk
-images (VDIs) should be attached. Example methods of
-the VBD class include "plug" (which *hot plugs* a disk
-device into a running VM, making the specified VDI
-accessible therein) and "unplug" (which *hot unplugs*
-a disk device from a running guest); example fields
-include "device" (which determines the device name
-inside the guest under which the specified VDI will be
-made accessible).
+images (VDIs) to attach.
+Example methods of the VBD class include:
 
-#### VIF
+-  `plug` which *hot plugs* a disk device into a running VM, making the specified VDI accessible therein
+-  `unplug` which *hot unplugs* a disk device from a running guest
 
-A VIF (*Virtual network InterFace*) object represents
+Example fields include:
+
+-  `device` which determines the device name inside the guest under which the specified VDI is made accessible
+
+### VIF
+
+A VIF (*Virtual Network Interface*) object represents
 an attachment between a VM and a Network object. When
-a VM is booted its VIF objects are queried to
-determine which network devices should be created.
-Example methods of the VIF class include "plug" (which
-*hot plugs* a network device into a running VM) and
-"unplug" (which *hot unplugs* a network device from a
-running guest).
+a VM is booted, its VIF objects are queried to
+determine which network devices to create.
+Example methods of the VIF class include:
 
------------------- ------------------------------------------------------
+-  `plug` which *hot plugs* a network device into a running VM
+-  `unplug` which *hot unplugs* a network device from a running guest
 
-The second set of "connector classes" that we will consider determine
+--------------------------
+
+The second set of "connector classes" that we consider determine
 how Hosts are attached to Networks and Storage.
 
----------------------- 
+--------------------------
 
-#### PIF
+### PIF
 
-A PIF (*Physical InterFace*) object represents an attachment
+A PIF (*Physical Interface*) object represents an attachment
 between a Host and a Network object. If a host is connected to a
-Network (over a PIF) then packets from the specified host can be
-transmitted/received by the corresponding host. Example fields of
-the PIF class include "device" (which specifies the device name to
-which the PIF corresponds -- e.g. *eth0*) and "MAC" (which
-specifies the MAC address of the underlying NIC that a PIF
-represents). Note that PIFs abstract both physical interfaces and
-VLANs (the latter distinguished by the existence of a positive
+Network over a PIF, packets from the specified host can be
+transmitted/received by the corresponding host.
+Example fields of the PIF class include:
+
+-  `device` which specifies the device name to which the PIF corresponds. For example, *eth0*
+-  `MAC` which specifies the MAC address of the underlying NIC that a PIF represents
+
+PIFs abstract both physical interfaces and VLANs (the latter distinguished by the existence of a positive
 integer in the "VLAN" field).
 
-####  PBD
+### PBD
 
 A PBD (*Physical Block Device*) object represents an attachment
-between a Host and a SR (Storage Repository) object. Fields
-include "currently-attached" (which specifies whether the chunk of
-storage represented by the specified SR object) is currently
-available to the host; and "device\_config" (which specifies
-storage-driver specific parameters that determines how the
-low-level storage devices are configured on the specified host --
-e.g. in the case of an SR rendered on an NFS filer, device\_config
-may specify the host-name of the filer and the path on the filer
-in which the SR files live.)
+between a Host and an SR (Storage Repository) object. Fields
+include:
 
----------------------- 
+-  `currently-attached` which specifies whether the chunk of storage represented by the specified SR object is available to the host
+-  `device_config` which specifies storage-driver specific parameters that determine how the low-level storage devices are configured on the specified host.
+    For example, when an SR rendered on an NFS filer, device\_config can specify the host-name of the filer and the path on the filer in which the SR files live.
+
+--------------------------
 
 ![Common API Classes](images/dia_class_overview.png)
 
 This figure presents a graphical overview of
-the API classes involved in managing VMs, Hosts, Storage and Networking.
+the API classes involved in managing VMs, Hosts, Storage, and Networking.
 From this diagram, the symmetry between storage and network
 configuration, and also the symmetry between virtual machine and host
 configuration is plain to see.
 
-Working with VIFs and VBDs 
---------------------------
+## Working with VIFs and VBDs
 
-In this section we walk through a few more complex scenarios, describing
-informally how various tasks involving virtual storage and network
-devices can be accomplished using the API.
+In this section we walk through a few more complex scenarios. These scenarios describe
+how various tasks involving virtual storage and network devices can be done using the API.
 
-### Creating disks and attaching them to VMs 
+### Creating disks and attaching them to VMs
 
 Let's start by considering how to make a new blank disk image and attach
-it to a running VM. We will assume that we already have ourselves a
-running VM, and we know its corresponding API object reference (e.g. we
-may have created this VM using the procedure described in the previous
-section, and had the server return its reference to us.) We will also
-assume that we have authenticated with the XenServer installation
+it to a running VM. We assume that we already have a
+running VM, and we know its corresponding API object reference. For example, we
+might have created this VM using the procedure described in the previous
+section and had the server return its reference to us.
+We also assume that we have authenticated with the XenServer installation
 and have a corresponding `session reference`. Indeed in the rest of this
-chapter, for the sake of brevity, we will stop mentioning sessions
+chapter, for the sake of brevity, does not mention sessions
 altogether.
 
-#### Creating a new blank disk image 
+#### Creating a new blank disk image
 
-The first step is to instantiate the disk image on physical storage. We
-do this by calling `VDI.create()`. The `VDI.create` call takes a number
-of parameters, including:
+First, instantiate the disk image on physical storage by calling `VDI.create()`.
+The `VDI.create` call takes a number of parameters, including:
 
--   `name_label` and `name_description`: a human-readable
-    name/description for the disk (e.g. for convenient display in the UI
-    etc.). These fields can be left blank if desired.
+-  `name_label` and `name_description`: a human-readable
+    name/description for the disk (for example, for convenient display in the UI). These fields can be left blank if desired.
 
--   `SR`: the object reference of the Storage Repository representing
-    the physical storage in which the VDI's bits will be placed.
+-  `SR`: the object reference of the Storage Repository representing
+    the physical storage in which the VDI's bits are placed.
 
--   `read_only`: setting this field to true indicates that the VDI can
+-  `read_only`: setting this field to true indicates that the VDI can
     *only* be attached to VMs in a read-only fashion. (Attempting to
     attach a VDI with its `read_only` field set to true in a read/write fashion results
     in error.)
@@ -421,19 +419,19 @@ The attachment is formed by creating a new "connector" object called a
 VBD (*Virtual Block Device*). To create our VBD we invoke the
 `VBD.create()` call. The `VBD.create()` call takes a number of parameters including:
 
--   `VM` - the object reference of the VM to which the VDI is to be
+-  `VM` - the object reference of the VM to which the VDI is to be
     attached
 
--   `VDI` - the object reference of the VDI that is to be attached
+-  `VDI` - the object reference of the VDI that is to be attached
 
--   `mode` - specifies whether the VDI is to be attached in a read-only
+-  `mode` - specifies whether the VDI is to be attached in a read-only
     or a read-write fashion
 
--   `userdevice` - specifies the block device inside the guest through
+-  `userdevice` - specifies the block device inside the guest through
     which applications running inside the VM will be able to read/write
     the VDI's bits.
 
--   `type` - specifies whether the VDI should be presented inside the VM
+-  `type` - specifies whether the VDI should be presented inside the VM
     as a regular disk or as a CD. (Note that this particular field has
     more meaning for Windows VMs than it does for Linux VMs, but we will
     not explore this level of detail in this chapter.)
@@ -450,11 +448,11 @@ the VBD object's `currently_attached` field is set to false.
 
 For expository purposes, this figure presents
 a graphical example that shows the relationship between VMs, VBDs, VDIs
-and SRs. In this instance a VM object has 2 attached VDIs: there are 2
+and SRs. In this instance a VM object has 2 attached VDIs: there are two
 VBD objects that form the connections between the VM object and its
 VDIs; and the VDIs reside within the same SR.
 
-#### Hotplugging the VBD 
+#### Hotplugging the VBD
 
 If we rebooted the VM at this stage then, after rebooting, the block
 device corresponding to the VBD would appear: on boot, XenServer
@@ -475,7 +473,7 @@ Invoking the `unplug` method on a VBD object causes the associated block
 device to be *hot unplugged* from a running VM, setting the
 `currently_attached` field of the VBD object to false accordingly.
 
-### Creating and attaching Network Devices to VMs 
+### Creating and attaching Network Devices to VMs
 
 The API calls involved in configuring virtual network interfaces in VMs
 are similar in many respects to the calls involved in configuring
@@ -510,7 +508,6 @@ two analogous classes: PBD (*Physical Block Device*) and PIF (*Physical
 Let us start by considering the PBD class. A `PBD_create()` call takes a
 number of parameters including:
 
- 
 |  Parameter                     |  Description                                                                               |
 |--------------------------------|--------------------------------------------------------------------------------------------|
 |  host                          |  physical machine on which the PBD is available                                            |
@@ -533,7 +530,7 @@ Like VBD objects, PBD objects also have a field called `currently_attached`. Sto
 and detached from a given host by invoking `PBD.plug` and `PBD.unplug`
 methods respectively.
 
-#### Host networking configuration: PIFs 
+#### Host networking configuration: PIFs
 
 Host network configuration is specified by virtue of PIF objects. If a
 PIF object connects a network object, *n*, to a host object *h*, then
@@ -546,8 +543,7 @@ network *n*, and that `device` field of the PIF object is set to `eth0`.
 This means that all packets on network *n* are bridged to the NIC in the
 host corresponding to host network device `eth0`.
 
-Exporting and Importing VMs 
----------------------------
+## Exporting and Importing VMs
 
 VMs can be exported to a file and later imported to any XenServer
 host. The export protocol is a simple HTTP(S) GET, which should be
@@ -566,7 +562,6 @@ The following arguments are passed on the command line:
 |  task\_id            | the reference of the task object with which to keep track of the operation; optional, required only if you have created a task object to keep track of the export |
 |  ref                 | the reference of the VM; required only if not using the UUID |
 |  uuid                | the UUID of the VM; required only if not using the reference |
-  
 
 For example, using the Linux command line tool cURL:
 
@@ -580,13 +575,11 @@ The import protocol is similar, using HTTP(S) PUT. The `session_id` and
 `task_id` arguments are as for the export. The `ref` and `uuid` are not used; a new reference and uuid will be generated for the
 VM. There are some additional parameters:
 
-  
 | Argument             | Description
 |----------------------|----------------------------------------------------
 | restore              | if *true*, the import is treated as replacing the original VM - the implication of this currently is that the MAC addresses on the VIFs are exactly as the export was, which will lead to conflicts if the original VM is still being run. |
 | force                | if *true*, any checksum failures will be ignored (the default is to destroy the VM if a checksum error is detected) |
 | sr\_id               | the reference of an SR into which the VM should be imported. The default behavior is to import into the *Pool.default\_SR*. |
-
 
 For example, again using cURL:
 
@@ -607,7 +600,7 @@ This command will import the VM to the specified SR on the server.
 
 To import just the metadata, use the URI `http://server/import_metadata`
 
-### Xen Virtual Appliance (XVA) VM Import Format 
+### Xen Virtual Appliance (XVA) VM Import Format
 
 XenServer supports a human-readable legacy VM input format called
 XVA. This section describes the syntax and structure of XVA.
@@ -628,13 +621,13 @@ instantiation may have a different runtime format.
 
 XVA does not:
 
--   specify any particular serialization or transport format
+-  specify any particular serialization or transport format
 
--   provide any mechanism for customizing VMs (or templates) on install
+-  provide any mechanism for customizing VMs (or templates) on install
 
--   address how a VM may be upgraded post-install
+-  address how a VM may be upgraded post-install
 
--   define how multiple VMs, acting as an appliance, may communicate
+-  define how multiple VMs, acting as an appliance, may communicate
 
 These issues are all addressed by the related Open Virtual Appliance
 specification.
@@ -647,10 +640,10 @@ from the ova.xml. The format of disk data is described later in Section
 
 The following terms will be used in the rest of the chapter:
 
--   HVM: a mode in which unmodified OS kernels run with the help of
+-  HVM: a mode in which unmodified OS kernels run with the help of
     virtualization support in the hardware.
 
--   PV: a mode in which specially modified "paravirtualized" kernels run
+-  PV: a mode in which specially modified "paravirtualized" kernels run
     explicitly on top of a hypervisor without requiring hardware support
     for virtualization.
 
@@ -694,20 +687,24 @@ devices which look like the following:
 The attributes have the following meanings:
 
 **device**
-+   name of the physical device to expose to the VM. For linux guests we
+
+-  name of the physical device to expose to the VM. For linux guests we
     use "sd\[a-z\]" and for windows guests we use "hd\[a-d\]".
 
 **function**
-+   if marked as "root", this disk will be used to boot the guest. (NB
+
+-  if marked as "root", this disk will be used to boot the guest. (NB
     this does not imply the existence of the Linux root i.e. /
     filesystem) Only one device should be marked as "root". See Section
     3.4 describing VM booting. Any other string is ignored.
 
 **mode**
-+   either "w" or "ro" if the device is to be read/write or read-only
+
+-  either "w" or "ro" if the device is to be read/write or read-only
 
 **vdi**
-+   the name of the disk image (represented by a &lt;vdi&gt; element) to
+
+-  the name of the disk image (represented by a &lt;vdi&gt; element) to
     which this block device is connected
 
 Each &lt;vm&gt; may have an optional &lt;hacks&gt; section like the
@@ -727,16 +724,16 @@ zero or more &lt;vdi&gt; elements like the following:
 Each &lt;vdi&gt; corresponds to a disk image. The attributes have the
 following meanings:
 
--   name: name of the VDI, referenced by the vdi attribute of
+-  name: name of the VDI, referenced by the vdi attribute of
     &lt;vbd&gt; elements. Any valid UTF-8 string is permitted.
 
--   size: size of the required image in bytes
+-  size: size of the required image in bytes
 
--   source: a URI describing where to find the data for the image, only
+-  source: a URI describing where to find the data for the image, only
     file:// URIs are currently permitted and must describe paths
     relative to the directory containing the ova.xml
 
--   type: describes the format of the disk data 
+-  type: describes the format of the disk data
 
 A single disk image encoding is specified in which has type
 "dir-gzipped-chunks": Each image is represented by a directory
@@ -751,7 +748,6 @@ containing a sequence of files as follows:
     -rw-r--r-- 1 dscott xendev 971976 Sep 18 09:53 chunk000000006.gz
     -rw-r--r-- 1 dscott xendev 971976 Sep 18 09:53 chunk000000007.gz
     -rw-r--r-- 1 dscott xendev 573930 Sep 18 09:53 chunk000000008.gz
-            
 
 Each file (named "chunk-XXXXXXXXX.gz") is a gzipped file containing
 exactly 1e9 bytes (1GB, not 1GiB) of raw block data. The small size was
@@ -773,24 +769,27 @@ one virtual CPU.
 At the topmost level the simple Debian VM is represented by a single
 directory:
 
+```bash
     $ ls -l
     total 4
     drwxr-xr-x 3 dscott xendev 4096 Oct 24 09:42 very simple Debian VM
-            
+```
 
 Inside the main XVA directory are two sub-directories - one per disk -
 and the single file: ova.xml:
 
+```bash
     $ ls -l very\ simple\ Debian\ VM/
     total 8
     -rw-r--r-- 1 dscott xendev 1016 Oct 24 09:42 ova.xml
     drwxr-xr-x 2 dscott xendev 4096 Oct 24 09:42 sda
     drwxr-xr-x 2 dscott xendev 4096 Oct 24 09:53 sdb
-            
+```
 
 Inside each disk sub-directory are a set of files, each file contains
 1GB of raw disk block data compressed using gzip:
 
+```bash
     $ ls -l very\ simple\ Debian\ VM/sda/
     total 2053480
     -rw-r--r-- 1 dscott xendev 202121645 Oct 24 09:43 chunk-000000000.gz
@@ -799,15 +798,17 @@ Inside each disk sub-directory are a set of files, each file contains
     -rw-r--r-- 1 dscott xendev 389585534 Oct 24 09:50 chunk-000000003.gz
     -rw-r--r-- 1 dscott xendev 624567877 Oct 24 09:53 chunk-000000004.gz
     -rw-r--r-- 1 dscott xendev 150351797 Oct 24 09:54 chunk-000000005.gz
-            
+```
 
+```bash
     $ ls -l very\ simple\ Debian\ VM/sdb
     total 516
     -rw-r--r-- 1 dscott xendev 521937 Oct 24 09:54 chunk-000000000.gz
-            
+```
 
 The example simple Debian VM would have an XVA file like the following:
 
+```xml
     <?xml version="1.0" ?>
     <appliance version="0.1">
       <vm name="vm">
@@ -827,19 +828,15 @@ The example simple Debian VM would have an XVA file like the following:
       <vdi name="vdi_sda" size="5368709120" source="file://sda" type="dir-gzippedchunks"/>
       <vdi name="vdi_sdb" size="536870912" source="file://sdb" type="dir-gzippedchunks"/>
     </appliance>
-            
+```
 
-XML-RPC notes
--------------
+## RPC notes
 
 ### Datetimes
 
-The API deviates from the XML-RPC specification in handling of
-datetimes. The API appends a "Z" to the end of datetime strings, which
-is meant to indicate that the time is expressed in UTC.
+The API deviates from the RPC specification in handling of datetimes. The API appends a "Z" to the end of datetime strings, which is meant to indicate that the time is expressed in UTC.
 
-Where to look next 
-------------------
+## Where to look next
 
 In this chapter we have presented a brief high-level overview of the API
 and its object-model. The aim here is not to present the detailed
@@ -849,19 +846,17 @@ around the more detailed XenServer API Reference document.
 
 There are a number of places you can find more information:
 
--   The XenServer Administrators Guide contains an overview of the
+-  The XenServer Administrators Guide contains an overview of the
     `xe` CLI. Since a good deal of `xe` commands are a thin veneer over
     the API, playing with `xe` is a good way to start finding your way
     around the API object model described in this chapter.
 
--   The code samples in the next chapter provide some concrete instances
+-  The code samples in the next chapter provide some concrete instances
     of API coding in a variety of client languages.
 
--   The XenServer API Reference document provides a more detailed
-    description of the API semantics as well as describing the format of
-    XML/RPC messages on the wire.
+-  The XenServer API Reference document provides a more detailed description of the API semantics as well as the wire protocol of the RPC messages.
 
--   There are a few scripts that use the API in the XenServer Host
+-  There are a few scripts that use the API in the XenServer Host
     dom0 itself. For example, "/opt/xensource/libexec/shutdown" is a
     python program that cleanly shuts VMs down. This script is invoked
     when the host itself is shut down.
