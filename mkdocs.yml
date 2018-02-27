@@ -9,7 +9,7 @@ markdown_extensions:
   - meta
 
 pages:
-- Introduction: index.md
+- Citrix XenServer 7.4 CR Software Development Kit Guide: index.md
 - Getting Started: getting-started.md
 - Overview: overview.md
 - Using: using.md
