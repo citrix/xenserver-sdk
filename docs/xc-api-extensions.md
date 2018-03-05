@@ -1,21 +1,17 @@
-XenCenter API Extensions 
-=============================
+# XenCenter API Extensions
 
 The following section details the assumptions and API extensions that we
 have made, over and above the documented API. Extensions are encoded as
 particular key-value pairs in dictionaries such as `VM.other_config`.
 
-Pool 
-----
+## Pool
 
 |  Key                                  | Semantics                                                                        |
 |---------------------------------------| ---------------------------------------------------------------------------------|
 |  pool.name\_label                     | An empty name\_label indicates that the pool should be hidden on the tree view.  |
 |  pool.rolling\_upgrade\_in\_progress  | Present if the pool is in the middle of a rolling upgrade.                       |
 
-Host 
-----
-
+## Host
 
 | Key                                          | Semantics                                                                              |
 |----------------------------------------------|----------------------------------------------------------------------------------------|
@@ -35,12 +31,9 @@ Host
 | host.logging\["syslog\_destination"\]        | Gets or sets the destination for the XenServer system logger (null for local logging). |
 | host.logging\["multipathing"\]               | "true" if storage multipathing is enabled on this host.                                |
 | host.logging\["boot\_time"\]                 | A floating point Unix time giving the time that the host booted.                       |
-| host.logging\["agent\_start\_time"\]         | A floating point Unix time giving the time that the control domain management daemon started. 
+| host.logging\["agent\_start\_time"\]         | A floating point Unix time giving the time that the control domain management daemon started.|
 
-
-VM
---
-
+## VM
 
 | Key                                         | Semantics                                                                                      |
 |---------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -60,46 +53,36 @@ VM
 | VM.other\_config\["p2v\_source\_machine"\]  | The source machine, if this VM was imported by a P2V process.                                  |
 | VM.other\_config\["p2v\_import\_date"\]     | The date the VM was imported, if it was imported by a P2V process. Formatted as a UTC ISO8601 datetime.     |
 
-
-SR 
---
+## SR
 
 |  Key                              | Semantics                                                                                           |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------|
 |  SR.other\_config\["auto-scan"\]  | The SR will be automatically scanned for changes. Set on all SRs created by XenCenter.    |
 |  SR.sm\_config\["type"\]          | Set as type `cd` for SRs which are physical CD drives.                                              |
 
+## VDI
 
-VDI
----
-
-|  Key                           | Semantics                                                                                                                                     |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+|  Key                           | Semantics                                                                                                                                  |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |  VDI.type                      | `user` instead of `system` is used to mean "do or do not allow deletion of the VDI through the GUI, if this disk is attached to a VM". The intention here is to prevent you from corrupting a VM (you should uninstall it instead). `suspend` and `crashdump` record suspend and core dumps respectively. `ephemeral` is currently unused. |
 |  VDI.managed                   | All unmanaged VDIs are completely hidden in the UI. These are branch points in VHD chains, or unused LUN-per-VDI disks.                       |
 |  VDI.sm\_config\["vmhint"\]    | The UUID of the VM that this VDI supports. This is set when VDIs are created through the user interface, to improve performance for certain storage backends. |
 
-
-VBD 
----
+## VBD
 
 |  Key                              |  Semantics                                                                                                   |
 |-----------------------------------|--------------------------------------------------------------------------------------------------------------|
 | VBD.other\_config\["is\_owner"\]  | If set, then this disk may be deleted when the VM is uninstalled.                                            |
 | VBD.other\_config\["class"\]      | Set to an integer, corresponding to the Best Effort setting of `ionice`.                                     |
 
-
-Network 
--------
+## Network
 
 |  Key                                        | Semantics                                                                |
 |---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
 |  network.other\_config\["automatic"\]       | The New VM wizard will create a VIF connected to this network by default, if this key has any value other than `false`. |
 |  network.other\_config\["import\_task"\]    | Gets the import task that created this network.                                                                         |
 
-
-VM\_guest\_metrics 
-------------------
+## VM\_guest\_metrics
 
 |  Key                              | Semantics                                                         |
 |-----------------------------------|-------------------------------------------------------------------|
@@ -107,9 +90,7 @@ VM\_guest\_metrics
 |  PV\_drivers\_version\["minor"\]  | Gets the minor version of the VM's PV drivers' version.           |
 |  PV\_drivers\_version\["micro"\]  | Gets the micro (build number) of the VM's PV drivers' version.    |
 
-
-Task
-----
+## Task
 
 |  Key                                                   |     Semantics                                                              |
 |--------------------------------------------------------|----------------------------------------------------------------------------|

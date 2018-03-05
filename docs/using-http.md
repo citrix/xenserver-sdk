@@ -1,12 +1,10 @@
-Using HTTP to interact with XenServer
-==========================================
+# Using HTTP to interact with XenServer
 
 XenServer exposes an HTTP interface on each host, that can be used
 to perform various operations. This chapter describes the available
 mechanisms.
 
-VM Import and Export
---------------------
+## VM Import and Export
 
 Because the import and export of VMs can take some time to complete, an
 asynchronous HTTP interface to the import and export operations is
@@ -14,19 +12,20 @@ provided. To perform an export using the XenServer API, construct
 an HTTP GET call providing a valid session ID, task ID and VM UUID, as
 shown in the following pseudo code:
 
+```python
     task = Task.create()
     result = HTTP.get(server, 80, "/export?session_id=session_id&task_id=task_id&ref=vm_uuid");
-          
+```
 
 For the import operation, use an HTTP PUT call as demonstrated in the
 following pseudo code:
 
+```python
     task = Task.create()
     result = HTTP.put(server, 80, "/import?session_id=session_id&task_id=task_id&ref=vm_uuid");
-          
+```
 
-Getting XenServer Performance Statistics 
----------------------------------------------
+## Getting XenServer Performance Statistics
 
 XenServer records statistics about the performance of various
 aspects of your XenServer installation. The metrics are stored
@@ -65,13 +64,13 @@ Statistics are persisted for a maximum of one year, and are stored at
 different granularities. The average and most recent values are stored
 at intervals of:
 
--   5 seconds for the past 10 minutes
+-  5 seconds for the past 10 minutes
 
--   one minute for the past 2 hours
+-  one minute for the past 2 hours
 
--   one hour for the past week
+-  one hour for the past week
 
--   one day for the past year
+-  one day for the past year
 
 RRDs are saved to disk as uncompressed XML. The size of each RRD when
 written to disk ranges from 200KiB to approximately 1.2MiB when the RRD
@@ -109,7 +108,7 @@ The step will decrease as the period decreases, which means that if you
 request statistics for a shorter time period you will get more detailed
 statistics.
 
-**Additional rrd\_updates parameters**
+### Additional rrd\_updates parameters
 
 `cf= ave|min|max`:   the data consolidation mode
 
