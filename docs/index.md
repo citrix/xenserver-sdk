@@ -1,8 +1,6 @@
-Citrix XenServer 7.4 Software Development Kit Guide
-==============================================
+# Citrix XenServer 7.5 Software Development Kit Guide
 
-Introduction
-------------
+## Introduction
 
 Welcome to the developer's guide for XenServer. Here you will find
 the information you need in order to understand and use the Software

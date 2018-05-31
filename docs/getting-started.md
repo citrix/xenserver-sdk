@@ -1,108 +1,107 @@
-Getting Started
-===============
+# Getting Started
 
-XenServer includes a XML-RPC based API providing programmatic
+XenServer includes a Remote Procedure Call (RPC) based API providing programmatic
 access to the extensive set of XenServer management features and
-tools. The XenServer API can be called from a remote system as well
-as local to the XenServer host. Although it is possible to write
-applications which use the XenServer Management API directly
-through raw XML-RPC calls, the task of developing third-party
-applications is greatly simplified through the use of a language binding
-which exposes the individual API calls as first-class functions in the
+tools. You can call the XenServer API from a remote system or
+from local to the XenServer host.
+
+It's possible to write applications that use the XenServer Management
+API directly through raw RPC calls. However, the task of developing third-party
+applications is greatly simplified by using a language binding. These language
+bindings expose the individual API calls as first-class functions in the
 target language. The XenServer SDK provides language bindings and
-example code for the C, C\#, Java, Python and PowerShell programming
+example code for the C, C\#, Java, Python, and PowerShell programming
 languages.
 
-System Requirements and Preparation
------------------------------------
+## System Requirements and Preparation
 
-The first step towards working with the SDK is to install
-XenServer. A free version, , is available for
-download at <http://www.citrix.com/downloads/xenserver/>. Please refer
-to the XenServer Installation Guide for detailed instructions on
-how to set up your development host. When the installation is complete,
-please note the *host IP address* and the *host password*.
+The first step towards using the SDK is to install
+XenServer. XenServer is available for
+download at <http://www.citrix.com/downloads/xenserver/>. For detailed instructions on
+how to set up your development host, see the XenServer Installation Guide.
+When the installation is complete, note the *host IP address* and the *host password*.
 
-Downloading
------------
+## Downloading
 
 The SDK is packaged as a ZIP file and is available as a free download
 from <http://www.citrix.com/downloads/xenserver/>.
 
-SDK Languages 
--------------
+## SDK Languages
 
 The extracted contents of the SDK ZIP file are in the `XenServer-SDK`
 directory. The following is an overview of its structure. Where
-necessary, subdirectories have their own individual README files. It
-should be noted that the examples provided are not the same across all
-the language bindings, so, if you intend to use one binding, it is
-advisable to also browse the sample code available in the others.
+necessary, subdirectories have their own individual README files.
 
-At the top level of the XenServer-SDK directory the XenServer API
-Reference document has been included, which provides a more detailed
-description of the API semantics as well as describing the format of
-XML/RPC messages on the wire.
+>     **Note**: The examples provided aren't the same across all
+>     the SDK languages. If you intend to use one language, it's
+>     advisable to browse the sample code available in the others as well.
+
+The top level of the XenServer-SDK directory includes the XenServer API
+Reference document. This document describes in more detail the API semantics and
+the wire protocol of the RPC messages.
+
+The API supports two wire formats, one based upon XML-RPC and one based upon JSON-RPC (v1.0 and v2.0 are both recognised).
+The format supported by each of the SDK languages is specified in the following sections.
 
 ### C
 
 The XenServer-SDK directory contains the following folders that are
 relevant to C programmers:
 
--   `libxenserver`
+-  `libxenserver`
 
     The XenServer SDK for C.
 
-    -   `libxenserver/bin`
+    -  `libxenserver/bin`
 
         The libxenserver compiled binaries.
 
-    -   `libxenserver/src`
+    -  `libxenserver/src`
 
         The libxenserver source code and examples and a Makefile to build
-        them. Every API object is associated with a header file which
-        contains declarations for all that object's API functions; for
+        them. Every API object is associated with a header file, which
+        contains declarations for all that object's API functions. For
         example, the type definitions and functions required to invoke
         VM operations are all contained in `xen_vm.h`.
 
-#### C binding dependencies
+#### C SDK dependencies
 
+The C SDK supports the XML-RPC protocol.
 
-**Platform  supported**:
+**Platform supported**:
 
-+  Linux 
-+  Windows (under cygwin)           
+-  Linux
+-  Windows (under cygwin)
 
 **Library**:
 
-The language binding is generated as a `libxenserver.so` that is linked by C programs. 
+The library is generated as `libxenserver.so` that is linked by C programs.
 
 **Dependencies**:
 
- -   XML library (libxml2.so on GNU Linux)        
- -   Curl library (libcurl3.so)                 
-
+-  XML library (libxml2.so on GNU Linux)
+-  Curl library (libcurl3.so)
 
 **Examples**:
-The following simple examples are included with the C bindings:
+The following simple examples are included with the C SDK:
 
--   `test_vm_async_migrate`: demonstrates how to use asynchronous API
+-  `test_vm_async_migrate`: Shows how to use asynchronous API
     calls to migrate running VMs from a slave host to the pool master.
 
--   `test_vm_ops`: demonstrates how to query the capabilities of a host,
+-  `test_vm_ops`: Shows how to query the capabilities of a host,
     create a VM, attach a fresh blank disk image to the VM and then
-    perform various powercycle operations;
+    perform various powercycle operations.
 
--   `test_failures`: demonstrates how to translate error strings into
-    enum\_xen\_api\_failure, and vice versa;
+-  `test_failures`: Shows how to translate between error strings and
+    enum\_xen\_api\_failure.
 
--   `test_event_handling`: demonstrates how to listen for events on a
+-  `test_event_handling`: Shows how to listen for events on a
     connection.
 
--   `test_enumerate`: demonstrates how to enumerate the various API
+-  `test_enumerate`: Shows how to enumerate the various API
     objects.
 
--   `test_get_records`: demonstrates how to obtain information on API
+-  `test_get_records`: Shows how to obtain information on API
     objects such as hosts, VMs, and storage repositories.
 
 ### C &#35;
@@ -110,173 +109,190 @@ The following simple examples are included with the C bindings:
 The XenServer-SDK directory contains the following folders that are
 relevant to C\# programmers:
 
--   `XenServer.NET`
+-  `XenServer.NET`
 
     The XenServer SDK for C\#.NET.
 
-    -   `XenServer.NET/bin`
+    -  `XenServer.NET/bin`
 
         XenServer.NET ready compiled binaries.
 
-    -   `XenServer.NET/samples`
+    -  `XenServer.NET/samples`
 
         XenServer.NET examples shipped as a Microsoft Visual studio
         solution.
 
-    -   `XenServer.NET/src`
+    -  `XenServer.NET/src`
 
         XenServer.NET source code shipped as a Microsoft Visual Studio
-        project. Every API object is associated with one C\# file; for
-        example the functions implementing the VM operations are
+        project. Every API object is associated with one C\# file. For
+        example, the functions implementing the VM operations are
         contained within the file `VM.cs`.
 
-#### C\# binding dependencies
+#### C\# SDK dependencies
 
+The C\# SDK supports the JSON-RPC v2.0 protocol.
+The C\# SDK is backwards compatible and can be used to communicate with hosts running an older version of XenServer.
+For server versions prior to XenServer 7.3, the C# SDK uses the XML-RPC protocol, with the exception of XenServer 7.1 LTSR where the JSON-RPC v1.0 protocol is used.
 
 **Platform supported**:
-+  Windows with .NET version 4.5                                              
 
+-  Windows with .NET version 4.5
 
-**Library**:  
-+  The language binding is generated as a Dynamic Link Library `XenServer.dll` that can be referenced by C\# programs.
+**Library**:
 
-**Dependencies**: 
-+  `CookComputing.XMLRpcV2.dll` is needed for the XenServer.dll to be able to  communicate with the xml-rpc server. We ship a patched 2.5 version and  recommend that you use this one, though others may work.  
+-  The library is generated as a Dynamic Link Library `XenServer.dll` that C\# programs can reference.
+
+**Dependencies**:
+
+-  `Newtonsoft.Json.dll` is needed for the `XenServer.dll` to be able to communicate with the JSON-RPC backend. We ship a patched 10.0.2 version and recommend that you use this one, though others may work.
+
+-  `CookComputing.XMLRpcV2.dll` is needed for the `XenServer.dll` to be able to communicate with the XML-RPC backend. We ship a patched 2.5 version and recommend that you use this one, though others may work.
 
 **Examples**:
 
-Two examples are included with the C\# bindings in the directory
+The following examples are included with the C\# SDK in the directory
 `XenServer-SDK/XenServer.NET/samples` as separate projects of the
 `XenSdkSample.sln` solution:
 
--   `GetVariousRecords`: logs into a XenServer Host and displays
-    information about hosts, storage and virtual machines;
+-  `GetVariousRecords`: logs to a XenServer Host and displays
+    information about hosts, storage, and virtual machines;
 
--   `VmPowerStates`: logs into a XenServer Host, finds a VM and
-    takes it through the various power states. Requires a shut-down VM
+-  `VmPowerStates`: logs to a XenServer Host, finds a VM and
+    takes it through the various power states. Requires a shutdown VM
     to be already installed.
 
 ### Java
 
 The XenServer-SDK directory contains the following folders that are relevant to Java programmers:
 
--   `XenServerJava`
+-  `XenServerJava`
 
     The XenServer SDK for Java
 
-    -   `XenServerJava/bin`
+    -  `XenServerJava/bin`
 
         Java compiled binaries.
 
-    -   `XenServerJava/javadoc`
+    -  `XenServerJava/javadoc`
 
         Java documentation.
 
-    -   `XenServerJava/samples`
+    -  `XenServerJava/samples`
 
         Java examples.
 
-    -   `XenServerJava/src`
+    -  `XenServerJava/src`
 
         Java source code and a Makefile to build the code and the
-        examples. Every API object is associated with one Java file; for
+        examples. Every API object is associated with one Java file. For
         example the functions implementing the VM operations are
         contained within the file `VM.java`.
 
-#### Java binding dependencies
+#### Java SDK dependencies
+
+The Java SDK supports the XML-RPC protocol.
 
 **Platform supported**:
-+  Linux
-+  Windows
+
+-  Linux
+-  Windows
 
 **Library**:
-+  The language binding is generated as a Java Archive file `xenserver-7.4.jar` that is linked by Java programs.
+
+-  The language binding is generated as a Java Archive file `xenserver-.jar` that is linked by Java programs.
 
 **Dependencies**:
-+  `xmlrpc-client-3.1.jar`
-+  `xmlrpc-common-3.1.jar`
-+  `ws-commons-util-1.0.2.jar`
- 
+
+-  `xmlrpc-client-3.1.jar`
+-  `xmlrpc-common-3.1.jar`
+-  `ws-commons-util-1.0.2.jar`
+
 These jars are needed for the `xenserver.jar` to be able to communicate with the xml-rpc server. These jars are shipped alongside the `xenserver.jar`.
-  
+
 **Examples**:
 
-Running the main file `XenServer-SDK/XenServerJava/samples/RunTests.java` will run a series of examples included in the same directory:
+Running the main file `XenServer-SDK/XenServerJava/samples/RunTests.java` runs a series of examples included in the same directory:
 
--   `AddNetwork`: Adds a new internal network not attached to any NICs;
+-  `AddNetwork`: Adds a new internal network not attached to any NICs;
 
--   `SessionReuse`: Demonstrates how a Session object can be shared
-    between multiple Connections;
+-  `SessionReuse`: Shows how a Session object can be shared
+    among multiple Connections;
 
--   `AsyncVMCreate`: Makes asynchronously a new VM from a built-in
-    template, starts and stops it;
+-  `AsyncVMCreate`: Makes asynchronously a new VM from a built-in
+    template, starts, and stops it;
 
--   `VdiAndSrOps`: Performs various SR and VDI tests, including creating
+-  `VdiAndSrOps`: Performs various SR and VDI tests, including creating
     a dummy SR;
 
--   `CreateVM`: Creates a VM on the default SR with a network and DVD
+-  `CreateVM`: Creates a VM on the default SR with a network and DVD
     drive;
 
--   `DeprecatedMethod`: Tests a warning is displayed when a deprecated
+-  `DeprecatedMethod`: Tests a warning is displayed when a deprecated
     API method is called;
 
--   `GetAllRecordsOfAllTypes`: Retrieves all the records for all types
+-  `GetAllRecordsOfAllTypes`: Retrieves all the records for all types
     of objects;
 
--   `SharedStorage`: Creates a shared NFS SR;
+-  `SharedStorage`: Creates a shared NFS SR;
 
--   `StartAllVMs`: Connects to a host and tries to start each VM on it.
+-  `StartAllVMs`: Connects to a host and tries to start each VM on it.
 
 ### PowerShell
 
 The XenServer-SDK directory contains the following folders that are
 relevant to PowerShell users:
 
--   `XenServerPowerShell`
+-  `XenServerPowerShell`
 
     The XenServer SDK for PowerShell.
 
-    -   `XenServerPowerShell/XenServerPSModule`
+    -  `XenServerPowerShell/XenServerPSModule`
 
         The XenServer PowerShell module.
 
-    -   `XenServerPowerShell/samples`
+    -  `XenServerPowerShell/samples`
 
         PowerShell example scripts.
 
-    -   `XenServerPowerShell/src`
+    -  `XenServerPowerShell/src`
 
         C\# source code for the XenServer PowerShell cmdlets.
 
 Detailed installation instructions are provided within the README file
-accompanying the module. Once the module is installed, an overview of
-the cmdlets can be obtained by typing:
+accompanying the module. After the module is installed, you can obtain an overview of
+the cmdlets by typing:
 
     PS> Get-Help about_XenServer
 
-#### PowerShell binding dependencies
+#### PowerShell SDK dependencies
+
+The PowerShell module supports the same RPC protocols as the C# SDK.
+> **Note** This module is generally, but not fully, backwards compatible. To communicate with hosts running older versions of XenServer, it is advisable to use the module of the same version as the host.
 
 **Platform supported**:
-+  Windows with .NET Framework 4.5 and PowerShell v4.0
+
+-  Windows with .NET Framework 4.5 and PowerShell v4.0
 
 **Library**:
-+  `XenServerPSModule`
+
+-  `XenServerPSModule`
 
 **Dependencies**:
-+  `CookComputing.XMLRpcV2.dll` 
 
-This library is needed to be able to communicate with the xml-rpc server. We ship a patched 2.5 version and recommend that you use this one, though others may work.
-  
+-  `Newtonsoft.Json.dll` is needed for the module to be able to communicate with the JSON-RPC backend. We ship a patched 10.0.2 version and recommend that you use this one, though others may work.
+-  `CookComputing.XMLRpcV2.dll` is needed for the module to be able to communicate with the XML-RPC backend. We ship a patched 2.5 version and recommend that you use this one, though others may work.
+
 **Examples**:
 
-The following example scripts are included with the PowerShell bindings
+The following example scripts are included with the PowerShell module
 in the directory `XenServer-SDK/XenServerPowerShell/samples`:
 
--   `AutomatedTestCore.ps1`: demonstrates how to log into a
+-  `AutomatedTestCore.ps1`: Shows how to log into a
     XenServer host, create a storage repository and a VM, and then
     perform various powercycle operations.
 
--   `HttpTest.ps1`: demonstrates how to log into a XenServer host,
+-  `HttpTest.ps1`: Shows how to log into a XenServer host,
     create a VM, and then perform operations such as VM importing and
     exporting, patch upload, and retrieval of performance statistics.
 
@@ -285,81 +301,85 @@ in the directory `XenServer-SDK/XenServerPowerShell/samples`:
 The XenServer-SDK directory contains the following folders that are
 relevant to Python developers:
 
--   `XenServerPython`
+-  `XenServerPython`
 
     This directory contains the XenServer Python module
     *XenAPI.py*.
 
-    -   `XenServerPython/samples`
+    -  `XenServerPython/samples`
 
         XenServer API examples using Python.
 
-#### Python binding dependencies
+#### Python module dependencies
+
+The Python module supports the XML-RPC protocol.
 
 **Platform supported**:
-+ Linux
-  
+
+-  Linux
+
 **Library**:
-+ XenAPI.py
-  
+
+-  XenAPI.py
+
 **Dependencies**:
-+ None
-  
+
+-  xmlrpclib
+
 **Examples**:
 
-The SDK includes 7 Python examples:
+The SDK includes the following Python examples:
 
--   `fixpbds.py` - reconfigures the settings used to access shared
+-  `fixpbds.py` - reconfigures the settings used to access shared
     storage;
 
--   `install.py` - installs a Debian VM, connects it to a network,
+-  `install.py` - installs a Debian VM, connects it to a network,
     starts it up and waits for it to report its IP address;
 
--   `license.py` - uploads a fresh license to a XenServer Host;
+-  `license.py` - uploads a fresh license to a XenServer Host;
 
--   `permute.py` - selects a set of VMs and uses XenMotion to move them
-    simultaneously between hosts;
+-  `permute.py` - selects a set of VMs and uses XenMotion to move them
+    simultaneously among hosts;
 
--   `powercycle.py` - selects a set of VMs and powercycles them;
+-  `powercycle.py` - selects a set of VMs and powercycles them;
 
--   `vm_start_async.py` - demonstrates how to invoke operations
+-  `vm_start_async.py` - shows how to invoke operations
     asynchronously;
 
--   `watch-all-events.py` - registers for all events and prints details
+-  `watch-all-events.py` - registers for all events and prints details
     when they occur.
 
-Command Line Interface (CLI) 
-----------------------------
+## Command Line Interface (CLI)
 
-Besides using raw XML-RPC or one of the supplied language bindings,
-third-party software developers may integrate with XenServer Hosts
-by using the XE command line interface `xe`. The xe CLI is installed by
-default on XenServer hosts; a stand-alone remote CLI is also
+Besides using raw RPC or one of the supplied SDK languages, third-party software developers can integrate with XenServer hosts
+by using the XE command line interface `xe`. The xe CLI is installed by default on XenServer hosts. A stand-alone remote CLI is also
 available for Linux. On Windows, the `xe.exe` CLI executable is
 installed along with XenCenter.
 
-#### CLI dependencies
-
+### CLI dependencies
 
 **Platform supported**:
-+ Linux
-+ Windows
+
+-  Linux
+-  Windows
 
 **Library**:
-+ None
+
+-  None
 
 **Binary**:
-+ xe on Linux
-+ xe.exe on Windows
+
+-  xe on Linux
+-  xe.exe on Windows
 
 **Dependencies**:
-+ None
 
+-  None
 
 The CLI allows almost every API call to be directly invoked from a
 script or other program, silently taking care of the required session
 management. The xe CLI syntax and capabilities are described in detail
-in the XenServer Administrator's Guide. For additional resources
+in the XenServer Administrator's Guide. For more resources
 and examples, visit the [Citrix Knowledge Center](http://support.citrix.com).
 
 > **Note**

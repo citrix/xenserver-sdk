@@ -1,5 +1,4 @@
-Using the API 
-=============
+# Using the API
 
 This chapter describes how to use the XenServer Management API from
 real programs to manage XenServer Hosts and VMs. The chapter begins
@@ -9,8 +8,7 @@ given in python syntax but equivalent code in the other programming
 languages would look very similar. The chapter finishes with
 walk-throughs of two complete examples.
 
-Anatomy of a typical application
---------------------------------
+## Anatomy of a typical application
 
 This section describes the structure of a typical application using the
 XenServer Management API. Most client applications begin by
@@ -19,7 +17,7 @@ username and password). Assuming the authentication succeeds, the server
 will create a "session" object and return a reference to the client.
 This reference will be passed as an argument to all future API calls.
 Once authenticated, the client may search for references to other useful
-objects (e.g. XenServer Hosts, VMs, etc.) and invoke operations on
+objects (e.g. XenServer hosts, VMs, etc.) and invoke operations on
 them. Operations may be invoked either synchronously or asynchronously;
 special task objects represent the state and progress of asynchronous
 operations. These application elements are all described in detail in
@@ -29,31 +27,25 @@ the following sections.
 
 API calls can be issued over two transports:
 
--   SSL-encrypted TCP on port 443 (https) over an IP network
+-  SSL-encrypted TCP on port 443 (https) over an IP network
 
--   plaintext over a local Unix domain socket: `/var/xapi/xapi`
+-  plaintext over a local Unix domain socket: `/var/xapi/xapi`
 
-The SSL-encrypted TCP transport is used for all off-host traffic while
-the Unix domain socket can be used from services running directly on the
-XenServer Host itself. In the SSL-encrypted TCP transport, all API
-calls should be directed at the Resource Pool master; failure to do so
-will result in the error `HOST_IS_SLAVE`, which includes the IP address of the master as an error parameter.
+Switching from the XML-RPC to the JSON-RPC backend can be done by adding the suffix `/jsonrpc` to the host URL path.
 
-Because the master host of a pool can change, especially if HA is
-enabled on a pool, clients must implement the following steps to detect
-a master host change and connect to the new master as required:
+The SSL-encrypted TCP transport is used for all off-host traffic while the Unix domain socket can be used from services running directly on the XenServer host itself. In the SSL-encrypted TCP transport, all API calls should be directed at the Resource Pool master; failure to do so will result in the error `HOST_IS_SLAVE`, which includes the IP address of the master as an error parameter.
 
-Subscribe to updates in the list of hosts servers, and maintain a
-current list of hosts in the pool
+Because the master host of a pool can change, especially if HA is enabled on a pool, clients must implement the following steps to detect a master host change and connect to the new master as required:
 
-If the connection to the pool master fails to respond, attempt to
-connect to all hosts in the list until one responds
+#### Handling pool master changes
 
-The first host to respond will return the `HOST_IS_SLAVE` error message,
-which contains the identity of the new pool master (unless of course the
-host is the new master)
+1.  Subscribe to updates in the list of hosts servers, and maintain a current list of hosts in the pool
 
-Connect to the new master
+1.  If the connection to the pool master fails to respond, attempt to connect to all hosts in the list until one responds
+
+1.  The first host to respond will return the `HOST_IS_SLAVE` error message, which contains the identity of the new pool master (unless of course the host is the new master)
+
+1.  Connect to the new master
 
 > **Note**
 >
@@ -80,16 +72,19 @@ field if this limit is exceeded for a given `username` or `originator`.
 In addition all sessions whose "last active" field is older than 24
 hours are also removed. Therefore it is important to:
 
--   Specify an appropriate `originator` when logging in; and
+-  Specify an appropriate `originator` when logging in; and
 
--   Remember to log out of active sessions to avoid leaking them; and
+-  Remember to log out of active sessions to avoid leaking them; and
 
--   Be prepared to log in again to the server if a `SESSION_INVALID`
+-  Be prepared to log in again to the server if a `SESSION_INVALID`
     error is caught.
+
+> **Note** A session reference obtained by a login request to the XML-RPC backend can be used in subsequent requests to the JSON-RPC backend, and vice-versa.
 
 In the following Python fragment a connection is established over the
 Unix domain socket and a session is created:
 
+```python
     import XenAPI
 
     session = XenAPI.xapi_local()
@@ -98,33 +93,37 @@ Unix domain socket and a session is created:
       ...
     finally:
       session.xenapi.session.logout()
-            
+```
 
-### Finding references to useful objects 
+### Finding references to useful objects
 
 Once an application has authenticated the next step is to acquire
 references to objects in order to query their state or invoke operations
 on them. All objects have a set of "implicit" messages which include the
 following:
 
--   `get_by_name_label` : return a list of all objects of a particular
+-  `get_by_name_label` : return a list of all objects of a particular
     class with a particular label;
 
--   `get_by_uuid` : return a single object named by its UUID;
+-  `get_by_uuid` : return a single object named by its UUID;
 
--   `get_all` : return a set of references to all objects of a
+-  `get_all` : return a set of references to all objects of a
     particular class; and
 
--   `get_all_records` : return a map of reference to records for each
+-  `get_all_records` : return a map of reference to records for each
     object of a particular class.
 
 For example, to list all hosts:
 
+```python
     hosts = session.xenapi.host.get_all()
+```
 
 To find all VMs with the name "my first VM":
 
+```python
     vms = session.xenapi.VM.get_by_name_label('my first VM')
+```
 
 > **Note**
 >
@@ -137,14 +136,18 @@ objects also contain references to other objects within fields. For
 example it is possible to find the set of VMs running on a particular
 host by calling:
 
+```python
     vms = session.xenapi.host.get_resident_VMs(host)
+```
 
 ### Invoking synchronous operations on objects
 
 Once object references have been acquired, operations may be invoked on
 them. For example to start a VM:
 
+```python
     session.xenapi.VM.start(vm, False, False)
+```
 
 All API calls are by default synchronous and will not return until the
 operation has completed or failed. For example in the case of `VM.start`
@@ -156,7 +159,7 @@ the call does not return until the VM has started booting.
 > when the booting has finished, wait for the in-guest agent to report
 > internal statistics through the `VM_guest_metrics` object.
 
-### Using Tasks to manage asynchronous operations 
+### Using Tasks to manage asynchronous operations
 
 To simplify managing operations which take quite a long time (e.g.
 `VM.clone` and `VM.copy`) functions are available in two forms:
@@ -164,17 +167,18 @@ synchronous (the default) and asynchronous. Each asynchronous function
 returns a reference to a task object which contains information about
 the in-progress operation including:
 
--   whether it is pending
+-  whether it is pending
 
--   whether it is has succeeded or failed
+-  whether it is has succeeded or failed
 
--   progress (in the range 0-1)
+-  progress (in the range 0-1)
 
--   the result or error code returned by the operation
+-  the result or error code returned by the operation
 
 An application which wanted to track the progress of a `VM.clone`
 operation and display a progress bar would have code like the following:
 
+```python
     vm = session.xenapi.VM.get_by_name_label('my vm')
     task = session.xenapi.Async.VM.clone(vm)
     while session.xenapi.task.get_status(task) == "pending":
@@ -182,7 +186,7 @@ operation and display a progress bar would have code like the following:
       update_progress_bar(progress)
       time.sleep(1)
     session.xenapi.task.destroy(task)
-            
+```
 
 > **Note**
 >
@@ -191,18 +195,18 @@ operation and display a progress bar would have code like the following:
 > result or error. If the number of tasks exceeds a built-in threshold
 > then the server will delete the oldest of the completed tasks.
 
-### Subscribing to and listening for events 
+### Subscribing to and listening for events
 
 With the exception of the task and metrics classes, whenever an object
 is modified the server generates an event. Clients can subscribe to this
 event stream on a per-class basis and receive updates rather than
 resorting to frequent polling. Events come in three types:
 
--   `add` - generated when an object has been created;
+-  `add` - generated when an object has been created;
 
--   `del` - generated immediately before an object is destroyed; and
+-  `del` - generated immediately before an object is destroyed; and
 
--   `mod` - generated when an object's field has changed.
+-  `mod` - generated when an object's field has changed.
 
 Events also contain a monotonically increasing ID, the name of the class
 of object and a snapshot of the object state equivalent to the result of
@@ -223,9 +227,9 @@ returns the new events.
 > unregistered.
 
 The following Python code fragment demonstrates how to print a summary
-of every event generated by a system: (similar code exists in `
-          Xenserver-SDK/XenServerPython/samples/watch-all-events.py`)
+of every event generated by a system: (similar code exists in `Xenserver-SDK/XenServerPython/samples/watch-all-events.py`)
 
+```python
     fmt = "%8s %20s %5s %s"
     session.xenapi.event.register(["*"])
       while True:
@@ -240,26 +244,25 @@ of every event generated by a system: (similar code exists in `
         except XenAPI.Failure, e:
           if e.details == [ "EVENTS_LOST" ]:
             print "Caught EVENTS_LOST; should reregister"
-            
+```
 
-Complete application examples 
------------------------------
+## Complete application examples
 
-This section describes two complete examples of real programs using the
-API.
+This section describes two complete examples of real programs using the API.
 
-### Simultaneously migrating VMs using XenMotion 
+### Simultaneously migrating VMs using XenMotion
 
 This python example (contained in `XenServer-SDK/XenServerPython/samples/permute.py`)
 demonstrates how to use XenMotion to move VMs simultaneously between
 hosts in a Resource Pool. The example makes use of asynchronous API
 calls and shows how to wait for a set of tasks to complete.
 
-The program begins with some standard boilerplate and imports the API
-bindings module
+The program begins with some standard boilerplate and imports the API module
 
+```python
     import sys, time
     import XenAPI
+```
 
 Next the commandline arguments containing a server URL, username,
 password and a number of iterations are parsed. The username and
@@ -268,6 +271,7 @@ password are used to establish a session which is passed to the function
 `try: finally:` to make sure the program logs out of its session at the
 end.
 
+```python
     if __name__ == "__main__":
         if len(sys.argv) <> 5:
             print "Usage:"
@@ -286,12 +290,14 @@ end.
                 main(session, i)
         finally:
             session.xenapi.session.logout()
+```
 
 The `main` function examines each running VM in the system, taking care
 to filter out *control domains* (which are part of the system and not
 controllable by the user). A list of running VMs and their current hosts
 is constructed.
 
+```python
     def main(session, iteration):
         # Find a non-template VM object
         all = session.xenapi.VM.get_all()
@@ -305,11 +311,14 @@ is constructed.
                 vms.append(vm)
                 hosts.append(record["resident_on"])
         print "%d: Found %d suitable running VMs" % (iteration, len(vms))
+```
 
 Next the list of hosts is rotated:
 
+```python
     # use a rotation as a permutation
         hosts = [hosts[-1]] + hosts[:(len(hosts)-1)]
+```
 
 Each VM is then moved using XenMotion to the new host under this
 rotation (i.e. a VM running on host at position 2 in the list will be
