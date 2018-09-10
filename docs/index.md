@@ -1,4 +1,4 @@
-# Citrix XenServer 7.6 Software Development Kit Guide
+# Citrix XenServer 7.5 Software Development Kit Guide
 
 ## Introduction
 
