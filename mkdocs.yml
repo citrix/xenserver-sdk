@@ -1,5 +1,5 @@
-site_name: Citrix XenServer 7.5 CR Software Development Kit Guide
-site_description: Citrix XenServer 7.5 CR Software Development Kit Guide
+site_name: Citrix XenServer 7.6 CR Software Development Kit Guide
+site_description: Citrix XenServer 7.6 CR Software Development Kit Guide
 theme_dir: citrix-sdk
 markdown_extensions:
   - admonition
@@ -9,7 +9,7 @@ markdown_extensions:
   - meta
 
 pages:
-- Citrix XenServer 7.5 CR Software Development Kit Guide: index.md
+- Citrix XenServer 7.6 CR Software Development Kit Guide: index.md
 - Getting Started: getting-started.md
 - Overview: overview.md
 - Using: using.md
