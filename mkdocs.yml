@@ -3,8 +3,8 @@ site_description: Citrix XenServer 7.6 CR Software Development Kit Guide
 theme_dir: citrix-sdk
 markdown_extensions:
   - admonition
-  - codehilite(guess_lang=false)
-  - toc(permalink=true)
+  - codehilite
+  - toc
   - footnotes
   - meta
 
