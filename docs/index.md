@@ -1,5 +1,7 @@
 # Citrix XenServer 7.6 Software Development Kit Guide
 
+The latest version of this SDK Guide for CItrix Hypervisor (formerly XenServer) is available at <https://developer-docs.citrix.com/projects/citrix-hypervisor-sdk/en/latest/>.
+
 ## Introduction
 
 Welcome to the developer's guide for XenServer. Here you will find
